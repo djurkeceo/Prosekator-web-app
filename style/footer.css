@@ -22,9 +22,25 @@
     opacity: 0.6;
 }
 
+.signupFooter {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: white;
+    opacity: 0.6;
+}
+
 .footerDiv {
     margin-top: 400px;
     text-align: center;
+}
+
+.contactFooter {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: white;
+    opacity: 0.6;
 }
 
 .aboutFooter p {

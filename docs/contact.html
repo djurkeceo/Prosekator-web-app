@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="../style/hamburgerBar.css">
     <link rel="stylesheet" href="../style/contact.css">
     <link rel="stylesheet" href="../style/scrollBar.css">
+    <link rel="stylesheet" href="../style/footer.css">
 
     <script src="../script/hamburgerBar.js" defer></script>
+    <script src="../script/contact.js" defer></script>
 </head>
 <body>
 
@@ -23,7 +25,7 @@
 <header class="header">
 
     <div class="headerLogo">
-        <img src="../images/prosekatorWebLogoTransparent.png" alt="Prosekator Logo" style="margin-right: 25px;">
+        <img src="../images/prosekatorWebLogoTransparent.png" alt="Prosekator Logo" style="margin-right: 25px;" draggable="false">
     </div>
 
     <div class="headerTitle">
@@ -38,15 +40,52 @@
                 <span></span>
             </div>
             <ul class="headerLinks" id="navLinks">
-                <li><a href="../index.html">Početna</a></li>
-                <li><a href="./about.html">O Prosekatoru</a></li>
-                <li><a href="./login.html">Prijavi se</a></li>
-                <li><a href="./contact.html">Kontaktiraj nas</a></li>
+                <li><a href="../index.html" draggable="false">Početna</a></li>
+                <li><a href="./about.html" draggable="false">O Prosekatoru</a></li>
+                <li><a href="./login.html" draggable="false">Prijavi se</a></li>
+                <li><a href="./contact.html" draggable="false">Kontaktiraj nas</a></li>
             </ul>
         </nav>
     </div>
 
 </header>
+</div>
+
+<div class="contactMain">
+    <div class="contactContainer">
+        <h1 class="contactMainTitle">Kontaktiraj nas</h1>
+        <p class="contactSubtitle">Imaš pitanje ili predlog? Tu smo da pomognemo.</p>
+
+        <form method="post" class="contactFormMain" novalidate>
+            
+            <div class="input-group">
+                <label for="name">Ime i prezime:</label>
+                <input type="text" id="name" name="name" placeholder="Tvoje ime i prezime" required>
+                <div class="error-tooltip">Popunite ovo polje</div>
+            </div>
+
+            <div class="input-group">
+                <label for="email">E-mail adresa:</label>
+                <input type="email" id="email" name="email" placeholder="Prosekator@email.com" required>
+                <div class="error-tooltip">Popunite ispravan e-mail</div>
+            </div>
+
+            <div class="input-group">
+                <label for="message">Poruka:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Kako ti možemo pomoći?" required></textarea>
+                <div class="error-tooltip">Napišite poruku</div>
+            </div>
+
+            <button type="submit" class="contactButtonMain">Pošalji poruku</button>
+
+        </form>
+    </div>
+</div>
+
+ <div class="footerDiv">
+    <footer class="contactFooter">
+        <p>&copy; 2026 Prosekator. Sva prava zadržana.</p>
+    </footer>
 </div>
 
 </body>

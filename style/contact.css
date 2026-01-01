@@ -1,0 +1,198 @@
+.contactMain {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 70vh;
+}
+
+.contactContainer {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+    /* Slide up animation */
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contactMainTitle {
+    font-size: 38px;
+    font-weight: bold;
+    margin-top: 0;
+    color: white;
+    transition: all 0.3s ease;
+    /* Base glow */
+    text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.9),
+        0 0 14px rgba(255, 255, 255, 0.6),
+        0 0 24px rgba(255, 255, 255, 0.4);
+}
+
+.contactMainTitle:hover {
+    text-shadow: none;
+    background: linear-gradient(90deg, 
+        #B4D63D 0%,
+        #9FD44A 14%,
+        #86D05E 28%,
+        #6ACB78 42%,
+        #52C2A2 56%,
+        #46A9B6 70%,
+        #3F82C4 85%,
+        #3A60CA 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+
+    /* Adding the glow effect */
+    filter: drop-shadow(0 0 10px rgba(82, 194, 162, 0.6));
+}
+
+.contactSubtitle {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.contactFormMain label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.contactFormMain {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.contactFormMain label {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.contactFormMain input, 
+.contactFormMain textarea {
+    background-color: #242431;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    caret-color: #B4D63D;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none; 
+}
+
+.contactFormMain input:focus, 
+.contactFormMain textarea:focus {
+    border-color: #B4D63D;
+    outline: none;
+    box-shadow: 0 0 15px rgba(180, 214, 61, 0.2);
+}
+
+.contactButtonMain {
+    position: relative;
+    background: #2a2a3a;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Button with gradient */
+.contactButtonMain::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, 
+        #B4D63D 0%, #9FD44A 14%, #86D05E 28%, #6ACB78 42%, 
+        #52C2A2 56%, #46A9B6 70%, #3F82C4 85%, #3A60CA 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.contactButtonMain:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(134, 208, 94, 0.3);
+}
+
+.contactButtonMain:hover::before {
+    opacity: 1;
+}
+
+.contactButtonMain:active {
+    transform: translateY(-1px);
+}
+
+/* Validation  */
+
+.error-tooltip {
+    position: absolute;
+    bottom: 105%;
+    left: 0;
+    background: #1a1a1a;
+    color: #B4D63D;
+    border: 1px solid #B4D63D;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(180, 214, 61, 0.3);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 100;
+}
+
+.error-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 15px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #B4D63D transparent transparent transparent;
+}
+
+.error-tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

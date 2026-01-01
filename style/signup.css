@@ -1,5 +1,5 @@
 /* Main div */
-.loginMain {
+.signupMain {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,7 @@
     color: white;
 }
 
-.loginContainer {
+.signupContainer {
     background-color: #1a1a1a; 
     padding: 40px;
     border-radius: 15px;
@@ -22,8 +22,19 @@
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Title glow effect */
-.loginMainTitle {
+.signupMainTitle {
     font-size: 38px;
     font-weight: bold;
     margin-top: 0;
@@ -36,7 +47,7 @@
         0 0 24px rgba(255, 255, 255, 0.4);
 }
 
-.loginMainTitle:hover {
+.signupMainTitle:hover {
     text-shadow: none;
     background: linear-gradient(90deg, 
         #B4D63D 0%,
@@ -57,19 +68,19 @@
     filter: drop-shadow(0 0 10px rgba(82, 194, 162, 0.6));
 }
 
-.loginFormMain {
+.signupFormMain {
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
-.loginFormMain label {
+.signupFormMain label {
     margin-bottom: 8px;
     font-size: 14px;
     opacity: 0.8;
 }
 
-.loginFormMain input {
+.signupFormMain input {
     background-color: #242431; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -79,14 +90,15 @@
     font-size: 16px;
     outline: none;
     transition: border 0.3s ease;
+    caret-color: #B4D63D;
 }
 
-.loginFormMain input:focus {
+.signupFormMain input:focus {
     border: 1px solid #86D05E; 
 }
 
 /* Button for login */
-.loginButtonMain {
+.signupButtonMain {
     position: relative; 
     background: #2a2a3a; 
     border: none;
@@ -103,7 +115,7 @@
 }
 
 /* Login button gradient effect animation */
-.loginButtonMain::before {
+.signupButtonMain::before {
     content: "";
     position: absolute;
     top: 0;
@@ -126,16 +138,16 @@
     z-index: -1; 
 }
 
-.loginButtonMain:hover {
+.signupButtonMain:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(134, 208, 94, 0.4);
 }
 
-.loginButtonMain:hover::before {
+.signupButtonMain:hover::before {
     opacity: 1;
 }
 
-.loginButtonMain:active {
+.signupButtonMain:active {
     transform: translateY(-1px);
 }
 
@@ -158,18 +170,6 @@
 .signupPrompt a:hover {
     text-decoration: underline;
     filter: brightness(1.2);
-}
-
-/* Animation for the smooth slide up */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Validation text styling */
