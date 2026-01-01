@@ -57,6 +57,12 @@
     filter: drop-shadow(0 0 10px rgba(82, 194, 162, 0.6));
 }
 
+.loginSubtitle {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
 .loginFormMain {
     display: flex;
     flex-direction: column;
