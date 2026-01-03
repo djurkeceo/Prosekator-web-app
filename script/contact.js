@@ -1,5 +1,5 @@
 document.querySelector('.contactFormMain').addEventListener('submit', function (e) {
-    let inputs = this.querySelectorAll('input[required]', 'textarea[required]');
+    let inputs = this.querySelectorAll('input[required], textarea[required]');
     let firstInvalid = null;
 
     inputs.forEach(input => {
