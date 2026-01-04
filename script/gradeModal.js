@@ -32,3 +32,13 @@ window.selectGrade = function(val) {
         }
     });
 };
+
+// Closing the menu if clicking anywhere outside the menu
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('gradeModal');
+    const modalContent = document.querySelector('.modal-content');
+
+    if (e.target === modal) {
+        closeGradeModal();
+    }
+});

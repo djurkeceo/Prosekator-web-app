@@ -1,16 +1,16 @@
 var availableColors = [
     "#B4D63D", 
-    "#00F5FF", 
+    "#0055ffff", 
     "#FF007F", 
-    "#ADFF2F", 
-    "#FFD700", 
-    "#FF5E00", 
-    "#00FF00", 
+    "#fbff00ff", 
+    "#ff0000ff", 
+    "#0dff00ff", 
+    "#f6a800ff", 
     "#9400D3", 
     "#00BFFF", 
     "#FF1493", 
-    "#39FF14", 
-    "#CCFF00", 
+    "#0a7700ff", 
+    "#5a0036ff", 
     "#FF3131", 
     "#1F51FF", 
     "#BC13FE", 
@@ -56,7 +56,7 @@ document.getElementById('addSubjectBtn').addEventListener('click', function() {
         return;
     }
 
-    const subjectColor = availableColors[Math.floor(Math.random() * availableColors.length)];
+    const subjectColor = availableColors.shift();
     const newSubject = {
         id: Date.now(),
         name: name,

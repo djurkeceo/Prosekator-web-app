@@ -1,9 +1,23 @@
 .indexMain {
-    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
-    padding: 60px 20px;
+    align-items: center;
+    min-height: 70vh; 
+    font-family: 'Inter', sans-serif;
+    color: white;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
 }
 
 .indexContainer {
@@ -152,6 +166,18 @@
     animation: slideInUp 0.4s ease-out forwards;
 }
 
+/* Animation for subject cards */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .subject-info { text-align: left; }
 .subject-info h3 { margin: 0 0 8px 0; font-size: 17px; color: white; }
 
@@ -178,18 +204,6 @@
     color: #B4D63D;
     font-weight: 800;
     font-size: 20px;
-}
-
-/* Animation for subject cards */
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Error tooltip */
@@ -239,8 +253,8 @@
 /* Button for deleting subjects */
 .delete-subject-btn {
     position: absolute;
-    top: 10px;
-    right: 12px;
+    top: 6px;
+    right: 6px;
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.2);
