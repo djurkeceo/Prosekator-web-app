@@ -1,4 +1,3 @@
-// Available colors for subjects
 var availableColors = [
     "#B4D63D", 
     "#00F5FF", 
@@ -7,10 +6,10 @@ var availableColors = [
     "#FFD700", 
     "#FF5E00", 
     "#00FF00", 
-    "#9400D3",
+    "#9400D3", 
     "#00BFFF", 
     "#FF1493", 
-    "#39FF14",
+    "#39FF14", 
     "#CCFF00", 
     "#FF3131", 
     "#1F51FF", 
@@ -34,26 +33,30 @@ var availableColors = [
 
 let subjects = [];
 
-// Logics for adding subjects
+// Handle subject addition logic
 document.getElementById('addSubjectBtn').addEventListener('click', function() {
     const input = document.getElementById('subjectName');
-    const name = input.value.trim();
     const tooltip = input.parentElement.querySelector('.error-tooltip');
+    const name = input.value.trim();
+
+    tooltip.classList.remove('visible');
+    input.classList.remove('invalid-field');
 
     if (!name) {
-        tooltip.classList.add('visible');
+        setTimeout(() => {
+            tooltip.classList.add('visible');
+            input.classList.add('invalid-field');
+            input.focus();
+        }, 10);
         return;
-    } else {
-        tooltip.classList.remove('visible');
     }
 
     if (availableColors.length === 0) {
-        alert("Nema više dostupnih boja!");
+        alert("No more colors available!");
         return;
     }
 
-    const subjectColor = availableColors.shift();
-
+    const subjectColor = availableColors[Math.floor(Math.random() * availableColors.length)];
     const newSubject = {
         id: Date.now(),
         name: name,
@@ -68,90 +71,86 @@ document.getElementById('addSubjectBtn').addEventListener('click', function() {
     calculateOverall();
 });
 
+// Remove error state while typing
 document.getElementById('subjectName').addEventListener('input', function() {
     const tooltip = this.parentElement.querySelector('.error-tooltip');
-    if(tooltip) tooltip.classList.remove('visible');
+    if (tooltip) {
+        tooltip.classList.remove('visible');
+        this.classList.remove('invalid-field');
+    }
 });
 
-// Adding grades
-window.addGrade = function(id) {
-    const val = prompt("Unesi ocenu (1-5):");
-    const grade = parseInt(val);
+// Enable adding subjects with the Enter key
+document.getElementById('subjectName').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') document.getElementById('addSubjectBtn').click();
+});
 
-    if (grade >= 1 && grade <= 5) {
-        const sub = subjects.find(s => s.id === id);
-        sub.grades.push(grade);
-        
-        const sum = sub.grades.reduce((a, b) => a + b, 0);
-        sub.average = sum / sub.grades.length;
-        
-        renderSubjects();
-        calculateOverall();
-    } else if (val !== null) {
-        alert("Moraš uneti broj od 1 do 5!");
+// Handle subject deletion with exit animation
+window.deleteSubject = function(id, event) {
+    if (event) event.stopPropagation();
+
+    const card = document.querySelector(`.subject-card[data-id="${id}"]`);
+    if (card) {
+        card.classList.add('removing');
+        setTimeout(() => {
+            const index = subjects.findIndex(s => s.id === id);
+            if (index !== -1) {
+                availableColors.unshift(subjects[index].color);
+                subjects.splice(index, 1);
+                card.remove(); 
+                calculateOverall();
+                if (subjects.length === 0) renderSubjects();
+            }
+        }, 400); 
     }
 };
 
-// Calculating the average
+// Handle adding grades to a specific subject
+window.addGrade = function(id) {
+    const val = prompt("Enter grade (1-5):");
+    const grade = parseInt(val);
+    if (grade >= 1 && grade <= 5) {
+        const sub = subjects.find(s => s.id === id);
+        sub.grades.push(grade);
+        const sum = sub.grades.reduce((a, b) => a + b, 0);
+        sub.average = sum / sub.grades.length;
+        renderSubjects();
+        calculateOverall();
+    } else if (val !== null) alert("You must enter a number between 1 and 5!");
+};
+
+// Calculate and update the final school average
 function calculateOverall() {
     if (subjects.length === 0) {
         document.getElementById('finalAverage').innerText = "0.00";
         return;
     }
-    
-    // Prosek zaokruženih ocena svakog predmeta
-    const roundedSum = subjects.reduce((acc, sub) => {
-        return acc + (sub.grades.length > 0 ? Math.round(sub.average) : 0);
-    }, 0);
-    
-    const total = roundedSum / subjects.length;
-    document.getElementById('finalAverage').innerText = total.toFixed(2);
+    const roundedSum = subjects.reduce((acc, sub) => acc + (sub.grades.length > 0 ? Math.round(sub.average) : 0), 0);
+    document.getElementById('finalAverage').innerText = (roundedSum / subjects.length).toFixed(2);
 }
 
-// Rendering subjects
+// Render the list of subject cards
 function renderSubjects() {
     const container = document.getElementById('subjectsContainer');
     container.innerHTML = '';
-
     subjects.forEach(sub => {
         const div = document.createElement('div');
         div.className = 'subject-card';
-       
+        div.setAttribute('data-id', sub.id);
         div.style.setProperty('--subject-color', sub.color);
-        
         div.innerHTML = `
             <div class="subject-info">
                 <h3>${sub.name}</h3>
-                <div>
+                <div class="grades-wrapper">
                     ${sub.grades.map(g => `<span class="grade-badge">${g}</span>`).join('')}
                     <button class="add-grade-btn" onclick="addGrade(${sub.id})">+</button>
                 </div>
             </div>
-            <div class="sub-avg-val">${sub.average > 0 ? sub.average.toFixed(2) : "---"}</div>
+            <div class="subject-right">
+                <button class="delete-subject-btn" onclick="deleteSubject(${sub.id}, event)">&times;</button>
+                <div class="sub-avg-val">${sub.average > 0 ? sub.average.toFixed(2) : "---"}</div>
+            </div>
         `;
         container.appendChild(div);
     });
 }
-
-// Error Tooltip
-document.getElementById('addSubjectBtn').addEventListener('click', function() {
-    const input = document.getElementById('subjectName');
-    const tooltip = input.parentElement.querySelector('.error-tooltip');
-    const name = input.value.trim();
-
-    if (!name) {
-        // 1. Pokaži tooltip i zazeleni border
-        tooltip.classList.add('visible');
-        input.classList.add('invalid-field');
-
-        input.focus();
-
-        // Skloni grešku čim korisnik počne da kuca
-        input.addEventListener('input', () => {
-            tooltip.classList.remove('visible');
-            input.classList.remove('invalid-field');
-        }, { once: true });
-
-        return;
-    }
-});

@@ -9,15 +9,13 @@ window.addGrade = function(id) {
     const descriptionInput = document.getElementById('gradeDescription');
     if (descriptionInput) descriptionInput.value = '';
     
-    // Reset modal state
+    // Reset modal
     document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('selected'));
-    
-    // Open modal
+   
     const modal = document.getElementById('gradeModal');
     if (modal) modal.style.display = 'flex';
 };
 
-// Closing the modal
 window.closeGradeModal = function() {
     const modal = document.getElementById('gradeModal');
     if (modal) modal.style.display = 'none';

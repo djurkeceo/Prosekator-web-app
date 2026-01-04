@@ -1,5 +1,4 @@
 document.querySelector('.contactFormMain').addEventListener('submit', function (e) {
-    // Proveri da li tvoja textarea u HTML-u ima atribut 'required'
     let inputs = this.querySelectorAll('input[required], textarea[required]');
     let firstInvalid = null;
 

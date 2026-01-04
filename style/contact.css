@@ -16,8 +16,6 @@
     max-width: 500px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     text-align: center;
-
-    /* Slide up animation */
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
@@ -60,9 +58,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
-
-    /* Adding the glow effect */
     filter: drop-shadow(0 0 10px rgba(82, 194, 162, 0.6));
 }
 
@@ -163,7 +158,6 @@
 }
 
 /* Error Tooltip */
-
 .error-tooltip {
     position: absolute;
     bottom: 100%; 

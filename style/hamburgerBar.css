@@ -1,4 +1,3 @@
-/* Hamburger menu container */
 .hamburgerMenu {
     display: none;
     flex-direction: column;
@@ -23,13 +22,13 @@
     transition: box-shadow 0.3s ease;
 }
 
-/* Desktop nav links */
 .headerLinks {
     display: flex;
     list-style: none;
     gap: 20px;
 }
 
+/* Hamburger menu flex container for mobile */
 @media screen and (max-width: 1000px) {
     .hamburgerMenu {
         display: flex;
@@ -68,12 +67,10 @@
     }
 }
 
-    /* Prevent flicker on tap */
     .hamburgerMenu.is-tapped span {
         box-shadow: 0 0 15px white, 0 0 30px white !important;
     }
 
-    /* Hover for mouse */
     @media (hover: hover) and (pointer: fine) {
         .hamburgerMenu:hover span {
             box-shadow: 0 0 12px white, 0 0 25px white;

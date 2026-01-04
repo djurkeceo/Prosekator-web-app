@@ -1,4 +1,3 @@
-/* Main div */
 .loginMain {
     display: flex;
     justify-content: center;
@@ -17,19 +16,15 @@
     max-width: 400px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    
-    /* Slide up animation */
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Title glow effect */
 .loginMainTitle {
     font-size: 38px;
     font-weight: bold;
     margin-top: 0;
     color: white;
     transition: all 0.3s ease;
-    /* Base glow */
     text-shadow:
         0 0 6px rgba(255, 255, 255, 0.9),
         0 0 14px rgba(255, 255, 255, 0.6),
@@ -51,9 +46,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
-
-    /* Adding the glow effect */
     filter: drop-shadow(0 0 10px rgba(82, 194, 162, 0.6));
 }
 
@@ -93,7 +85,6 @@
     border: 1px solid #86D05E; 
 }
 
-/* Button for login */
 .loginButtonMain {
     position: relative; 
     background: #2a2a3a; 
@@ -110,7 +101,7 @@
     z-index: 1;
 }
 
-/* Login button gradient effect animation */
+/* Button gradient effect */
 .loginButtonMain::before {
     content: "";
     position: absolute;
@@ -180,7 +171,7 @@
     }
 }
 
-/* Validation text styling */
+/* Error tooltip */
 .input-group {
     position: relative;
     display: flex;

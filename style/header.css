@@ -1,4 +1,3 @@
-/* background and font*/
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -6,17 +5,17 @@ body {
     color: white;
     user-select: none;
 }
-/* header layout */
+
 .header {
     display: flex;
     align-items: flex-start;
     padding: 20px 60px;
 }
-/* push nav to the top right */
+
 .headerBar {
     margin-left: auto;
 }
-/* nav list */
+
 .headerLinks {
     display: flex;
     gap: 2.5rem;
@@ -25,7 +24,7 @@ body {
     padding: 0;
     
 }
-/* nav links */
+
 .headerLinks li a {
     text-decoration: none;
     color: inherit;
@@ -34,19 +33,21 @@ body {
     font-family: Inter, sans-serif;
     user-select: none;
 }
-/* title */
+
 .headerTitle h1 {
     margin-top: 18px;
 }
+
 .headerTitle p {
     margin: 4px 0 0;
 }
-/* logo */
+
 .headerLogo img {
     width: 150px;
     height: auto;
     margin-left: 40px;
 }
+
 .headerLinks li a {
     text-decoration: none;
     color: white;
@@ -64,7 +65,6 @@ body {
 }
 
 .headerLinks li a:hover {
-    /* half green / half blue */
     background: linear-gradient(
         90deg,
         #B4D63D 0%,
@@ -85,7 +85,7 @@ body {
         0 0 10px rgba(46, 204, 113, 0.6),
         0 0 10px rgba(52, 152, 219, 0.6);
 }
-/* HEADER TITLE – default glow */
+
 .headerTitle h1,
 .headerTitle p {
     color: white;
@@ -100,7 +100,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* HEADER TITLE – hover half green / half blue */
 .headerTitle h1:hover,
 .headerTitle p:hover {
     background: linear-gradient(
@@ -123,13 +122,11 @@ body {
         0 0 12px rgba(46, 204, 113, 0.6),
         0 0 12px rgba(52, 152, 219, 0.6);
 }
-/* Ultra-tight glowing logo */
+
 .headerLogo img {
-    width: 120px; /* adjust size */
+    width: 120px; 
     height: auto;
     transition: 0.3s ease;
-
-    /* Tighter glow around the image */
     filter: drop-shadow(0 0 0.5px #B4D63D)
             drop-shadow(0 0 1px #9FD44A)
             drop-shadow(0 0 1.5px #86D05E)
@@ -140,7 +137,6 @@ body {
             drop-shadow(0 0 4px #3A60CA);
 }
 
-/* Stronger glow on hover */
 .headerLogo img:hover {
     filter: drop-shadow(0 0 1px #B4D63D)
             drop-shadow(0 0 1.5px #9FD44A)

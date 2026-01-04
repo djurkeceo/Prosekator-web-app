@@ -1,10 +1,9 @@
-/* MODAL STYLES */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.85);
-    display: none; /* Sakriveno po defaultu */
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -14,11 +13,6 @@
     position: relative;
     max-width: 400px !important;
     animation: modalIn 0.3s ease;
-}
-
-@keyframes modalIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
 }
 
 .close-modal {
@@ -65,28 +59,7 @@
     cursor: pointer;
 }
 
-/* DUGME ZA BRISANJE PREDMETA */
-.delete-subject-btn {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    font-size: 18px;
-    margin-left: 10px;
-    transition: 0.3s;
-}
-
-.delete-subject-btn:hover {
-    color: #ff4444;
-}
-
-.grade-badge {
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: inline-block; /* Bitno za transformaciju */
-}
-
-.grade-badge:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    cursor: default;
+@keyframes modalIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
