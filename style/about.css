@@ -50,7 +50,6 @@
     cursor: pointer;
     color: white;
     transition: all 0.3s ease;
-    /* Base glow */
     text-shadow:
         0 0 6px rgba(255, 255, 255, 0.9),
         0 0 14px rgba(255, 255, 255, 0.6),
