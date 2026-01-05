@@ -1,11 +1,21 @@
+/* No merging with the footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 .indexMain {
+    flex: 1 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 70vh; 
+    align-items: flex-start;
+    padding: 200px 20px 60px 20px;
     font-family: 'Inter', sans-serif;
     color: white;
     animation: fadeInUp 0.8s ease-out forwards;
+    box-sizing: border-box;
 }
 
 @keyframes fadeInUp {
@@ -17,7 +27,6 @@
         opacity: 1;
         transform: translateY(0);
     }
-    
 }
 
 .indexContainer {

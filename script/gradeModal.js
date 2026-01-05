@@ -18,6 +18,7 @@ window.addGrade = function(id) {
 
 window.closeGradeModal = function() {
     const modal = document.getElementById('gradeModal');
+    
     if (modal) modal.style.display = 'none';
 };
 
