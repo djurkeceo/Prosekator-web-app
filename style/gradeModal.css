@@ -24,6 +24,16 @@
     cursor: pointer;
 }
 
+.modalMainTitle {
+    font-size: 45px;
+    font-weight: bold;
+    margin-top: -10px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
 .grade-selection {
     display: flex;
     justify-content: center;
