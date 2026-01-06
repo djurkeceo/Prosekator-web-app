@@ -1,0 +1,14 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" rx="20" fill="#1A1A1A"/>
+    
+    <rect x="10" y="10" width="80" height="80" rx="15" stroke="#B4D63D" stroke-width="4" stroke-opacity="0.3"/>
+    
+    <path d="M25 70L40 55L55 60L75 35" stroke="#B4D63D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <circle cx="75" cy="35" r="5" fill="#B4D63D">
+        <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+    </circle>
+    
+    <rect x="30" y="80" width="40" height="4" rx="2" fill="#B4D63D"/>
+</svg>
