@@ -9,50 +9,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="../images/prosekatorWebLogo.png">
+
     <link rel="stylesheet" href="../style/header.css">
     <link rel="stylesheet" href="../style/hamburgerBar.css">
     <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="../style/footer.css">
     <link rel="stylesheet" href="../style/scrollBar.css">
+    <link rel="stylesheet" href="../style/customNav.css">
 
     <script src="../script/hamburgerBar.js" defer></script>
     <script src="../script/login.js" defer></script>
+
 </head>
+
 <body>
 
 <div class="headerDiv">
-<header class="header">
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <img src="../images/favicon.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                <span>Prosekator</span>
+            </a>
 
-    <div class="headerLogo">
-        <img src="../images/prosekatorWebLogoTransparent.png" alt="Prosekator Logo" style="margin-right: 25px;" draggable="false">
-    </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <div class="headerTitle">
-        <h1><a href="../index.html" style="text-decoration: none; color: white" draggable="false">Prosekator</a></h1>
-    </div>
-
-    <div class="headerBar">
-        <nav>
-            <div class="hamburgerMenu" id="hamburgerMenu">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
+            <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./about.html">O Prosekatoru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./login.html">Prijavi se</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Kontaktiraj nas</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="headerLinks" id="navLinks">
-
-                <li><a href="../index.html" draggable="false">Početna</a></li>
-                <li><a href="./about.html" draggable="false">O Prosekatoru</a></li>
-                <li><a href="./login.html" draggable="false">Prijavi se</a></li>
-                <li><a href="./contact.html" draggable="false">Kontaktiraj nas</a></li>
-
-            </ul>
-        </nav>
-    </div>
-
-</header>
+        </div>
+    </nav>
 </div>
 
 <div class="loginMain">

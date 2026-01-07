@@ -2,7 +2,7 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 85vh;
     margin: 0;
 }
 
@@ -35,7 +35,7 @@ body {
     border-radius: 15px;
     padding: 40px;
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
@@ -56,20 +56,11 @@ body {
 
 .indexMainTitle:hover {
     text-shadow: none;
-    background: linear-gradient(90deg, 
-        #B4D63D 0%,
-        #9FD44A 14%,
-        #86D05E 28%,
-        #6ACB78 42%,
-        #52C2A2 56%,
-        #46A9B6 70%,
-        #3F82C4 85%,
-        #3A60CA 100%
-    );
+    background: linear-gradient(90deg, #B4D63D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 10px rgba(82, 194, 162, 0.6));
+    filter: drop-shadow(0 0 10px #91bc03);
 }
 
 /* Average section */
@@ -127,7 +118,7 @@ body {
 }
 
 .add-subject-section input:focus {
-    border-color: #B4D63D;
+    border-color: #86D05E;
 }
 
 /* Button gradient effect */
@@ -147,16 +138,7 @@ body {
 }
 
 #addSubjectBtn:hover {
-    background: linear-gradient(90deg, 
-        #B4D63D 0%,
-        #9FD44A 14%, 
-        #86D05E 28%, 
-        #6ACB78 42%, 
-        #52C2A2 56%, 
-        #46A9B6 70%, 
-        #3F82C4 85%, 
-        #3A60CA 100%
-    );
+    background: linear-gradient(90deg, #B4D63D 0%, #90d627 50%, #B4D63D 100%);
     box-shadow: 0 5px 15px rgba(134, 208, 94, 0.2);
     transform: translateY(-2px);
 }

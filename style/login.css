@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70vh; 
+    min-height: 80vh; 
     font-family: 'Inter', sans-serif;
     color: white;
 }
@@ -13,7 +13,7 @@
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
     animation: fadeInUp 0.8s ease-out forwards;
@@ -33,20 +33,11 @@
 
 .loginMainTitle:hover {
     text-shadow: none;
-    background: linear-gradient(90deg, 
-        #B4D63D 0%,
-        #9FD44A 14%,
-        #86D05E 28%,
-        #6ACB78 42%,
-        #52C2A2 56%,
-        #46A9B6 70%,
-        #3F82C4 85%,
-        #3A60CA 100%
-    );
+    background: linear-gradient(90deg, #B4D63D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 10px rgba(82, 194, 162, 0.6));
+    filter: drop-shadow(0 0 10px #91bc03);
 }
 
 .loginSubtitle {
@@ -109,17 +100,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        90deg,
-        #B4D63D 0%,
-        #9FD44A 14%,
-        #86D05E 28%,
-        #6ACB78 42%,
-        #52C2A2 56%,
-        #46A9B6 70%,
-        #3F82C4 85%,
-        #3A60CA 100%
-    );
+    background: linear-gradient(90deg, #B4D63D 0%, #90d627 50%, #B4D63D 100%);
     opacity: 0; 
     transition: opacity 0.4s ease; 
     z-index: -1; 
