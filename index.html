@@ -18,14 +18,12 @@
     <!-- CSS Links-->
     <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/header.css">
-    <link rel="stylesheet" href="./style/hamburgerBar.css">
     <link rel="stylesheet" href="./style/footer.css">
     <link rel="stylesheet" href="./style/scrollBar.css">
     <link rel="stylesheet" href="./style/gradeModal.css">
     <link rel="stylesheet" href="./style/customNav.css">
 
     <!-- JS Links -->
-    <script src="./script/hamburgerBar.js" defer></script>
     <script src="./script/main.js" defer></script>
     <script src="./script/gradeModal.js" defer></script>
 
@@ -40,8 +38,12 @@
                 <span>Prosekator</span>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="navbar-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
@@ -66,7 +68,7 @@
         <h1 class="indexMainTitle">Tvoj Prosek</h1>
         
         <div class="overall-average-section">
-            <span class="average-label">Ukupan školski prosek</span>
+            <span class="average-label">Ukupan školski prosek.</span>
             <h2 id="finalAverage">0.00</h2>
         </div>
 

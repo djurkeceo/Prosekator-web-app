@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prosekator - Registruj se</title>
 
+    <!-- Google Font Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="../images/prosekatorWebLogo.png">
 
+    <!-- CSS Links -->
     <link rel="stylesheet" href="../style/header.css">
     <link rel="stylesheet" href="../style/hamburgerBar.css">
     <link rel="stylesheet" href="../style/signup.css">
@@ -19,7 +22,7 @@
     <link rel="stylesheet" href="../style/scrollBar.css">
     <link rel="stylesheet" href="../style/customNav.css">
 
-    <script src="../script/hamburgerBar.js" defer></script>
+    <!-- JS Links -->
     <script src="../script/signup.js" defer></script>
 </head>
 <body>
@@ -27,13 +30,17 @@
 <div class="headerDiv">
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="./index.html">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
                 <img src="../images/favicon.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
                 <span>Prosekator</span>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="navbar-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
@@ -89,6 +96,9 @@
     <footer class="signupFooter">
         <p>&copy; 2026 Prosekator. Sva prava zadržana.</p>
     </div>
+
+<!-- Bootstrap JS Link -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
 </html>

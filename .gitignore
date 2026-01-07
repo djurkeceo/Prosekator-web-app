@@ -16,7 +16,12 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 *.txt
-*.xml
+*.userosscache
+*.suo
+*.pidb
+*.booproj
+hamburgerBar.js
+hamburgerBar.css
 
 # Mono auto generated files
 mono_crash.*

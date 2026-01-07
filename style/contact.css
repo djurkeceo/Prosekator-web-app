@@ -8,12 +8,13 @@
 }
 
 .contactContainer {
+    margin-top: 10vh;
     background-color: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     padding: 40px;
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     text-align: center;
     animation: fadeInUp 0.8s ease-out forwards;
