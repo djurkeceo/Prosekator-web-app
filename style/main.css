@@ -313,3 +313,24 @@ body {
         margin-bottom: -80px;
     }
 }
+
+/* Mobile phones */
+/* @media (max-width: 767px) {
+  .indexContainer {
+    margin-top: 20vh;
+  }
+} */
+
+/* Tablets */
+/* @media (min-width: 768px) and (max-width: 1023px) {
+  .indexContainer {
+    margin-top: 35vh;
+  }
+} */
+
+/* Desktops */
+/* @media (min-width: 1024px) {
+  .indexContainer {
+    margin-top: 45vh;
+  }
+}  */

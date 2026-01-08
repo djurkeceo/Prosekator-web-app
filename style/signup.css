@@ -206,3 +206,24 @@ input.invalid-field {
     border-color: #B4D63D !important;
     box-shadow: 0 0 10px rgba(180, 214, 61, 0.2);
 }
+
+/* Mobile phones */
+@media (max-width: 767px) {
+  .signupContainer {
+    margin-top: 20vh;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .signupContainer {
+    margin-top: 35vh;
+  }
+}
+
+/* Desktops */
+@media (min-width: 1024px) {
+  .signupContainer {
+    margin-top: 45vh;
+  }
+}

@@ -16,10 +16,6 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 *.txt
-*.userosscache
-*.suo
-*.pidb
-*.booproj
 hamburgerBar.js
 hamburgerBar.css
 
