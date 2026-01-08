@@ -44,9 +44,11 @@
 }
 
 .aboutMainTitle {
+    text-align: center;
     font-size: 45px;
-    font-weight: bold;
+    font-weight: 650;
     margin: 0;
+    width: 315px;
     cursor: pointer;
     color: white;
     transition: all 0.3s ease;
@@ -54,8 +56,8 @@
         0 0 6px rgba(255, 255, 255, 0.9),
         0 0 14px rgba(255, 255, 255, 0.6),
         0 0 24px rgba(255, 255, 255, 0.4);
+    cursor: default;
 }
-
 .aboutMainTitle:hover {
     text-shadow: none;
     background: linear-gradient(90deg, #B4D63D 100%);

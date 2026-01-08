@@ -13,13 +13,17 @@ window.addGrade = function(id) {
     document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('selected'));
    
     const modal = document.getElementById('gradeModal');
-    if (modal) modal.style.display = 'flex';
+    if (modal) {
+        modal.classList.add('show');
+    }
 };
 
 window.closeGradeModal = function() {
     const modal = document.getElementById('gradeModal');
     
-    if (modal) modal.style.display = 'none';
+    if (modal) {
+        modal.classList.remove('show');
+    }
 };
 
 window.selectGrade = function(val) {
@@ -38,7 +42,6 @@ window.selectGrade = function(val) {
 document.addEventListener('click', (e) => {
     const modal = document.getElementById('gradeModal');
     const modalContent = document.querySelector('.modal-content');
-
     if (e.target === modal) {
         closeGradeModal();
     }

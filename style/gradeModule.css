@@ -1,0 +1,115 @@
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 400px !important;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px; right: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    animation: modalOut 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #B4D63D;
+}
+
+.modalMainTitle {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.grade-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.grade-btn {
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    border: 1px solid #B4D63D;
+    background: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.grade-btn.selected {
+    background: #B4D63D;
+    color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(180, 214, 61, 0.5);
+}
+
+.add-grade-confirm {
+    height: 48px;
+    background: #2a2a3a;
+    border: none;
+    border-radius: 8px;
+    padding: 0 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: bacground 0.3s ease;
+}
+
+.add-grade-confirm:hover {
+    background: linear-gradient(90deg, #B4D63D 0%, #90d627 50%, #B4D63D 100%);
+    box-shadow: 0 5px 15px rgba(134, 208, 94, 0.2);
+    transform: translateY(-2px);
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+}
+
+#gradeDescription {
+    text-align: center;
+}
+
+.grade-btn:hover {
+    background: #B4D63D;
+    color: #1a1a1a;
+}

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 85vh; 
+    min-height: 90vh; 
     font-family: 'Inter', sans-serif;
     color: white;
 }
@@ -13,7 +13,7 @@
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
     animation: fadeInUp 0.8s ease-out forwards;
@@ -32,9 +32,12 @@
 
 /* Title glow effect */
 .signupMainTitle {
+    display: inline-block;
     font-size: 38px;
-    font-weight: bold;
-    margin-top: 0;
+    font-weight: 650;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 315px;
     color: white;
     transition: all 0.3s ease;
     /* Base glow */
@@ -88,7 +91,7 @@
 }
 
 .signupFormMain input:focus {
-    border: 1px solid #86D05E; 
+    border: 1px solid #B4D63D; 
 }
 
 /* Button for login */

@@ -41,8 +41,10 @@ body {
 }
 
 .indexMainTitle {
+    display: inline-block;
     font-size: 45px;
-    font-weight: bold;
+    font-weight: 650;
+    width: 250px;
     margin-top: -10px;
     cursor: pointer;
     color: white;
@@ -115,16 +117,34 @@ body {
     font-family: 'Inter', sans-serif;
     outline: none;
     box-sizing: border-box;
-    text-align: center; 
+    text-align: center;
+    transition: border-color 0.3s ease;
 }
 
 .add-subject-section input:focus {
-    border-color: #86D05E;
+    border-color: #B4D63D;
 }
 
-/* Button gradient effect */
+.input-group input{ 
+    width: 100%;
+    background-color: #242431;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    text-align: center; 
+}
+
+.input-group input:focus {
+    border-color: #B4D63D;
+}
+
+/* Button with gradient effect */
 #addSubjectBtn {
-    height: 43px;
+    height: 48px;
     background: #2a2a3a;
     border: none;
     border-radius: 8px;
@@ -190,6 +210,13 @@ body {
     border-radius: 4px;
     cursor: pointer;
     padding: 2px 8px;
+    transition: background-color 0.3s ease;
+}
+
+.add-grade-btn:hover {
+    background: #B4D63D;
+    color: #1a1a1a;
+    box-shadow: 0 0 10px rgba(180, 214, 61, 0.5);
 }
 
 .sub-avg-val {
@@ -245,7 +272,7 @@ body {
 /* Button for deleting subjects */
 .delete-subject-btn {
     position: absolute;
-    top: 6px;
+    top: 2px;
     right: 6px;
     background: none;
     border: none;

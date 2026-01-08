@@ -32,9 +32,11 @@
 }
 
 .contactMainTitle {
+    display: inline-block;
     font-size: 38px;
-    font-weight: bold;
-    margin-top: 0;
+    font-weight: 650;
+    margin-bottom: 20px;
+    width: 280px;
     color: white;
     transition: all 0.3s ease;
     /* Base glow */
@@ -95,7 +97,7 @@
 
 .contactFormMain input:focus, 
 .contactFormMain textarea:focus {
-    border-color: #86D05E;
+    border-color: #B4D63D;
     outline: none;
     box-shadow: 0 0 15px rgba(180, 214, 61, 0.2);
 }
