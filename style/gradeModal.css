@@ -113,3 +113,7 @@
     background: #B4D63D;
     color: #1a1a1a;
 }
+
+.modal-content .input-group input {
+    border-radius: 8px !important;
+}

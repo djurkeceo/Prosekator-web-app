@@ -129,13 +129,14 @@ body {
     width: 100%;
     background-color: #242431;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 8px !important;
     padding: 12px;
     color: white;
     font-family: 'Inter', sans-serif;
     outline: none;
     box-sizing: border-box;
     text-align: center; 
+    transition: border-color 0.3s ease;
 }
 
 .input-group input:focus {
@@ -144,7 +145,7 @@ body {
 
 /* Button with gradient effect */
 #addSubjectBtn {
-    height: 48px;
+    height: 50px;
     background: #2a2a3a;
     border: none;
     border-radius: 8px;
