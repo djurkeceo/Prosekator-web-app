@@ -1,7 +1,7 @@
 .aboutMain {
     max-width: 850px;
     margin: 60px auto;
-    padding: 0 20px;
+    padding: 200px 25px 60px 25px;
     color: white;
     font-family: 'Inter', sans-serif;
     animation: fadeInUp 0.8s ease-out forwards;

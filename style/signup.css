@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh; 
+    min-height: 90vh;
+    padding: 200px 25px 60px 25px;
     font-family: 'Inter', sans-serif;
     color: white;
 }
@@ -32,12 +33,11 @@
 
 /* Title glow effect */
 .signupMainTitle {
-    display: inline-block;
+    display: inline-flex;
     font-size: 38px;
     font-weight: 650;
     text-align: center;
     margin-bottom: 20px;
-    width: 315px;
     color: white;
     transition: all 0.3s ease;
     /* Base glow */
@@ -53,7 +53,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
 
     /* Adding the glow effect */
     filter: drop-shadow(0 0 10px #91bc03);
@@ -80,7 +79,7 @@
 .signupFormMain input {
     background-color: #242431; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 8px !important;
     padding: 12px;
     color: white;
     margin-bottom: 20px;
@@ -210,20 +209,20 @@ input.invalid-field {
 /* Mobile phones */
 @media (max-width: 767px) {
   .signupContainer {
-    margin-top: 20vh;
+    margin-top: 1vh;
   }
 }
 
 /* Tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .signupContainer {
-    margin-top: 35vh;
+    margin-top: 1vh;
   }
 }
 
 /* Desktops */
 @media (min-width: 1024px) {
   .signupContainer {
-    margin-top: 45vh;
+    margin-top: 1vh;
   }
 }

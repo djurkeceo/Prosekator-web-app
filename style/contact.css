@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
+    padding: 200px 25px 60px 25px;
     min-height: 85vh;
 }
 
@@ -36,7 +36,6 @@
     font-size: 38px;
     font-weight: 650;
     margin-bottom: 20px;
-    width: 280px;
     color: white;
     transition: all 0.3s ease;
     /* Base glow */
@@ -84,7 +83,7 @@
 .contactFormMain textarea {
     background-color: #242431;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 8px !important;
     padding: 12px;
     color: white;
     font-family: 'Inter', sans-serif;

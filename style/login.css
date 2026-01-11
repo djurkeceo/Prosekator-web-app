@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh; 
+    min-height: 90vh;
+    padding: 200px 25px 60px 25px;
     font-family: 'Inter', sans-serif;
     color: white;
 }
@@ -19,6 +20,18 @@
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title glow effect */
 .loginMainTitle {
     font-size: 38px;
     font-weight: 650;
@@ -50,7 +63,6 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    
 }
 
 .loginFormMain label {
@@ -62,7 +74,7 @@
 .loginFormMain input {
     background-color: #242431; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 8px !important;
     padding: 12px;
     color: white;
     margin-bottom: 20px;
@@ -140,18 +152,6 @@
     filter: brightness(1.2);
 }
 
-/* Animation for the smooth slide up */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Error tooltip */
 .input-group {
     position: relative;
@@ -203,20 +203,20 @@ input.invalid-field {
 /* Mobile phones */
 @media (max-width: 767px) {
   .loginContainer {
-    margin-top: 20vh;
+    margin-top: 1vh;
   }
 }
 
 /* Tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .loginContainer {
-    margin-top: 35vh;
+    margin-top: 1vh;
   }
 }
 
 /* Desktops */
 @media (min-width: 1024px) {
   .loginContainer {
-    margin-top: 45vh;
+    margin-top: 1vh;
   }
 }
