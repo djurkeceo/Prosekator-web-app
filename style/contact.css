@@ -187,20 +187,20 @@
 /* Mobile phones */
 @media (max-width: 767px) {
   .contactContainer {
-    margin-top: 20vh;
+    margin-top: 1vh;
   }
 }
 
 /* Tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .contactContainer {
-    margin-top: 35vh;
+    margin-top: 1vh;
   }
 }
 
 /* Desktops */
 @media (min-width: 1024px) {
   .contactContainer {
-    margin-top: 45vh;
+    margin-top: 1vh;
   }
 }
