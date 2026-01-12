@@ -236,7 +236,7 @@ body {
     color: #B4D63D;
     border: 1.5px solid #B4D63D;
     padding: 6px 15px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     font-size: 13px;
     font-weight: bold;
     white-space: nowrap;
@@ -244,7 +244,7 @@ body {
     opacity: 0;   
     visibility: hidden;
     transition: all 0.3s ease;
-    pointer-events: none;  
+    pointer-events: none;
 }
 
 .error-tooltip::after {
@@ -255,7 +255,7 @@ body {
     transform: translateX(-50%);
     border-width: 6px;
     border-style: solid;
-    border-color: #B4D63D transparent transparent transparent;
+    border-color: #B4D63D transparent transparent;
 }
 
 .error-tooltip.visible {
@@ -316,22 +316,22 @@ body {
 }
 
 /* Mobile phones */
-/* @media (max-width: 767px) {
+@media (max-width: 767px) {
   .indexContainer {
-    margin-top: 20vh;
+    margin-top: 1vh;
   }
-} */
+}
 
 /* Tablets */
-/* @media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .indexContainer {
-    margin-top: 35vh;
+    margin-top: 1vh;
   }
-} */
+}
 
 /* Desktops */
-/* @media (min-width: 1024px) {
+@media (min-width: 1024px) {
   .indexContainer {
-    margin-top: 45vh;
+    margin-top: 1vh;
   }
-}  */
+}  

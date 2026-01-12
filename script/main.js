@@ -80,6 +80,15 @@ document.getElementById('subjectName').addEventListener('input', function() {
     }
 });
 
+document.getElementById('subjectName').addEventListener('input', function() {
+    const tooltip = this.parentElement.querySelector('.error-tooltip-grade');
+    if (tooltip) {
+        tooltip.classList.remove('visible');
+        this.classList.remove('invalid-field');
+    }
+});
+
+
 // Enable adding subjects with the Enter key
 document.getElementById('subjectName').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') document.getElementById('addSubjectBtn').click();
@@ -103,20 +112,6 @@ window.deleteSubject = function(id, event) {
             }
         }, 400); 
     }
-};
-
-// Handle adding grades to a specific subject
-window.addGrade = function(id) {
-    const val = prompt("Enter grade (1-5):");
-    const grade = parseInt(val);
-    if (grade >= 1 && grade <= 5) {
-        const sub = subjects.find(s => s.id === id);
-        sub.grades.push(grade);
-        const sum = sub.grades.reduce((a, b) => a + b, 0);
-        sub.average = sum / sub.grades.length;
-        renderSubjects();
-        calculateOverall();
-    } else if (val !== null) alert("You must enter a number between 1 and 5!");
 };
 
 // Calculate and update the final school average

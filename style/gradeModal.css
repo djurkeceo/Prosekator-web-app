@@ -1,15 +1,18 @@
 .modal-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    backdrop-filter: blur(6px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 2000;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-overlay.show {
@@ -18,67 +21,73 @@
 }
 
 .modal-content {
+    background: #1a1a1a;
+    border: 1px solid rgba(180, 214, 61, 0.2);
+    border-radius: 24px;
+    padding: 35px;
+    width: 90%;
+    max-width: 420px;
     position: relative;
-    max-width: 400px !important;
-    transform: translateY(-50px);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .modal-overlay.show .modal-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px; right: 20px;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    animation: modalOut 0.3s ease;
-}
-
-.close-modal:hover {
-    color: #B4D63D;
+    transform: scale(1) translateY(0);
 }
 
 .modalMainTitle {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    cursor: pointer;
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 10px;
     color: white;
-    transition: all 0.3s ease;
-    cursor: default;
+    letter-spacing: -0.5px;
+}
+
+#gradeDescription {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 30px;
 }
 
 .grade-selection {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 25px 0;
 }
 
 .grade-btn {
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    border: 1px solid #B4D63D;
-    background: none;
+    flex: 1;
+    height: 55px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
     color: white;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.2s ease;
+}
+
+.grade-btn:hover {
+    border-color: #B4D63D;
+    background: rgba(180, 214, 61, 0.1);
+    transform: translateY(-3px);
 }
 
 .grade-btn.selected {
     background: #B4D63D;
     color: #1a1a1a;
-    box-shadow: 0 0 15px rgba(180, 214, 61, 0.5);
+    border-color: #B4D63D;
+    box-shadow: 0 8px 20px rgba(180, 214, 61, 0.3);
 }
 
 .add-grade-confirm {
-    height: 48px;
+    height: 50px;
     background: #2a2a3a;
     border: none;
     border-radius: 8px;
@@ -90,7 +99,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: bacground 0.3s ease;
 }
 
 .add-grade-confirm:hover {
@@ -99,21 +107,44 @@
     transform: translateY(-2px);
 }
 
-.modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    transition: all 0.2s ease;
 }
 
-#gradeDescription {
-    text-align: center;
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
-.grade-btn:hover {
-    background: #B4D63D;
-    color: #1a1a1a;
-}
-
-.modal-content .input-group input {
-    border-radius: 8px !important;
+/* Error Tooltip */
+.gradeErr {
+    position: absolute;
+    bottom: calc(73.5%); 
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background-color: #1a1a1a;
+    color: #B4D63D;
+    border: 1.5px solid #B4D63D;
+    padding: 6px 15px;
+    border-radius: 10px !important;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 100;
+    opacity: 0;   
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
 }
