@@ -14,10 +14,19 @@
 *.sln.docstates
 
 # User-specific files (MonoDevelop/Xamarin Studio)
+
+#file extensions
 *.userprefs
-*.txt
-./script/hamburgerBar.js
-./style/hamburgerBar.css
+
+#files
+script/hamburgerBar.js
+style/hamburgerBar.css
+style/header.css
+docs/saved.txt
+images/favicon.xml
+
+#folders
+images/old/
 
 # Mono auto generated files
 mono_crash.*
