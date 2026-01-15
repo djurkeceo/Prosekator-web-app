@@ -3,6 +3,8 @@ body {
     flex-direction: column;
     min-height: auto;
     margin: 0;
+    user-select: none;
+    background-color: var(--background-color);
 }
 
 .indexMain {

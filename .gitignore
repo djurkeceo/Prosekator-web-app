@@ -16,8 +16,8 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 *.txt
-hamburgerBar.js
-hamburgerBar.css
+./script/hamburgerBar.js
+./style/hamburgerBar.css
 
 # Mono auto generated files
 mono_crash.*

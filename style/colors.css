@@ -1,0 +1,10 @@
+:root{
+    --brand-color-lime: #B4D63D;
+    --brand-color-dark-lime: #91bc03;
+    --brand-color-brighter-lime: #aee203;
+    --background-color: #181821;
+    --background-color-brighter: #1a1a1a;
+    --brand-color-white: #ffffff;
+    --container-border-color: rgba(255, 255, 255, 0.1);
+    --brand-subtitle-color: rgba(255, 255, 255, 0.6);
+}
