@@ -1,8 +1,9 @@
 .indexFooter {
     text-align: center;
     padding: 15px;
-    font-size: 14px;
+    font-size: 15px;
     opacity: 0.6;
+    color: var(--brand-color-white);
 }
 
 .aboutFooter {
