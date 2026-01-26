@@ -16,7 +16,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #B4D63D; 
+    background: #aee203; 
     box-shadow: 0 0 10px rgba(180, 214, 61, 0.8); 
 }
 
@@ -26,5 +26,5 @@
 
 * {
     scrollbar-width: thin;
-    scrollbar-color: #aee203 #1a1a1a;
+    scrollbar-color: rgba(180, 214, 61, 0.8) #1a1a1a;
 }
