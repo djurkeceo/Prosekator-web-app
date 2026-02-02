@@ -213,23 +213,23 @@ input.invalid-field {
     box-shadow: 0 0 10px rgba(180, 214, 61, 0.2);
 }
 
-/* Mobile phones */
+/* 
 @media (max-width: 767px) {
   .loginContainer {
     margin-top: 1vh;
   }
 }
 
-/* Tablets */
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .loginContainer {
     margin-top: 1vh;
   }
 }
 
-/* Desktops */
+
 @media (min-width: 1024px) {
   .loginContainer {
     margin-top: 1vh;
   }
-}
+} */
