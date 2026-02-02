@@ -1,60 +1,57 @@
-# <p align="center">📊 **Prosekator**</p>
+# 📊 Prosekator
 
-<p align="center">
-  <strong>Tvoj lični školski asistent za precizno praćenje uspeha.</strong><br>
-  <em>Zaboravi digitron – prati ocene sa stilom.</em>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Tema-Dark--Mode-1a1a1a?style=for-the-badge" alt="Dark Mode">
-  <img src="https://img.shields.io/badge/Font-Inter-B4D63D?style=for-the-badge" alt="Inter Font">
-  <img src="https://img.shields.io/badge/Dizajn-Modern-3A60CA?style=for-the-badge" alt="Modern Design">
-</p>
+**Prosekator** je tvoj lični digitalni asistent za praćenje školskog uspeha. Dizajniran je da zameni digitrone, škrabanje po marginama svezaka i večito računanje proseka "iz glave".
 
 ---
 
-## 🚀 **O Projektu**
+## 🚀 Čemu služi Prosekator?
 
-**Prosekator** nije samo obična tabela – to je vizuelno atraktivna web aplikacija dizajnirana da ti olakša praćenje ocena. Fokus je na **brzini**, **intuitivnosti** i **modernoj estetici** koja motiviše učenike da ostvare bolji rezultat.
+Zaboravi na ručno sabiranje i deljenje. Ova aplikacija ti omogućava da na jednom mestu imaš kompletan uvid u svoje ocene i uspeh:
 
----
-
-## ✨ **Glavne Funkcionalnosti**
-
-* ➕ **Upravljanje:** Lako dodavanje predmeta i ažuriranje ocena u par klikova.
-* ⚡ **Instant Računanje:** Automatsko računanje proseka po predmetu i ukupnog školskog uspeha u sekundi.
-* 📈 **Vizuelizacija:** Statistički prikaz uspeha kroz jasne grafikone i indikatore.
-* 📱 **Seamless Iskustvo:** Potpuno responzivan dizajn prilagođen mobilnim telefonima i desktop računarima.
-* 🔒 **Sigurnost:** Tvoj nalog čuva tvoje podatke dostupnim sa bilo kog uređaja.
+* **Munjevito dodavanje predmeta:** Napravi listu svih predmeta koje imaš u školi ili na faksu.
+* **Ocene sa detaljima:** Za svaku ocenu možeš dodati opis (npr. *"Prvi pismeni zadatak"*) kako bi tačno znao šta si i kada dobio.
+* **Automatska kalkulacija:** Čim uneseš ocenu, aplikacija računa prosek predmeta i **ukupan školski prosek**.
+* **Sve je sinhronizovano:** Prijavi se na svoj nalog i tvoji podaci su dostupni na svim uređajima.
 
 ---
 
-## 🛠️ **Tehnološki Stack**
+## 💻 Kako da pokreneš projekat lokalno?
 
-Aplikacija je izgrađena korišćenjem modernih web tehnologija kako bi se osigurale vrhunske performanse:
+Ako želiš da testiraš kod na svom kompjuteru, prati ove korake:
 
-| Tehnologija | Svrha |
-| :--- | :--- |
-| **HTML5** | Semantička struktura aplikacije. |
-| **CSS3** | Custom gradijenti, `drop-shadow` efekti i animacije. |
-| **JavaScript** | Logika za računanje proseka i dinamičko ažuriranje podataka. |
-| **Google Fonts** | **Inter** font za maksimalnu čitljivost i moderan izgled. |
-
----
-
-## 🎨 **Vizuelni Identitet**
-
-Dizajn Prosekatora prati tvoju specifičnu paletu boja koja simbolizuje napredak i preglednost:
-
-* 🟢 **Zelena (#B4D63D):** Koristi se za uspeh, potvrde i ključne akcije.
-* 🔵 **Plava (#3A60CA):** Predstavlja stabilnost, statistiku i navigaciju.
-* 🌑 **Dark Theme (#1A1A1A):** Smanjuje zamor očiju i pruža moderan "app" osećaj.
+1.  **Kloniraj repozitorijum:**
+    ```bash
+    git clone [https://github.com/tvoj-username/prosekator.git](https://github.com/tvoj-username/prosekator.git)
+    ```
+2.  **Uđi u folder:**
+    ```bash
+    cd prosekator
+    ```
+3.  **Pokreni aplikaciju:**
+    Samo otvori `index.html` u svom omiljenom browseru (Chrome, Brave, Firefox...).
 
 ---
 
-## 🔤 **Tipografija**
+## 🤝 Doprinesi projektu (Pull Request)
 
-Za potrebe aplikacije koristi se **Inter** font porodica, koja omogućava kristalno jasne brojeve i tekst na svim rezolucijama. Učitava se direktno preko Google Fonts:
+Imaš ideju kako da Prosekator bude još jači? Slobodno šalji Pull Request!
 
-```css
-font-family: 'Inter', sans-serif;
+1.  Uradi **Fork** projekta.
+2.  Napravi svoju granu za novu funkciju (`git checkout -b nova-funkcija`).
+3.  Odradi `commit` svojih izmena (`git commit -m 'Dodata nova funkcija'`).
+4.  Odradi `push` na granu (`git push origin nova-funkcija`).
+5.  Otvori **Pull Request** ovde na GitHub-u i pregledaću ga što pre.
+
+---
+
+## 📬 Kontaktiraj me
+
+Ako nađeš neki bag ili ti treba pomoć, možeš me cimnuti na par načina:
+
+* **GitHub Issues:** Otvori "issue" direktno ovde na repozitorijumu.
+* **Kontakt forma:** Iskoristi stranicu `contact.html` unutar same aplikacije.
+* **Email:** <a href="mailto:prosekator.app@gmail.com" style="color: #B4D63D; font-weight: bold; font-style: italic; text-decoration: none;">prosekator.app@gmail.com</a>
+
+---
+
+**© 2026 Prosekator. Sva prava zadržana.**
