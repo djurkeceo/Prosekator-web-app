@@ -33,7 +33,6 @@ var availableColors = [
 
 let subjects = [];
 
-// Handle subject addition logic
 document.getElementById('addSubjectBtn').addEventListener('click', function() {
     const input = document.getElementById('subjectName');
     const tooltip = input.parentElement.querySelector('.error-tooltip');
@@ -71,7 +70,6 @@ document.getElementById('addSubjectBtn').addEventListener('click', function() {
     calculateOverall();
 });
 
-// Remove error state while typing
 document.getElementById('subjectName').addEventListener('input', function() {
     const tooltip = this.parentElement.querySelector('.error-tooltip');
     if (tooltip) {
@@ -88,13 +86,10 @@ document.getElementById('subjectName').addEventListener('input', function() {
     }
 });
 
-
-// Enable adding subjects with the Enter key
 document.getElementById('subjectName').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') document.getElementById('addSubjectBtn').click();
 });
 
-// Handle subject deletion with exit animation
 window.deleteSubject = function(id, event) {
     if (event) event.stopPropagation();
 
@@ -114,7 +109,6 @@ window.deleteSubject = function(id, event) {
     }
 };
 
-// Calculate and update the final school average
 function calculateOverall() {
     if (subjects.length === 0) {
         document.getElementById('finalAverage').innerText = "0.00";
@@ -124,7 +118,6 @@ function calculateOverall() {
     document.getElementById('finalAverage').innerText = (roundedSum / subjects.length).toFixed(2);
 }
 
-// Render the list of subject cards
 function renderSubjects() {
     const container = document.getElementById('subjectsContainer');
     container.innerHTML = '';
@@ -133,11 +126,19 @@ function renderSubjects() {
         div.className = 'subject-card';
         div.setAttribute('data-id', sub.id);
         div.style.setProperty('--subject-color', sub.color);
+        
+        const gradeBadgesHTML = sub.grades.map((g, index) => {
+            return `<span class="grade-badge" onclick="editGrade(${sub.id}, ${index})" style="--subject-color: ${sub.color}">
+                ${g.value}
+                <span class="grade-tooltip">${g.description}</span>
+            </span>`;
+        }).join('');
+        
         div.innerHTML = `
             <div class="subject-info">
                 <h3>${sub.name}</h3>
                 <div class="grades-wrapper">
-                    ${sub.grades.map(g => `<span class="grade-badge">${g}</span>`).join('')}
+                    ${gradeBadgesHTML}
                     <button class="add-grade-btn" onclick="addGrade(${sub.id})">+</button>
                 </div>
             </div>

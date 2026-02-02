@@ -70,7 +70,6 @@ body {
     filter: drop-shadow(0 0 10px #91bc03);
 }
 
-/* Average section */
 .average-label {
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 30px;
@@ -96,7 +95,6 @@ body {
     margin: 20px 0;
 }
 
-/* Subject Input Section */
 .add-subject-section {
     display: flex;
     align-items: flex-end;
@@ -147,7 +145,6 @@ body {
     border-color: #B4D63D;
 }
 
-/* Button with gradient effect */
 #addSubjectBtn {
     height: 50px;
     background: #2a2a3a;
@@ -169,7 +166,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Subject card */
 .subject-card {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 10px;
@@ -183,7 +179,6 @@ body {
     animation: slideInUp 0.4s ease-out forwards;
 }
 
-/* Animation for subject cards */
 @keyframes slideInUp {
     from {
         opacity: 0;
@@ -206,6 +201,53 @@ body {
     font-size: 13px;
     margin-right: 5px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.grade-badge:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.grade-badge .grade-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background-color: #1a1a1a;
+    color: white;
+    border: 1.5px solid var(--subject-color, #86D05E);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    max-width: 200px;
+    white-space: normal;
+}
+
+.grade-badge .grade-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--subject-color, #86D05E) transparent transparent;
+}
+
+.grade-badge:hover .grade-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
 .add-grade-btn {
@@ -230,7 +272,6 @@ body {
     font-size: 20px;
 }
 
-/* Error tooltip */
 .error-tooltip {
     position: absolute;
     bottom: calc(100% + 10px); 
@@ -274,7 +315,6 @@ body {
     outline: none !important; 
 }
 
-/* Button for deleting subjects */
 .delete-subject-btn {
     position: absolute;
     top: 2px;
@@ -289,17 +329,6 @@ body {
 
 .delete-subject-btn:hover {
     color: #B4D63D;
-}
-
-.grade-badge {
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: inline-block;
-}
-
-.grade-badge:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    cursor: default;
 }
 
 .removing {
@@ -319,23 +348,19 @@ body {
     }
 }
 
-/* 
-@media (max-width: 767px) {
-  .loginContainer {
-    margin-top: 1vh;
-  }
+.delete-grade-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 0, 0, 0.7);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
 }
 
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .loginContainer {
-    margin-top: 1vh;
-  }
+.delete-grade-btn:hover {
+    color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
 }
-
-
-@media (min-width: 1024px) {
-  .loginContainer {
-    margin-top: 1vh;
-  }
-} */
