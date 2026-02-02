@@ -25,7 +25,7 @@ Ako želiš da testiraš kod na svom kompjuteru, prati ove korake:
     ```
 2.  **Uđi u folder:**
     ```bash
-    cd prosekator
+    cd Prosekator-web-app
     ```
 3.  **Pokreni aplikaciju:**
     Samo otvori `index.html` u svom omiljenom browseru (Chrome, Brave, Firefox...).
