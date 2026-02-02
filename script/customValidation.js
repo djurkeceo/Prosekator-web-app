@@ -4,7 +4,7 @@ window.customConfirm = function(options) {
         overlay.className = 'custom-confirm-overlay';
         
         const iconType = options.type === 'danger' ? 'danger' : 'warning';
-        const iconSymbol = options.type === 'danger' ? '⚠' : '?';
+        const iconSymbol = options.type === 'danger' ? '!' : '?';
         
         overlay.innerHTML = `
             <div class="custom-confirm-box">
