@@ -21,7 +21,7 @@ Ako želiš da testiraš kod na svom kompjuteru, prati ove korake:
 
 1.  **Kloniraj repozitorijum:**
     ```bash
-    git clone [https://github.com/tvoj-username/prosekator.git](https://github.com/tvoj-username/prosekator.git)
+    git clone https://github.com/djurkeceo/Prosekator-web-app.git
     ```
 2.  **Uđi u folder:**
     ```bash
