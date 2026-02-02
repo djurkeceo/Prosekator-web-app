@@ -90,8 +90,21 @@ document.getElementById('subjectName').addEventListener('keypress', function(e) 
     if (e.key === 'Enter') document.getElementById('addSubjectBtn').click();
 });
 
-window.deleteSubject = function(id, event) {
+window.deleteSubject = async function(id, event) {
     if (event) event.stopPropagation();
+
+    const subject = subjects.find(s => s.id === id);
+    if (!subject) return;
+    
+    const confirmed = await customConfirm({
+        title: 'Brisanje predmeta',
+        message: `Da li ste sigurni da želite da obrišete predmet "${subject.name}"?${subject.grades.length > 0 ? ` Brisanjem predmeta ćete obrisati i sve ocene (${subject.grades.length}).` : ''}`,
+        confirmText: 'Obriši',
+        cancelText: 'Otkaži',
+        type: 'danger'
+    });
+    
+    if (!confirmed) return;
 
     const card = document.querySelector(`.subject-card[data-id="${id}"]`);
     if (card) {

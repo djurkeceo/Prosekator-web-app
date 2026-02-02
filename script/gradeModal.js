@@ -85,23 +85,31 @@ window.editGrade = function(subjectId, gradeIndex) {
     deleteBtn.id = 'deleteGradeBtn';
     deleteBtn.className = 'delete-grade-btn';
     deleteBtn.innerText = 'Obriši ocenu';
-    deleteBtn.onclick = function() {
-        if (confirm('Da li ste sigurni da želite da obrišete ovu ocenu?')) {
-            const subject = subjects.find(s => s.id === window.currentSubjectId);
-            if (subject) {
-                subject.grades.splice(window.currentGradeIndex, 1);
-                
-                if (subject.grades.length > 0) {
-                    const sum = subject.grades.reduce((acc, g) => acc + g.value, 0);
-                    subject.average = sum / subject.grades.length;
-                } else {
-                    subject.average = 0;
-                }
-                
-                renderSubjects();
-                calculateOverall();
-                closeGradeModal();
+    deleteBtn.onclick = async function() {
+        const confirmed = await customConfirm({
+            title: 'Brisanje ocene',
+            message: `Da li ste sigurni da želite da obrišete ocenu ${grade.value} (${grade.description})?`,
+            confirmText: 'Obriši',
+            cancelText: 'Otkaži',
+            type: 'danger'
+        });
+        
+        if (!confirmed) return;
+        
+        const subject = subjects.find(s => s.id === window.currentSubjectId);
+        if (subject) {
+            subject.grades.splice(window.currentGradeIndex, 1);
+            
+            if (subject.grades.length > 0) {
+                const sum = subject.grades.reduce((acc, g) => acc + g.value, 0);
+                subject.average = sum / subject.grades.length;
+            } else {
+                subject.average = 0;
             }
+            
+            renderSubjects();
+            calculateOverall();
+            closeGradeModal();
         }
     };
     
@@ -147,7 +155,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-document.getElementById('confirmGradeBtn').addEventListener('click', function() {
+document.getElementById('confirmGradeBtn').addEventListener('click', async function() {
     const gradeSelection = document.getElementById('grade-selection');
     const gradeTooltip = gradeSelection.querySelector('.error-tooltip');
     const descriptionInput = document.getElementById('gradeDescription');
@@ -192,10 +200,15 @@ document.getElementById('confirmGradeBtn').addEventListener('click', function() 
                           description !== window.originalDescription;
         
         if (hasChanges) {
-            const confirmMessage = 'Da li ste sigurni da želite da sačuvate izmene?';
-            if (!confirm(confirmMessage)) {
-                return;
-            }
+            const confirmed = await customConfirm({
+                title: 'Čuvanje izmena',
+                message: 'Da li ste sigurni da želite da sačuvate izmene?',
+                confirmText: 'Sačuvaj',
+                cancelText: 'Otkaži',
+                type: 'warning'
+            });
+            
+            if (!confirmed) return;
         }
         
         subject.grades[window.currentGradeIndex] = {
