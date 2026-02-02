@@ -349,33 +349,19 @@ body {
 }
 
 .delete-grade-btn {
-    height: 50px;
     background: none;
     border: none;
-    border-radius: 8px;
-    padding: 0 25px;
-    margin-top: 15px;
-    color: white;
-    font-weight: bold;
+    color: rgba(255, 0, 0, 0.512);
+    font-size: 16px;
     cursor: pointer;
-    transition: all 0.4s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    animation: fadeIn ease-in-out 0.5s forwards;
+    padding: 5px 10px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    border-radius: 8px !important;
+    background: rgba(255, 0, 0, 0.1);
 }
 
 .delete-grade-btn:hover {
-    background: linear-gradient(90deg, #2B0B0B 0%, #6B1414 50%, #2B0B0B 100%);
-    opacity: 1;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 0.5;
-    }
+    color: #ff0000;
+    transform: translateY(-2px);
 }
