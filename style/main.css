@@ -351,17 +351,17 @@ body {
 .delete-grade-btn {
     background: none;
     border: none;
-    color: rgba(255, 0, 0, 0.512);
-    font-size: 16px;
     cursor: pointer;
     padding: 5px 10px;
-    margin-top: 15px;
+    margin-top: 30px;
     transition: all 0.3s ease;
     border-radius: 8px !important;
-    background: rgba(255, 0, 0, 0.1);
+    background: linear-gradient(90deg, #ff453a 0%, #d32f2f 50%, #ff453a 100%);
+    color: white;
+    font-weight: 550;
 }
 
 .delete-grade-btn:hover {
-    color: #ff0000;
+    box-shadow: 0 5px 15px rgba(255, 69, 58, 0.3);
     transform: translateY(-2px);
 }
