@@ -59,6 +59,7 @@
     border: 2px solid #B4D63D;
     color: #B4D63D;
     padding-bottom: 2px;
+    animation: pulseWarning 1.5s ease-in-out infinite;
 }
 
 .custom-confirm-icon.danger {
@@ -66,24 +67,17 @@
     border: 2px solid #ff453a;
     color: #ff453a;
     padding-bottom: 5px;
+    animation: pulseDanger 1.5s ease-in-out infinite;
 }
 
 @keyframes pulseDanger {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(180, 214, 61, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(180, 214, 61, 0);
-    }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 69, 58, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 69, 58, 0); }
 }
 
 @keyframes pulseWarning {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(180, 214, 61, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(180, 214, 61, 0);
-    }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(180, 214, 61, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(180, 214, 61, 0); }
 }
 
 .custom-confirm-title {
