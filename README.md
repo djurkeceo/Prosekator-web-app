@@ -44,7 +44,7 @@ Imaš ideju kako da Prosekator bude još jači? Slobodno šalji Pull Request!
 
 ---
 
-## 📬 Kontaktiraj me
+## 📬 Kontaktiraj nas
 
 Ako nađeš neki bag ili ti treba pomoć, možeš me cimnuti na par načina:
 
