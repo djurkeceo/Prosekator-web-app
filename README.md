@@ -19,7 +19,7 @@ Zaboravi na ručno sabiranje i deljenje. Ova aplikacija ti omogućava da na jedn
 
 Ako želiš da testiraš kod na svom kompjuteru, prati ove korake:
 
-1.  **Kloniraj repozitorijum:**
+1.  **Kloniraj repozitorijum (Potreban git):**
     ```bash
     git clone https://github.com/djurkeceo/Prosekator-web-app.git
     ```
@@ -28,7 +28,7 @@ Ako želiš da testiraš kod na svom kompjuteru, prati ove korake:
     cd Prosekator-web-app
     ```
 3.  **Pokreni aplikaciju:**
-    Samo otvori `index.html` u svom omiljenom browseru (Chrome, Brave, Firefox...).
+    Samo otvori `index.html` u svom željenom browseru (Chrome, Brave, Firefox...).
 
 ---
 
@@ -40,16 +40,16 @@ Imaš ideju kako da Prosekator bude još jači? Slobodno šalji Pull Request!
 2.  Napravi svoju granu za novu funkciju (`git checkout -b nova-funkcija`).
 3.  Odradi `commit` svojih izmena (`git commit -m 'Dodata nova funkcija'`).
 4.  Odradi `push` na granu (`git push origin nova-funkcija`).
-5.  Otvori **Pull Request** ovde na GitHub-u i pregledaću ga što pre.
+5.  Otvori **Pull Request** ovde na GitHub-u i pregledaćemo ga što pre.
 
 ---
 
 ## 📬 Kontaktiraj nas
 
-Ako nađeš neki bag ili ti treba pomoć, možeš me cimnuti na par načina:
+Ako nađeš neki bag ili ti treba pomoć, možeš nas kontaktirati na par načina:
 
 * **GitHub Issues:** Otvori "issue" direktno ovde na repozitorijumu.
-* **Kontakt forma:** Iskoristi stranicu `contact.html` unutar same aplikacije.
+<!-- * **Kontakt forma:** Iskoristi stranicu `contact.html` unutar same aplikacije. -->
 * **Email:** <a href="mailto:prosekator.app@gmail.com" style="color: #B4D63D; font-weight: bold; font-style: italic; text-decoration: none;">prosekator.app@gmail.com</a>
 
 ---
