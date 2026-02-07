@@ -1,6 +1,6 @@
 # 📊 Prosekator
 
-**Prosekator** je tvoj lični digitalni asistent za praćenje školskog uspeha. Dizajniran je da zameni digitrone, škrabanje po marginama svezaka i večito računanje proseka "iz glave".
+Uz **Prosekator**, sve tvoje ocene su na **jednom mestu**. Dovoljno je da se **uloguješ na svoj nalog** kako bi aplikacija mogla sigurno da čuva tvoje predmete i ocene, omogućavajući ti pristup podacima sa bilo kog uređaja.
 
 ---
 
