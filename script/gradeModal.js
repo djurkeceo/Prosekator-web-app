@@ -109,6 +109,7 @@ window.editGrade = function(subjectId, gradeIndex) {
             
             renderSubjects();
             calculateOverall();
+            saveToLocalStorage();
             closeGradeModal();
         }
     };
@@ -227,6 +228,7 @@ document.getElementById('confirmGradeBtn').addEventListener('click', async funct
     
     renderSubjects();
     calculateOverall();
+    saveToLocalStorage();
     closeGradeModal();
 });
 

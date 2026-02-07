@@ -33,6 +33,30 @@ var availableColors = [
 
 let subjects = [];
 
+function saveToLocalStorage() {
+    localStorage.setItem('prosekatorSubjects', JSON.stringify(subjects));
+    localStorage.setItem('prosekatorColors', JSON.stringify(availableColors));
+}
+
+function loadFromLocalStorage() {
+    const savedSubjects = localStorage.getItem('prosekatorSubjects');
+    const savedColors = localStorage.getItem('prosekatorColors');
+    
+    if (savedSubjects) {
+        subjects = JSON.parse(savedSubjects);
+        renderSubjects();
+        calculateOverall();
+    }
+    
+    if (savedColors) {
+        availableColors = JSON.parse(savedColors);
+    }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+    loadFromLocalStorage();
+});
+
 document.getElementById('addSubjectBtn').addEventListener('click', function() {
     const input = document.getElementById('subjectName');
     const tooltip = input.parentElement.querySelector('.error-tooltip');
@@ -68,6 +92,7 @@ document.getElementById('addSubjectBtn').addEventListener('click', function() {
     input.value = '';
     renderSubjects();
     calculateOverall();
+    saveToLocalStorage();
 });
 
 document.getElementById('subjectName').addEventListener('input', function() {
@@ -116,6 +141,7 @@ window.deleteSubject = async function(id, event) {
                 subjects.splice(index, 1);
                 card.remove(); 
                 calculateOverall();
+                saveToLocalStorage();
                 if (subjects.length === 0) renderSubjects();
             }
         }, 400); 
