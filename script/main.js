@@ -123,12 +123,17 @@ window.deleteSubject = async function(id, event) {
 };
 
 function calculateOverall() {
-    if (subjects.length === 0) {
+    const subjectsWithGrades = subjects.filter(sub => sub.grades.length > 0);
+    
+    if (subjectsWithGrades.length === 0) {
         document.getElementById('finalAverage').innerText = "0.00";
         return;
     }
-    const roundedSum = subjects.reduce((acc, sub) => acc + (sub.grades.length > 0 ? Math.round(sub.average) : 0), 0);
-    document.getElementById('finalAverage').innerText = (roundedSum / subjects.length).toFixed(2);
+    
+    const sum = subjectsWithGrades.reduce((acc, sub) => acc + sub.average, 0);
+    const overall = sum / subjectsWithGrades.length;
+    
+    document.getElementById('finalAverage').innerText = overall.toFixed(2);
 }
 
 function renderSubjects() {
