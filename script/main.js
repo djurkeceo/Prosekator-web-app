@@ -156,7 +156,7 @@ function calculateOverall() {
         return;
     }
     
-    const sum = subjectsWithGrades.reduce((acc, sub) => acc + sub.average, 0);
+    const sum = subjectsWithGrades.reduce((acc, sub) => acc + Math.round(sub.average), 0);
     const overall = sum / subjectsWithGrades.length;
     
     document.getElementById('finalAverage').innerText = overall.toFixed(2);
