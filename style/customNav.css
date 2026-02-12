@@ -11,20 +11,20 @@
 }
 
 .navbar-brand span {
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     display: inline-block;
 }
 
 .navbar-brand span:hover {
     color: #B4D63D !important;
-    transform: translateY(-1px);
+    transform: translateY(-1.2px);
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.8) !important;
     font-weight: 500;
     margin-left: 15px;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav-link:hover {
@@ -33,7 +33,7 @@
 }
 
 /* Responsiveness for smaller screens */
-@media (max-width: 991px) {  
+@media (max-width: 991px) {  s
     .navbar-collapse:not(.show) {
         padding: 0;
         margin-top: 0;
