@@ -11,13 +11,11 @@
 }
 
 .navbar-brand span {
-    transition: transform 0.3s ease-in-out;
-    display: inline-block;
+    transition: color 0.3s ease-in-out;
 }
 
 .navbar-brand span:hover {
     color: #B4D63D !important;
-    transform: translateY(-2px);
 }
 
 .nav-link {
