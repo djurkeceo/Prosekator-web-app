@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: auto;
+    min-height: 100vh;
     user-select: none;
     background-color: var(--background-color);
     margin: 0;
@@ -17,7 +17,9 @@ body {
     padding: 200px 25px 60px 25px;
     font-family: 'Inter', sans-serif;
     color: white;
-    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.1s forwards;
     box-sizing: border-box;
 }
 
@@ -48,7 +50,8 @@ body {
     display: inline-block;
     font-size: 45px;
     font-weight: 650;
-    width: 250px;
+    width: auto;
+    max-width: 100%;
     margin-top: -10px;
     cursor: pointer;
     color: white;
@@ -158,6 +161,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
 }
 
 #addSubjectBtn:hover {
@@ -176,7 +180,10 @@ body {
     align-items: center;
     border-left: 4px solid var(--subject-color, #3A60CA); 
     transition: transform 0.2s ease;
+    opacity: 0;
+    transform: translateY(20px);
     animation: slideInUp 0.4s ease-out forwards;
+    position: relative;
 }
 
 @keyframes slideInUp {
@@ -190,8 +197,25 @@ body {
     }
 }
 
-.subject-info { text-align: left; }
-.subject-info h3 { margin: 0 0 8px 0; font-size: 17px; color: white; }
+.subject-info { 
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+.subject-info h3 { 
+    margin: 0 0 8px 0; 
+    font-size: 17px; 
+    color: white;
+    word-break: break-word;
+}
+
+.grades-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+}
 
 .grade-badge {
     background: #2a2a3a;
@@ -199,7 +223,6 @@ body {
     padding: 3px 8px;
     border-radius: 5px;
     font-size: 13px;
-    margin-right: 5px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     cursor: pointer;
@@ -266,6 +289,14 @@ body {
     box-shadow: 0 0 10px rgba(180, 214, 61, 0.5);
 }
 
+.subject-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    padding-top: 20px;
+}
+
 .sub-avg-val {
     color: #B4D63D;
     font-weight: 800;
@@ -325,6 +356,7 @@ body {
     font-size: 20px;
     cursor: pointer;
     transition: color 0.2s ease;
+    padding: 5px;
 }
 
 .delete-subject-btn:hover {
@@ -364,4 +396,173 @@ body {
 .delete-grade-btn:hover {
     box-shadow: 0 5px 15px rgba(255, 69, 58, 0.3);
     transform: translateY(-2px);
+}
+
+/* Responsive, tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .indexContainer {
+        max-width: 600px;
+        padding: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .indexMain {
+        padding: 140px 20px 50px 20px;
+    }
+    
+    .indexContainer {
+        margin-top: 3vh;
+        padding: 30px 25px;
+        max-width: 95%;
+    }
+    
+    .indexMainTitle {
+        font-size: 38px;
+    }
+    
+    #finalAverage {
+        font-size: 46px;
+    }
+    
+    .add-subject-section {
+        gap: 8px;
+    }
+    
+    #addSubjectBtn {
+        padding: 0 20px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive, mobile (480px and below) */
+@media (max-width: 480px) {
+    .indexMain {
+        padding: 120px 15px 40px 15px;
+    }
+    
+    .indexContainer {
+        margin-top: 2vh;
+        padding: 25px 20px;
+        border-radius: 12px;
+    }
+    
+    .indexMainTitle {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    
+    .average-label {
+        font-size: 14px;
+    }
+    
+    #finalAverage {
+        font-size: 40px;
+        margin-top: 20px;
+    }
+    
+    .separator {
+        margin: 15px 0;
+    }
+    
+    .add-subject-section {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .add-subject-section input {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    #addSubjectBtn {
+        width: 100%;
+        height: 48px;
+        font-size: 15px;
+    }
+    
+    .subject-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    .subject-info {
+        width: 100%;
+        padding-right: 30px;
+    }
+    
+    .subject-info h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .grades-wrapper {
+        width: 100%;
+    }
+    
+    .subject-right {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 10px;
+        padding-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .sub-avg-val {
+        font-size: 18px;
+    }
+    
+    .delete-subject-btn {
+        top: 8px;
+        right: 8px;
+        font-size: 22px;
+    }
+    
+    .grade-badge {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+    
+    .add-grade-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+
+/* Responsive, small mobile (360px) */
+@media (max-width: 360px) {
+    .indexContainer {
+        padding: 20px 15px;
+    }
+    
+    .indexMainTitle {
+        font-size: 28px;
+    }
+    
+    #finalAverage {
+        font-size: 36px;
+    }
+    
+    .add-subject-section input {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    #addSubjectBtn {
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .subject-info h3 {
+        font-size: 15px;
+    }
+    
+    .sub-avg-val {
+        font-size: 16px;
+    }
 }
