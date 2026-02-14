@@ -16,7 +16,7 @@ body{
     padding: 200px 25px 60px 25px;
     color: white;
     font-family: 'Inter', sans-serif;
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.8s ease-out forwards both;
     user-select: none;
 }
 
