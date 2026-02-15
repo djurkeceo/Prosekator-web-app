@@ -348,8 +348,8 @@ body {
 
 .delete-subject-btn {
     position: absolute;
-    top: 2px;
-    right: 6px;
+    top: -20px;
+    right: -6px;
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.2);
@@ -486,12 +486,13 @@ body {
         flex-direction: column;
         align-items: flex-start;
         padding: 12px;
+        padding-top: 40px;
         gap: 10px;
     }
     
     .subject-info {
         width: 100%;
-        padding-right: 30px;
+        padding-right: 0;
     }
     
     .subject-info h3 {
@@ -518,9 +519,10 @@ body {
     }
     
     .delete-subject-btn {
-        top: 8px;
-        right: 8px;
-        font-size: 22px;
+        top: 12px;
+        right: 12px;
+        font-size: 26px;
+        padding: 6px 8px;
     }
     
     .grade-badge {
