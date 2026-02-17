@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prosekator - Tvoj prosek, na jednom mestu</title>
     
-    <!-- Bootstrap CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="./images/favicon.svg">
 
-    <!-- Google Font Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <!-- CSS Links-->
     <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/footer.css">
     <link rel="stylesheet" href="./style/scrollBar.css">
@@ -22,11 +19,12 @@
     <link rel="stylesheet" href="./style/customNav.css">
     <link rel="stylesheet" href="./style/colors.css">
     <link rel="stylesheet" href="./style/customValidation.css">
+    <link rel="stylesheet" href="./style/statistics.css">
 
-    <!-- JS Links -->
     <script src="./script/main.js" defer></script>
     <script src="./script/gradeModal.js" defer></script>
     <script src="./script/customValidation.js" defer></script>
+    <script src="./script/statistics.js" defer></script>
 
 </head>
 <body>
@@ -49,15 +47,9 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./docs/about.html">O Prosekatoru</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./docs/login.html">Prijavi se</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./docs/contact.html">Kontaktiraj nas</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./docs/about.html">O Prosekatoru</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./docs/login.html">Prijavi se</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./docs/contact.html">Kontaktiraj nas</a></li>
                 </ul>
             </div>
         </div>
@@ -75,6 +67,52 @@
 
         <hr class="separator">
 
+        <div class="stats-strip" id="statsStrip">
+            <div class="stat-card up">
+                <span class="stat-icon">↑</span>
+                <div class="stat-value" id="statBest">—</div>
+                <div class="stat-label">Najviša ocena</div>
+            </div>
+            <div class="stat-card down">
+                <span class="stat-icon">↓</span>
+                <div class="stat-value" id="statWorst">—</div>
+                <div class="stat-label">Najniža ocena</div>
+            </div>
+            <div class="stat-card total">
+                <span class="stat-icon">📋</span>
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-label">Ukupno ocena</div>
+            </div>
+            <div class="stat-card best">
+                <span class="stat-icon">🏆</span>
+                <div class="stat-value" id="statTopSubject">—</div>
+                <div class="stat-label">Najbolji predmet</div>
+            </div>
+        </div>
+
+        <div class="trend-section" id="trendSection" style="display:none;">
+            <div class="trend-header">
+                <span class="trend-label">Raspodela ocena</span>
+                <span class="trend-badge flat" id="trendBadge">Nema podataka</span>
+            </div>
+            <div class="grade-distribution">
+                <div class="dist-segment g1" id="dist1" style="flex:0"></div>
+                <div class="dist-segment g2" id="dist2" style="flex:0"></div>
+                <div class="dist-segment g3" id="dist3" style="flex:0"></div>
+                <div class="dist-segment g4" id="dist4" style="flex:0"></div>
+                <div class="dist-segment g5" id="dist5" style="flex:1"></div>
+            </div>
+            <div class="dist-legend">
+                <div class="dist-legend-item"><span class="dist-legend-dot" style="background:#ff453a"></span><span id="leg1">Ocena 1 (0)</span></div>
+                <div class="dist-legend-item"><span class="dist-legend-dot" style="background:#ff9f0a"></span><span id="leg2">Ocena 2 (0)</span></div>
+                <div class="dist-legend-item"><span class="dist-legend-dot" style="background:#ffd60a"></span><span id="leg3">Ocena 3 (0)</span></div>
+                <div class="dist-legend-item"><span class="dist-legend-dot" style="background:#30d158"></span><span id="leg4">Ocena 4 (0)</span></div>
+                <div class="dist-legend-item"><span class="dist-legend-dot" style="background:#B4D63D"></span><span id="leg5">Ocena 5 (0)</span></div>
+            </div>
+        </div>
+
+        <hr class="separator">
+
         <div class="add-subject-section">
             <div class="input-group">
                 <input type="text" id="subjectName" placeholder="Naziv predmeta (npr. Matematika)" autocomplete="off">
@@ -83,10 +121,7 @@
             <button id="addSubjectBtn">Dodaj</button>
         </div>
 
-        <div id="subjectsContainer" class="subjects-list">
-
-        </div>
-
+        <div id="subjectsContainer" class="subjects-list"></div>
     </div>
 </div>
 
@@ -118,9 +153,7 @@
         <p>&copy 2026 Prosekator. Sva prava zadržana.</p>
     </footer>
 </div>
-    
 
-<!-- Bootstrap JS Link -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
