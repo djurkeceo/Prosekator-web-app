@@ -35,7 +35,7 @@ body {
 }
 
 .indexContainer {
-    margin-top: 7vh;
+    margin-top: 0;
     background-color: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 15px;
@@ -481,13 +481,14 @@ body {
         height: 48px;
         font-size: 15px;
     }
-    
+
+    /* --- SUBJECT CARD FIX --- */
     .subject-card {
         flex-direction: column;
         align-items: flex-start;
         padding: 12px;
-        padding-top: 40px;
-        gap: 10px;
+        padding-top: 36px;
+        gap: 8px;
     }
     
     .subject-info {
@@ -496,35 +497,17 @@ body {
     }
     
     .subject-info h3 {
-        font-size: 16px;
-        margin-bottom: 10px;
+        font-size: 15px;
+        margin-bottom: 8px;
+        padding-right: 28px;
     }
     
     .grades-wrapper {
         width: 100%;
+        flex-wrap: wrap;
+        gap: 6px;
     }
-    
-    .subject-right {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 10px;
-        padding-left: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .sub-avg-val {
-        font-size: 18px;
-    }
-    
-    .delete-subject-btn {
-        top: 12px;
-        right: 12px;
-        font-size: 26px;
-        padding: 6px 8px;
-    }
-    
+
     .grade-badge {
         font-size: 12px;
         padding: 4px 8px;
@@ -533,6 +516,37 @@ body {
     .add-grade-btn {
         font-size: 12px;
         padding: 4px 8px;
+    }
+
+    .subject-right {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 8px;
+        padding-left: 0;
+        position: static;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    
+    .sub-avg-val {
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    .delete-subject-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 22px;
+        padding: 4px 6px;
+        line-height: 1;
+    }
+
+    .delete-grade-btn {
+        margin-top: 0;
+        padding: 6px 14px;
+        font-size: 13px;
     }
 }
 
@@ -561,10 +575,15 @@ body {
     }
     
     .subject-info h3 {
-        font-size: 15px;
+        font-size: 14px;
     }
     
     .sub-avg-val {
         font-size: 16px;
+    }
+
+    .grade-badge {
+        font-size: 11px;
+        padding: 3px 7px;
     }
 }
