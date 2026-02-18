@@ -41,7 +41,7 @@ document.querySelector('.loginFormMain').addEventListener('submit', async functi
     const password = inputs[1] ? inputs[1].value : '';
 
     try {
-        const response = await fetch('http://localhost:3000/api/auth/login', {
+        const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

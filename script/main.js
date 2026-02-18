@@ -53,7 +53,7 @@ function handleAuthExpired() {
     window.location.href = './docs/login.html';
 }
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = '';
 
 async function authFetch(url, options = {}) {
     const token = getToken();
