@@ -110,6 +110,12 @@ window.editGrade = function(subjectId, gradeIndex) {
             renderSubjects();
             calculateOverall();
             saveToLocalStorage();
+            if (window.syncSubjectGrades) {
+                try {
+                    await window.syncSubjectGrades(window.currentSubjectId);
+                } catch (err) {
+                }
+            }
             closeGradeModal();
         }
     };
@@ -229,6 +235,12 @@ document.getElementById('confirmGradeBtn').addEventListener('click', async funct
     renderSubjects();
     calculateOverall();
     saveToLocalStorage();
+    if (window.syncSubjectGrades) {
+        try {
+            await window.syncSubjectGrades(window.currentSubjectId);
+        } catch (err) {
+        }
+    }
     closeGradeModal();
 });
 
