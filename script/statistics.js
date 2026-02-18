@@ -1,4 +1,4 @@
-   /* ── Stats updater — call this whenever grades change ── */
+/* ── Stats updater — call this whenever grades change ── */
     function updateStats() {
         // Gather all grade badges from DOM
         const allBadges = document.querySelectorAll('.grade-badge');
@@ -40,12 +40,33 @@
             const avg = parseFloat(avgEl.textContent);
             if (!isNaN(avg) && avg > topAvg) {
                 topAvg = avg;
-                // shorten to 4 chars if too long
-                const name = nameEl.textContent.trim();
-                topName = name.length > 6 ? name.slice(0, 5) + '…' : name;
+                topName = nameEl.textContent.trim();
             }
         });
-        document.getElementById('statTopSubject').textContent = topAvg >= 0 ? topName : '—';
+
+        const topSubjectEl = document.getElementById('statTopSubject');
+        if (topAvg >= 0 && topName !== '—') {
+            const shortName = topName.length > 6 ? topName.slice(0, 5) + '…' : topName;
+            topSubjectEl.textContent = shortName;
+
+            // Add tooltip with full name
+            topSubjectEl.title = '';
+            let wrapper = document.getElementById('statTopSubjectWrapper');
+            if (!wrapper) {
+                wrapper = document.createElement('div');
+                wrapper.id = 'statTopSubjectWrapper';
+                wrapper.style.cssText = 'position:relative;display:inline-block;cursor:default;';
+                topSubjectEl.parentNode.insertBefore(wrapper, topSubjectEl);
+                wrapper.appendChild(topSubjectEl);
+
+                const tooltip = document.createElement('span');
+                tooltip.className = 'subject-full-tooltip';
+                wrapper.appendChild(tooltip);
+            }
+            wrapper.querySelector('.subject-full-tooltip').textContent = topName;
+        } else {
+            topSubjectEl.textContent = '—';
+        }
 
         // Distribution
         const counts = [0,0,0,0,0];
