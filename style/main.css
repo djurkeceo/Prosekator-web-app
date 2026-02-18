@@ -273,6 +273,67 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
+/* Full subject name tooltip for "Najbolji predmet" stat card */
+.stat-card.best {
+    overflow: visible !important;
+}
+
+#statTopSubjectWrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+#statTopSubject {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+}
+
+#statTopSubjectWrapper .subject-full-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background-color: #1a1a1a;
+    color: white;
+    border: 1.5px solid #59d6e0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: normal;
+    min-width: max-content;
+    max-width: min(320px, 80vw);
+    word-break: break-word;
+    text-align: center;
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    pointer-events: none;
+}
+
+#statTopSubjectWrapper .subject-full-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #59d6e0 transparent transparent;
+}
+
+.stat-card.best:hover #statTopSubjectWrapper .subject-full-tooltip,
+#statTopSubjectWrapper:hover .subject-full-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
 .add-grade-btn {
     background: none;
     border: 1px dashed #B4D63D;
