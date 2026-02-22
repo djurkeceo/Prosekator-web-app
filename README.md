@@ -49,7 +49,7 @@ Ako želiš da testiraš kod na svom kompjuteru, prati ove korake:
 
 ---
 
-## 🤝 Doprinesi projektu (Pull Request)
+## 🤝 Doprinesi projektu
 
 Imaš ideju kako da Prosekator bude još jači? Slobodno šalji Pull Request!
 
