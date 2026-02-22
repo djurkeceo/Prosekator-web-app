@@ -31,6 +31,82 @@
         authLink.classList.toggle('active', show);
     }
 
+    function initNavActive() {
+        const navLinks = document.querySelectorAll('.navbar .nav-link');
+        if (!navLinks.length) return;
+
+        const path = window.location.pathname;
+        navLinks.forEach((link) => {
+            const href = link.getAttribute('href') || '';
+            if (!href || href === '#') return;
+            const normalized = href.replace(/^\.+/g, '');
+            if (path.endsWith(normalized.replace(/^\//, ''))) {
+                link.classList.add('is-active');
+            }
+
+            link.addEventListener('click', () => {
+                navLinks.forEach((l) => l.classList.remove('is-active'));
+                link.classList.add('is-active');
+            });
+        });
+    }
+
+    function chooseEditAction() {
+        return new Promise((resolve) => {
+            const overlay = document.createElement('div');
+            overlay.className = 'custom-confirm-overlay';
+
+            overlay.innerHTML = `
+                <div class="custom-confirm-box">
+                    <button class="custom-confirm-close" aria-label="Close">×</button>
+                    <div class="custom-confirm-icon warning">?</div>
+                    <div class="custom-confirm-title">Izmena naloga</div>
+                    <div class="custom-confirm-message">Šta želite da izmenite?</div>
+                    <div class="custom-confirm-buttons">
+                        <button class="custom-confirm-btn confirm" data-action="name">Korisničko ime</button>
+                        <button class="custom-confirm-btn confirm" data-action="password">Lozinku</button>
+                    </div>
+                    <div class="custom-confirm-buttons" style="margin-top: 10px;">
+                        <button class="custom-confirm-btn cancel" data-action="cancel">Otkaži</button>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+            setTimeout(() => overlay.classList.add('show'), 10);
+
+            function closeModal(result) {
+                overlay.classList.remove('show');
+                setTimeout(() => {
+                    overlay.remove();
+                    resolve(result);
+                }, 300);
+            }
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeModal(null);
+                }
+            });
+
+            overlay.querySelector('.custom-confirm-close').addEventListener('click', () => closeModal(null));
+            overlay.querySelectorAll('[data-action]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const action = btn.getAttribute('data-action');
+                    if (action === 'cancel') return closeModal(null);
+                    closeModal(action);
+                });
+            });
+
+            document.addEventListener('keydown', function escapeHandler(e) {
+                if (e.key === 'Escape') {
+                    closeModal(null);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            });
+        });
+    }
+
     async function loadUserName() {
         const token = getToken();
         if (!token) {
@@ -70,15 +146,9 @@
 
     editBtn.addEventListener('click', async () => {
         toggleMenu(false);
-        const editName = await window.customConfirm({
-            title: 'Izmena naloga',
-            message: 'Da li želite da promenite korisničko ime?',
-            confirmText: 'Promeni ime',
-            cancelText: 'Promeni lozinku',
-            type: 'warning'
-        });
+        const action = await chooseEditAction();
 
-        if (editName) {
+        if (action === 'name') {
             const newName = await window.customPrompt({
                 title: 'Novo korisničko ime',
                 message: 'Unesite novo korisničko ime:',
@@ -112,6 +182,8 @@
             alert('Korisničko ime je uspešno izmenjeno.');
             return;
         }
+
+        if (action !== 'password') return;
 
         const newPassword = await window.customPrompt({
             title: 'Nova lozinka',
@@ -167,4 +239,5 @@
     });
 
     loadUserName();
+    initNavActive();
 })();

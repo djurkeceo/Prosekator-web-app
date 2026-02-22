@@ -23,11 +23,30 @@
     font-weight: 500;
     margin-left: 15px;
     transition: transform 0.3s ease-in-out;
+    position: relative;
 }
 
 .nav-link:hover {
     color: #B4D63D !important;
     transform: translateY(-2px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #B4D63D;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+}
+
+.nav-link.active::after,
+.nav-link.is-active::after {
+    transform: scaleX(1);
 }
 
 .nav-user {

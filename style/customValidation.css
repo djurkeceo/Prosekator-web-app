@@ -29,6 +29,7 @@
     max-width: 400px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     text-align: center;
+    position: relative;
     transform: scale(0.7) translateY(-20px);
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -157,4 +158,20 @@
 .custom-confirm-btn.danger:hover {
     box-shadow: 0 5px 15px rgba(255, 69, 58, 0.3);
     transform: translateY(-2px);
+}
+
+.custom-confirm-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.custom-confirm-close:hover {
+    color: #B4D63D;
 }
