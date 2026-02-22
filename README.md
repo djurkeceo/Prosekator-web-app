@@ -15,6 +15,23 @@ Zaboravi na ručno sabiranje i deljenje. Ova aplikacija ti omogućava da na jedn
 
 ---
 
+## 📥 Kako da instaliraš git na svoj računar?
+
+1.  **Na windows-u (Powershell):**
+    ```bash
+    winget install --id Git.Git -e --source winget
+    ```
+2.  **Na MacOS-u (bash):**
+    ```bash
+    brew install git
+    ```
+3.  **Na Linux-u (bash):**
+    ```bash
+    sudo apt install git
+    ```
+
+---
+
 ## 💻 Kako da pokreneš projekat lokalno?
 
 Ako želiš da testiraš kod na svom kompjuteru, prati ove korake:
