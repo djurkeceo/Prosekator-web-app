@@ -36,6 +36,24 @@
 
 .user-link {
     cursor: pointer;
+    position: relative;
+}
+
+.user-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #B4D63D;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+}
+
+.user-link.active::after {
+    transform: scaleX(1);
 }
 
 .user-menu {
@@ -47,13 +65,20 @@
     border-radius: 10px;
     padding: 8px;
     min-width: 200px;
-    display: none;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    visibility: hidden;
     z-index: 1000;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
 .user-menu.show {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
 }
 
 .user-menu-btn {

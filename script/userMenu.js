@@ -28,13 +28,13 @@
 
     function toggleMenu(show) {
         userMenu.classList.toggle('show', show);
+        authLink.classList.toggle('active', show);
     }
 
     async function loadUserName() {
         const token = getToken();
         if (!token) {
             userMenu.classList.remove('show');
-            userMenu.style.display = 'none';
             return;
         }
 
@@ -70,12 +70,29 @@
 
     editBtn.addEventListener('click', async () => {
         toggleMenu(false);
-        const editName = window.confirm('Želite da izmenite korisničko ime? Kliknite "OK" za ime, "Cancel" za lozinku.');
+        const editName = await window.customConfirm({
+            title: 'Izmena naloga',
+            message: 'Da li želite da promenite korisničko ime?',
+            confirmText: 'Promeni ime',
+            cancelText: 'Promeni lozinku',
+            type: 'warning'
+        });
 
         if (editName) {
-            const newName = window.prompt('Unesite novo korisničko ime:');
+            const newName = await window.customPrompt({
+                title: 'Novo korisničko ime',
+                message: 'Unesite novo korisničko ime:',
+                confirmText: 'Sačuvaj',
+                cancelText: 'Otkaži'
+            });
             if (!newName || !newName.trim()) return;
-            const confirmed = window.confirm('Da li ste sigurni da želite da promenite korisničko ime?');
+            const confirmed = await window.customConfirm({
+                title: 'Potvrda izmene',
+                message: 'Da li ste sigurni da želite da promenite korisničko ime?',
+                confirmText: 'Sačuvaj',
+                cancelText: 'Otkaži',
+                type: 'warning'
+            });
             if (!confirmed) return;
 
             const response = await authFetch('/api/user/update', {
@@ -96,9 +113,21 @@
             return;
         }
 
-        const newPassword = window.prompt('Unesite novu lozinku:');
+        const newPassword = await window.customPrompt({
+            title: 'Nova lozinka',
+            message: 'Unesite novu lozinku:',
+            confirmText: 'Sačuvaj',
+            cancelText: 'Otkaži',
+            inputType: 'password'
+        });
         if (!newPassword || !newPassword.trim()) return;
-        const confirmed = window.confirm('Da li ste sigurni da želite da promenite lozinku?');
+        const confirmed = await window.customConfirm({
+            title: 'Potvrda izmene',
+            message: 'Da li ste sigurni da želite da promenite lozinku?',
+            confirmText: 'Sačuvaj',
+            cancelText: 'Otkaži',
+            type: 'warning'
+        });
         if (!confirmed) return;
 
         const response = await authFetch('/api/user/update', {
@@ -117,7 +146,13 @@
 
     deleteBtn.addEventListener('click', async () => {
         toggleMenu(false);
-        const confirmed = window.confirm('Da li ste sigurni da želite da obrišete nalog? Ova akcija je nepovratna.');
+        const confirmed = await window.customConfirm({
+            title: 'Brisanje naloga',
+            message: 'Da li ste sigurni da želite da obrišete nalog? Ova akcija je nepovratna.',
+            confirmText: 'Obriši',
+            cancelText: 'Otkaži',
+            type: 'danger'
+        });
         if (!confirmed) return;
 
         const response = await authFetch('/api/user/delete', { method: 'DELETE' });

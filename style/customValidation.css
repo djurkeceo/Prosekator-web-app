@@ -94,6 +94,22 @@
     line-height: 1.5;
 }
 
+.custom-prompt-input {
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #0f0f0f;
+    color: #fff;
+    outline: none;
+}
+
+.custom-prompt-input:focus {
+    border-color: #B4D63D;
+    box-shadow: 0 0 0 2px rgba(180, 214, 61, 0.2);
+}
+
 .custom-confirm-buttons {
     display: flex;
     gap: 10px;
