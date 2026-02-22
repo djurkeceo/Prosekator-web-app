@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const { connectDB, User } = require('../_lib/db');
 const { requireAuth } = require('../_lib/auth');
 const { jsonBody } = require('../_lib/http');
+const { isPasswordStrong } = require('../_lib/validation');
 
 module.exports = async (req, res) => {
     if (req.method !== 'PATCH') {
@@ -28,6 +29,9 @@ module.exports = async (req, res) => {
     }
 
     if (body.password && String(body.password).trim()) {
+        if (!isPasswordStrong(body.password)) {
+            return res.status(400).json({ error: 'Password must contain at least one uppercase letter and one number' });
+        }
         updates.password = await bcrypt.hash(String(body.password), 10);
     }
 

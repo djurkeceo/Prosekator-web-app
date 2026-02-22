@@ -31,6 +31,11 @@
         authLink.classList.toggle('active', show);
     }
 
+    function isPasswordStrong(password) {
+        const value = String(password || '');
+        return /[A-Z]/.test(value) && /[0-9]/.test(value);
+    }
+
     function initNavActive() {
         const navLinks = document.querySelectorAll('.navbar .nav-link');
         if (!navLinks.length) return;
@@ -193,6 +198,10 @@
             inputType: 'password'
         });
         if (!newPassword || !newPassword.trim()) return;
+        if (!isPasswordStrong(newPassword)) {
+            alert('Lozinka mora sadržati bar jedno veliko slovo i jedan broj.');
+            return;
+        }
         const confirmed = await window.customConfirm({
             title: 'Potvrda izmene',
             message: 'Da li ste sigurni da želite da promenite lozinku?',

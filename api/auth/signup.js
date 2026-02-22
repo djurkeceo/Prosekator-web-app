@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { connectDB, User } = require('../_lib/db');
 const { jsonBody } = require('../_lib/http');
+const { isEmailValid, isPasswordStrong } = require('../_lib/validation');
 
 const { JWT_SECRET } = process.env;
 
@@ -29,6 +30,12 @@ module.exports = async (req, res) => {
         const { name, email, password } = jsonBody(req);
         if (!name || !email || !password) {
             return res.status(400).json({ error: 'Missing required fields' });
+        }
+        if (!isEmailValid(email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
+        }
+        if (!isPasswordStrong(password)) {
+            return res.status(400).json({ error: 'Password must contain at least one uppercase letter and one number' });
         }
 
         const existing = await User.findOne({ email: email.toLowerCase() });

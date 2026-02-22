@@ -50,6 +50,16 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.model('User', userSchema);
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function isEmailValid(email) {
+    return emailRegex.test(String(email || '').trim());
+}
+
+function isPasswordStrong(password) {
+    const value = String(password || '');
+    return /[A-Z]/.test(value) && /[0-9]/.test(value);
+}
+
 function createToken(userId) {
     return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
 }
@@ -59,6 +69,12 @@ app.post('/api/auth/signup', async (req, res) => {
         const { name, email, password } = req.body;
         if (!name || !email || !password) {
             return res.status(400).json({ error: 'Missing required fields' });
+        }
+        if (!isEmailValid(email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
+        }
+        if (!isPasswordStrong(password)) {
+            return res.status(400).json({ error: 'Password must contain at least one uppercase letter and one number' });
         }
 
         const existing = await User.findOne({ email: email.toLowerCase() });
@@ -208,6 +224,9 @@ app.patch('/api/user/update', authenticate, async (req, res) => {
         }
 
         if (password && String(password).trim()) {
+            if (!isPasswordStrong(password)) {
+                return res.status(400).json({ error: 'Password must contain at least one uppercase letter and one number' });
+            }
             updates.password = await bcrypt.hash(String(password), 10);
         }
 

@@ -4,27 +4,39 @@ function setToken(token) {
     localStorage.setItem(AUTH_TOKEN_KEY, token);
 }
 
+function isEmailValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || '').trim());
+}
+
+function isPasswordStrong(password) {
+    const value = String(password || '');
+    return /[A-Z]/.test(value) && /[0-9]/.test(value);
+}
+
+function showInputError(input, message) {
+    const tooltip = input.parentElement.querySelector('.error-tooltip');
+    if (tooltip) {
+        tooltip.textContent = message;
+        tooltip.classList.add('visible');
+    }
+    input.classList.add('invalid-field');
+    input.addEventListener('input', () => {
+        if (tooltip) tooltip.classList.remove('visible');
+        input.classList.remove('invalid-field');
+    }, { once: true });
+}
+
 document.querySelector('.signupFormMain').addEventListener('submit', async function (e) {
     let inputs = this.querySelectorAll('input[required]');
     let firstInvalid = null;
     let hasError = false;
 
     inputs.forEach(input => {
-        const tooltip = input.parentElement.querySelector('.error-tooltip');
-        
         if (!input.value.trim()) {
             e.preventDefault();
             hasError = true;
-            
-            tooltip.classList.add('visible');
-            input.classList.add('invalid-field');
-
+            showInputError(input, 'Popunite ovo polje');
             if (!firstInvalid) firstInvalid = input;
-
-            input.addEventListener('input', () => {
-                tooltip.classList.remove('visible');
-                input.classList.remove('invalid-field');
-            }, { once: true });
         }
     });
 
@@ -40,6 +52,18 @@ document.querySelector('.signupFormMain').addEventListener('submit', async funct
     const name = inputs[0] ? inputs[0].value.trim() : '';
     const email = inputs[1] ? inputs[1].value.trim() : '';
     const password = inputs[2] ? inputs[2].value : '';
+
+    if (!isEmailValid(email)) {
+        showInputError(inputs[1], 'Unesite ispravan email (mora sadržati @ i .).');
+        inputs[1].focus();
+        return;
+    }
+
+    if (!isPasswordStrong(password)) {
+        showInputError(inputs[2], 'Lozinka mora sadržati bar jedno veliko slovo i jedan broj.');
+        inputs[2].focus();
+        return;
+    }
 
     try {
         const response = await fetch('/api/auth/signup', {
