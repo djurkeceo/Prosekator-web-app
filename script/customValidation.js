@@ -6,8 +6,11 @@ window.customConfirm = function(options) {
         const iconType = options.type === 'danger' ? 'danger' : 'warning';
         const iconSymbol = options.type === 'danger' ? '!' : '?';
         
+        const showClose = options.showClose !== false;
+
         overlay.innerHTML = `
             <div class="custom-confirm-box">
+                ${showClose ? '<button class="custom-confirm-close" aria-label="Close">×</button>' : ''}
                 <div class="custom-confirm-icon ${iconType}">
                     ${iconSymbol}
                 </div>
@@ -26,6 +29,7 @@ window.customConfirm = function(options) {
         
         const cancelBtn = overlay.querySelector('.custom-confirm-btn.cancel');
         const confirmBtn = overlay.querySelector('.custom-confirm-btn.confirm, .custom-confirm-btn.danger');
+        const closeBtn = overlay.querySelector('.custom-confirm-close');
         
         const closeModal = (result) => {
             overlay.classList.remove('show');
@@ -37,6 +41,9 @@ window.customConfirm = function(options) {
         
         cancelBtn.addEventListener('click', () => closeModal(false));
         confirmBtn.addEventListener('click', () => closeModal(true));
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => closeModal(false));
+        }
         
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
