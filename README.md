@@ -2,7 +2,7 @@
 
 Uz **Prosekator**, sve tvoje ocene su na **jednom mestu**. Dovoljno je da se **uloguješ na svoj nalog** kako bi aplikacija mogla sigurno da čuva tvoje predmete i ocene, omogućavajući ti pristup podacima sa bilo kog uređaja.
 
-Isprobaj **Prosekator**: <a href="prosekator.vercel.app" style="color: #B4D63D; font-weight: bold; font-style: italic; text-decoration: none;">prosekator.vercel.app</a>
+Isprobaj **Prosekator**: <a href="https://prosekator.vercel.app" style="color: #B4D63D; font-weight: bold; font-style: italic; text-decoration: none;">prosekator.vercel.app</a>
 
 ---
 
