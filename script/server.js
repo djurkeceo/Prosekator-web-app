@@ -107,11 +107,11 @@ app.post('/api/auth/login', async (req, res) => {
 
 app.get('/api/user/data', authenticate, async (req, res) => {
     try {
-        const user = await User.findById(req.userId).select('subjects');
+        const user = await User.findById(req.userId).select('subjects name');
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-        return res.json({ subjects: user.subjects });
+        return res.json({ subjects: user.subjects, name: user.name });
     } catch (err) {
         return res.status(500).json({ error: 'Server error' });
     }
@@ -192,6 +192,46 @@ app.delete('/api/user/subjects/:id', authenticate, async (req, res) => {
         subject.deleteOne();
         await user.save();
 
+        return res.json({ success: true });
+    } catch (err) {
+        return res.status(500).json({ error: 'Server error' });
+    }
+});
+
+app.patch('/api/user/update', authenticate, async (req, res) => {
+    try {
+        const { name, password } = req.body || {};
+        const updates = {};
+
+        if (name && String(name).trim()) {
+            updates.name = String(name).trim();
+        }
+
+        if (password && String(password).trim()) {
+            updates.password = await bcrypt.hash(String(password), 10);
+        }
+
+        if (!updates.name && !updates.password) {
+            return res.status(400).json({ error: 'Missing update fields' });
+        }
+
+        const user = await User.findByIdAndUpdate(req.userId, updates, { new: true });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        return res.json({ success: true, name: user.name });
+    } catch (err) {
+        return res.status(500).json({ error: 'Server error' });
+    }
+});
+
+app.delete('/api/user/delete', authenticate, async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.userId);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
         return res.json({ success: true });
     } catch (err) {
         return res.status(500).json({ error: 'Server error' });
