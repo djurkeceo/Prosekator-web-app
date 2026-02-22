@@ -28,32 +28,11 @@
 
     function toggleMenu(show) {
         userMenu.classList.toggle('show', show);
-        authLink.classList.toggle('active', show);
     }
 
     function isPasswordStrong(password) {
         const value = String(password || '');
         return /[A-Z]/.test(value) && /[0-9]/.test(value);
-    }
-
-    function initNavActive() {
-        const navLinks = document.querySelectorAll('.navbar .nav-link');
-        if (!navLinks.length) return;
-
-        const path = window.location.pathname;
-        navLinks.forEach((link) => {
-            const href = link.getAttribute('href') || '';
-            if (!href || href === '#') return;
-            const normalized = href.replace(/^\.+/g, '');
-            if (path.endsWith(normalized.replace(/^\//, ''))) {
-                link.classList.add('is-active');
-            }
-
-            link.addEventListener('click', () => {
-                navLinks.forEach((l) => l.classList.remove('is-active'));
-                link.classList.add('is-active');
-            });
-        });
     }
 
     function chooseEditAction() {
@@ -248,5 +227,4 @@
     });
 
     loadUserName();
-    initNavActive();
 })();
