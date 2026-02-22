@@ -122,7 +122,7 @@
 }
 
 /* Responsiveness for smaller screens */
-@media (max-width: 991px) {  s
+@media (max-width: 991px) {
     .navbar-collapse:not(.show) {
         padding: 0;
         margin-top: 0;
@@ -132,6 +132,30 @@
     .nav-link {
         margin: 10px 0;
         text-align: center;
+        display: inline-block;
+        margin-left: 0;
+    }
+
+    .navbar-nav {
+        align-items: center;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link::after,
+    .user-link::after {
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        transform-origin: center;
+    }
+
+    .nav-link.active::after,
+    .nav-link.is-active::after,
+    .user-link.active::after {
+        transform: translateX(-50%) scaleX(1);
     }
 }
 
