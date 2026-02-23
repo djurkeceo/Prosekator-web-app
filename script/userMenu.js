@@ -235,12 +235,25 @@
 
     logoutBtn.addEventListener('click', () => {
         toggleMenu(false);
-        clearToken();
-        clearUserData();
-        authLink.textContent = 'Prijavi se';
-        authLink.href = '/docs/login.html';
-        authLink.classList.remove('user-link');
-        window.location.href = '/docs/login.html';
+        const confirmLogout = window.customConfirm
+            ? window.customConfirm({
+                title: 'Odjava',
+                message: 'Da li ste sigurni da želite da se odjavite?',
+                confirmText: 'Odjavi se',
+                cancelText: 'Otkaži',
+                type: 'warning'
+            })
+            : Promise.resolve(window.confirm('Da li ste sigurni da želite da se odjavite?'));
+
+        confirmLogout.then((confirmed) => {
+            if (!confirmed) return;
+            clearToken();
+            clearUserData();
+            authLink.textContent = 'Prijavi se';
+            authLink.href = '/docs/login.html';
+            authLink.classList.remove('user-link');
+            window.location.href = '/docs/login.html';
+        });
     });
 
     loadUserName();
