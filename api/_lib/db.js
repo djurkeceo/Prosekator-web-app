@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
-const { MONGO_URI } = process.env;
+const { MONGO_URI, MONGODB_URI } = process.env;
 
 const cached = global._mongoose || (global._mongoose = { conn: null, promise: null });
 
 async function connectDB() {
-    if (!MONGO_URI) {
-        throw new Error('Missing MONGO_URI in environment variables.');
+    const mongoUri = MONGO_URI || MONGODB_URI;
+    if (!mongoUri) {
+        throw new Error('Missing MONGO_URI or MONGODB_URI in environment variables.');
     }
 
     if (cached.conn) {
@@ -14,7 +15,7 @@ async function connectDB() {
     }
 
     if (!cached.promise) {
-        cached.promise = mongoose.connect(MONGO_URI).then((conn) => conn);
+        cached.promise = mongoose.connect(mongoUri).then((conn) => conn);
     }
 
     cached.conn = await cached.promise;

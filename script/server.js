@@ -14,16 +14,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..')));
 
-const { MONGO_URI, JWT_SECRET } = process.env;
+const { MONGO_URI, MONGODB_URI, JWT_SECRET } = process.env;
+const mongoUri = MONGO_URI || MONGODB_URI;
 const PORT = process.env.PORT || 3000;
 
-if (!MONGO_URI || !JWT_SECRET) {
-    console.error('Missing MONGO_URI or JWT_SECRET in environment variables.');
+if (!mongoUri || !JWT_SECRET) {
+    console.error('Missing MONGO_URI or MONGODB_URI or JWT_SECRET in environment variables.');
     process.exit(1);
 }
 
 mongoose
-    .connect(MONGO_URI)
+    .connect(mongoUri)
     .then(() => console.log('MongoDB connected'))
     .catch((err) => {
         console.error('MongoDB connection error:', err);
