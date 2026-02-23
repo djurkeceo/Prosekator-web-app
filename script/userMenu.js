@@ -3,9 +3,10 @@
     const authLink = document.getElementById('authLink');
     const userMenu = document.getElementById('userMenu');
     const editBtn = document.getElementById('editAccountBtn');
+    const logoutBtn = document.getElementById('logoutAccountBtn');
     const deleteBtn = document.getElementById('deleteAccountBtn');
 
-    if (!authLink || !userMenu || !editBtn || !deleteBtn) return;
+    if (!authLink || !userMenu || !editBtn || !logoutBtn || !deleteBtn) return;
 
     function getToken() {
         return localStorage.getItem(AUTH_TOKEN_KEY);
@@ -223,6 +224,15 @@
         }
 
         clearToken();
+        window.location.href = '/docs/login.html';
+    });
+
+    logoutBtn.addEventListener('click', () => {
+        toggleMenu(false);
+        clearToken();
+        authLink.textContent = 'Prijavi se';
+        authLink.href = '/docs/login.html';
+        authLink.classList.remove('user-link');
         window.location.href = '/docs/login.html';
     });
 
