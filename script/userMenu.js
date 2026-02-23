@@ -16,6 +16,11 @@
         localStorage.removeItem(AUTH_TOKEN_KEY);
     }
 
+    function clearUserData() {
+        localStorage.removeItem('prosekatorSubjects');
+        localStorage.removeItem('prosekatorColors');
+    }
+
     async function authFetch(url, options = {}) {
         const token = getToken();
         const headers = Object.assign({ 'Content-Type': 'application/json' }, options.headers || {});
@@ -224,12 +229,14 @@
         }
 
         clearToken();
+        clearUserData();
         window.location.href = '/docs/login.html';
     });
 
     logoutBtn.addEventListener('click', () => {
         toggleMenu(false);
         clearToken();
+        clearUserData();
         authLink.textContent = 'Prijavi se';
         authLink.href = '/docs/login.html';
         authLink.classList.remove('user-link');

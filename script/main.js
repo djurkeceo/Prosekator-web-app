@@ -48,8 +48,16 @@ function clearToken() {
     localStorage.removeItem(AUTH_TOKEN_KEY);
 }
 
+function clearUserData() {
+    localStorage.removeItem('prosekatorSubjects');
+    localStorage.removeItem('prosekatorColors');
+    subjects = [];
+    availableColors = [...baseColors];
+}
+
 function handleAuthExpired() {
     clearToken();
+    clearUserData();
     window.location.href = './docs/login.html';
 }
 
@@ -203,7 +211,9 @@ window.addEventListener('DOMContentLoaded', function() {
     if (getToken()) {
         loadFromServer();
     } else {
-        loadFromLocalStorage();
+        clearUserData();
+        renderSubjects();
+        calculateOverall();
     }
 });
 
