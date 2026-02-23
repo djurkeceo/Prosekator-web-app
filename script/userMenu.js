@@ -100,7 +100,7 @@
         }
 
         try {
-            const response = await authFetch('/api/user/data');
+            const response = await authFetch('/api/user/name');
             if (response.status === 401 || response.status === 403) {
                 clearToken();
                 return;

@@ -91,7 +91,7 @@ app.post('/api/auth/signup', async (req, res) => {
         });
 
         const token = createToken(user._id);
-        return res.status(201).json({ token });
+        return res.status(201).json({ token, name: user.name });
     } catch (err) {
         return res.status(500).json({ error: 'Server error' });
     }
@@ -115,7 +115,7 @@ app.post('/api/auth/login', async (req, res) => {
         }
 
         const token = createToken(user._id);
-        return res.json({ token });
+        return res.json({ token, name: user.name });
     } catch (err) {
         return res.status(500).json({ error: 'Server error' });
     }
@@ -128,6 +128,18 @@ app.get('/api/user/data', authenticate, async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
         return res.json({ subjects: user.subjects, name: user.name });
+    } catch (err) {
+        return res.status(500).json({ error: 'Server error' });
+    }
+});
+
+app.get('/api/user/name', authenticate, async (req, res) => {
+    try {
+        const user = await User.findById(req.userId).select('name');
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        return res.json({ name: user.name });
     } catch (err) {
         return res.status(500).json({ error: 'Server error' });
     }
