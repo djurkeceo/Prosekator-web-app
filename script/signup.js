@@ -10,11 +10,17 @@ function initPasswordToggle() {
 
     const targetId = button.getAttribute('data-password-toggle');
     const input = targetId ? document.getElementById(targetId) : null;
+    const icon = button.querySelector('.password-toggle-icon');
     if (!input) return;
 
     const setState = (show) => {
         input.type = show ? 'text' : 'password';
-        button.textContent = show ? 'Sakrij' : 'Prikaži';
+        if (icon) {
+            const showSrc = icon.getAttribute('data-icon-show');
+            const hideSrc = icon.getAttribute('data-icon-hide');
+            icon.src = show ? hideSrc : showSrc;
+            icon.alt = show ? 'Sakrij lozinku' : 'Prikaži lozinku';
+        }
         button.setAttribute('aria-pressed', String(show));
         button.setAttribute('aria-label', show ? 'Sakrij lozinku' : 'Prikaži lozinku');
     };

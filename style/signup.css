@@ -112,28 +112,38 @@ body {
     position: absolute;
     right: 10px;
     top: 36px;
-    height: 32px;
-    padding: 0 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: #1d1d2a;
+    height: 36px;
+    width: 36px;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    background: transparent;
     color: #B4D63D;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.2px;
     cursor: pointer;
-    transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .password-toggle:hover {
-    border-color: #B4D63D;
-    box-shadow: 0 0 8px rgba(180, 214, 61, 0.25);
     transform: translateY(-1px);
+    filter: drop-shadow(0 0 6px rgba(180, 214, 61, 0.35));
 }
 
 .password-toggle:focus-visible {
     outline: 2px solid #B4D63D;
     outline-offset: 2px;
+}
+
+.password-toggle-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    pointer-events: none;
 }
 
 /* Button for login */
