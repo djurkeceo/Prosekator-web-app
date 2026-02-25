@@ -4,6 +4,29 @@ function setToken(token) {
     localStorage.setItem(AUTH_TOKEN_KEY, token);
 }
 
+function initPasswordToggle() {
+    const button = document.querySelector('[data-password-toggle]');
+    if (!button) return;
+
+    const targetId = button.getAttribute('data-password-toggle');
+    const input = targetId ? document.getElementById(targetId) : null;
+    if (!input) return;
+
+    const setState = (show) => {
+        input.type = show ? 'text' : 'password';
+        button.textContent = show ? 'Sakrij' : 'Prikaži';
+        button.setAttribute('aria-pressed', String(show));
+        button.setAttribute('aria-label', show ? 'Sakrij lozinku' : 'Prikaži lozinku');
+    };
+
+    setState(false);
+    button.addEventListener('click', () => {
+        setState(input.type === 'password');
+    });
+}
+
+initPasswordToggle();
+
 function isEmailValid(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || '').trim());
 }
