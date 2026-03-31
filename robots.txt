@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prosekator.vercel.app/sitemap.xml
