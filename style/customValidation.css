@@ -1,18 +1,16 @@
 .custom-confirm-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 16px;
+    background: rgba(6, 10, 18, 0.78);
+    backdrop-filter: blur(8px);
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .custom-confirm-overlay.show {
@@ -21,157 +19,128 @@
 }
 
 .custom-confirm-box {
-    background-color: #1a1a1a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 30px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    border: 1px solid var(--container-border-strong);
+    background: linear-gradient(160deg, rgba(26, 35, 54, 0.97), rgba(21, 28, 44, 0.97));
+    box-shadow: var(--shadow-strong);
+    padding: 24px 22px 20px;
     text-align: center;
     position: relative;
-    transform: scale(0.7) translateY(-20px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(10px) scale(0.98);
+    transition: transform 0.2s ease;
 }
 
 .custom-confirm-overlay.show .custom-confirm-box {
-    transform: scale(1) translateY(0);
-    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .custom-confirm-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 20px;
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 14px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    line-height: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    animation: pulseWarning 1.5s ease-in-out infinite;
+    font-size: 1.7rem;
+    font-weight: 700;
 }
 
 .custom-confirm-icon.warning {
-    background: rgba(180, 214, 61, 0.1);
-    border: 2px solid #B4D63D;
-    color: #B4D63D;
-    padding-bottom: 2px;
-    animation: pulseWarning 1.5s ease-in-out infinite;
+    color: var(--brand-color-brighter-lime);
+    border: 2px solid var(--brand-color-lime);
+    background: rgba(180, 214, 61, 0.14);
 }
 
 .custom-confirm-icon.danger {
-    background: rgba(255, 69, 58, 0.1);
-    border: 2px solid #ff453a;
-    color: #ff453a;
-    padding-bottom: 5px;
-    animation: pulseDanger 1.5s ease-in-out infinite;
-}
-
-@keyframes pulseDanger {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 69, 58, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(255, 69, 58, 0); }
-}
-
-@keyframes pulseWarning {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(180, 214, 61, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(180, 214, 61, 0); }
+    color: #ff8b84;
+    border: 2px solid #ff665e;
+    background: rgba(255, 102, 94, 0.13);
 }
 
 .custom-confirm-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 15px;
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    font-weight: 740;
+    color: var(--text-color-primary);
 }
 
 .custom-confirm-message {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 30px;
-    line-height: 1.5;
+    margin: 0 0 18px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-color-secondary);
 }
 
 .custom-prompt-input {
     width: 100%;
-    margin: 0 0 20px;
+    margin: 0 0 16px;
     padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: #0f0f0f;
-    color: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--container-border-color);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-color-primary);
     outline: none;
+    box-sizing: border-box;
 }
 
 .custom-prompt-input:focus {
-    border-color: #B4D63D;
-    box-shadow: 0 0 0 2px rgba(180, 214, 61, 0.2);
+    border-color: var(--brand-color-lime);
+    box-shadow: 0 0 0 4px var(--ring-color);
 }
 
 .custom-confirm-buttons {
     display: flex;
-    gap: 10px;
     justify-content: center;
+    gap: 10px;
 }
 
 .custom-confirm-btn {
-    height: 45px;
+    min-width: 110px;
+    height: 42px;
     border: none;
-    border-radius: 8px;
-    padding: 0 30px;
-    font-weight: bold;
+    border-radius: 9px;
+    padding: 0 20px;
+    font-size: 0.86rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    min-width: 120px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .custom-confirm-btn.cancel {
-    background: #2a2a3a;
-    color: white;
-}
-
-.custom-confirm-btn.cancel:hover {
-    background: #3a3a4a;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-color-primary);
 }
 
 .custom-confirm-btn.confirm {
-    background: linear-gradient(90deg, #B4D63D 0%, #90d627 50%, #B4D63D 100%);
-    color: #1a1a1a;
-}
-
-.custom-confirm-btn.confirm:hover {
-    box-shadow: 0 5px 15px rgba(180, 214, 61, 0.3);
-    transform: translateY(-2px);
+    background: linear-gradient(110deg, #c9ea5f, #b4d63d 68%, #9bc52a);
+    color: #132000;
 }
 
 .custom-confirm-btn.danger {
-    background: linear-gradient(90deg, #ff453a 0%, #d32f2f 50%, #ff453a 100%);
-    color: white;
+    background: linear-gradient(110deg, #ff7b72, #ff5d53 68%, #ef4f46);
+    color: #fff;
 }
 
-.custom-confirm-btn.danger:hover {
-    box-shadow: 0 5px 15px rgba(255, 69, 58, 0.3);
-    transform: translateY(-2px);
+.custom-confirm-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
 }
 
 .custom-confirm-close {
     position: absolute;
     top: 10px;
-    right: 12px;
+    right: 10px;
+    border: 0;
     background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 20px;
+    color: rgba(233, 237, 248, 0.65);
+    font-size: 1.15rem;
+    line-height: 1;
     cursor: pointer;
-    transition: color 0.2s ease;
 }
 
 .custom-confirm-close:hover {
-    color: #B4D63D;
+    color: var(--text-color-primary);
 }

@@ -1,18 +1,16 @@
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(12px);
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    padding: 16px;
+    background: rgba(6, 10, 18, 0.78);
+    backdrop-filter: blur(8px);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2000;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .modal-overlay.show {
@@ -21,131 +19,102 @@
 }
 
 .modal-content {
-    background: #1a1a1a;
-    border: 1px solid rgba(180, 214, 61, 0.2);
-    border-radius: 24px;
-    padding: 35px;
-    width: 90%;
-    max-width: 420px;
-    position: relative;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    transform: scale(0.9) translateY(20px);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 100%;
+    max-width: 460px;
+    border-radius: 18px;
+    border: 1px solid var(--container-border-strong);
+    background: linear-gradient(160deg, rgba(26, 35, 54, 0.97), rgba(21, 28, 44, 0.97));
+    box-shadow: var(--shadow-strong);
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.2s ease;
 }
 
 .modal-overlay.show .modal-content {
-    transform: scale(1) translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .modalMainTitle {
-    font-size: 28px;
-    font-weight: 700;
+    margin: 0 0 8px;
     text-align: center;
-    margin-bottom: 10px;
-    color: white;
-    letter-spacing: -0.5px;
+    font-size: 1.8rem;
+    font-weight: 760;
 }
 
 #gradeDescription {
-    color: rgba(255, 255, 255, 0.5);
-    text-align: center;
-    font-size: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .grade-selection {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin: 25px 0;
+    gap: 8px;
+    margin: 20px 0;
 }
 
 .grade-btn {
     flex: 1;
-    height: 55px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
-    color: white;
-    font-size: 20px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid var(--container-border-color);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-color-primary);
+    font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
 .grade-btn:hover {
-    border-color: #B4D63D;
-    background: rgba(180, 214, 61, 0.1);
-    transform: translateY(-3px);
+    transform: translateY(-1px);
+    border-color: var(--brand-color-lime);
 }
 
 .grade-btn.selected {
-    background: #B4D63D;
-    color: #1a1a1a;
-    border-color: #B4D63D;
-    box-shadow: 0 8px 20px rgba(180, 214, 61, 0.3);
+    background: rgba(180, 214, 61, 0.16);
+    border-color: var(--brand-color-lime);
+    color: var(--brand-color-brighter-lime);
 }
 
 .add-grade-confirm {
-    height: 50px;
-    background: #2a2a3a;
+    width: 100%;
+    height: 46px;
     border: none;
-    border-radius: 8px;
-    padding: 0 25px;
-    color: white;
-    font-weight: bold;
+    border-radius: 10px;
+    background: linear-gradient(110deg, #c9ea5f, #b4d63d 68%, #9bc52a);
+    color: #132000;
+    font-weight: 760;
     cursor: pointer;
-    transition: all 0.4s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .add-grade-confirm:hover {
-    background: linear-gradient(90deg, #B4D63D 0%, #90d627 50%, #B4D63D 100%);
-    box-shadow: 0 5px 15px rgba(134, 208, 94, 0.2);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(180, 214, 61, 0.25);
 }
 
 .close-modal {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
-    display: flex;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 18px;
-    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(233, 237, 248, 0.7);
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease;
 }
 
 .close-modal:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--text-color-primary);
 }
 
-/* Error Tooltip */
 .gradeErr {
-    position: absolute;
-    bottom: calc(73.5%); 
     left: 50%;
-    transform: translateX(-50%) translateY(5px);
-    background-color: #1a1a1a;
-    color: #B4D63D;
-    border: 1.5px solid #B4D63D;
-    padding: 6px 15px;
-    border-radius: 10px !important;
-    font-size: 13px;
-    font-weight: bold;
-    white-space: nowrap;
-    z-index: 100;
-    opacity: 0;   
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
+    bottom: calc(100% + 8px);
 }

@@ -1,10 +1,22 @@
-:root{
-    --brand-color-lime: #B4D63D;
-    --brand-color-dark-lime: #91bc03;
-    --brand-color-brighter-lime: #aee203;
-    --background-color: #181821;
-    --background-color-brighter: #1a1a1a;
+:root {
+    --brand-color-lime: #b4d63d;
+    --brand-color-dark-lime: #8db414;
+    --brand-color-brighter-lime: #c8ea53;
+
+    --background-color: #0f1420;
+    --background-color-brighter: #151c2c;
+    --surface-color: #1a2336;
+    --surface-color-strong: #222f47;
+
     --brand-color-white: #ffffff;
-    --container-border-color: rgba(255, 255, 255, 0.1);
-    --brand-subtitle-color: rgba(255, 255, 255, 0.6); 
+    --text-color-primary: #e9edf8;
+    --text-color-secondary: #aeb8cf;
+
+    --container-border-color: rgba(255, 255, 255, 0.08);
+    --container-border-strong: rgba(255, 255, 255, 0.14);
+    --brand-subtitle-color: rgba(233, 237, 248, 0.75);
+
+    --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.28);
+    --shadow-strong: 0 22px 50px rgba(0, 0, 0, 0.45);
+    --ring-color: rgba(180, 214, 61, 0.28);
 }
