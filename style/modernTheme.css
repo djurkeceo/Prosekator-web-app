@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@600;700;800&display=swap");
+
+:root {
+    --brand-color-lime: #5be7ff;
+    --brand-color-dark-lime: #409fbe;
+    --brand-color-brighter-lime: #8eeeff;
+    --background-color: #05070d;
+    --background-color-brighter: #090f1c;
+    --surface-color: rgba(13, 20, 37, 0.72);
+    --surface-color-strong: rgba(17, 24, 43, 0.85);
+    --text-color-primary: #f7fbff;
+    --text-color-secondary: #b8c6e3;
+    --container-border-color: rgba(186, 214, 255, 0.2);
+    --container-border-strong: rgba(186, 214, 255, 0.34);
+    --shadow-soft: 0 8px 22px rgba(2, 5, 13, 0.45);
+    --shadow-strong: 0 22px 55px rgba(2, 5, 13, 0.58);
+    --ring-color: rgba(91, 231, 255, 0.25);
+}
+
+body {
+    font-family: "DM Sans", "Inter", sans-serif !important;
+    color: var(--text-color-primary);
+    background:
+        radial-gradient(1200px 700px at 75% -10%, rgba(91, 231, 255, 0.16), transparent 58%),
+        radial-gradient(900px 650px at -10% 75%, rgba(138, 124, 255, 0.13), transparent 55%),
+        var(--background-color) !important;
+}
+
+h1, h2, h3, .navbar-brand span, .aboutMainTitle, .indexMainTitle {
+    font-family: "Syne", "Inter", sans-serif !important;
+    letter-spacing: -0.03em;
+}
+
+.headerDiv {
+    position: sticky;
+    top: 12px;
+    z-index: 2100;
+    padding: 0 14px;
+}
+
+.custom-navbar {
+    max-width: 1180px;
+    margin: 0 auto;
+    border-radius: 999px;
+    padding: 12px 16px;
+    border: 1px solid var(--container-border-color);
+    background: rgba(8, 13, 24, 0.72) !important;
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-soft);
+}
+
+.navbar-brand {
+    font-size: 1.28rem;
+}
+
+.navbar-brand img {
+    filter: drop-shadow(0 0 10px rgba(91, 231, 255, 0.4));
+}
+
+.nav-link {
+    margin-left: 8px;
+    border-radius: 999px;
+    color: var(--text-color-secondary) !important;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--text-color-primary) !important;
+    background: rgba(91, 231, 255, 0.14) !important;
+}
+
+.indexMain,
+.aboutMain,
+.loginMain,
+.signupMain,
+.contactMain {
+    padding-top: 132px !important;
+}
+
+.indexContainer,
+.aboutMain p,
+.loginContainer,
+.signupContainer,
+.contactContainer,
+.modal-content,
+.custom-confirm-box {
+    background: linear-gradient(160deg, rgba(12, 20, 36, 0.95), rgba(8, 13, 24, 0.95)) !important;
+    border: 1px solid var(--container-border-color) !important;
+    box-shadow: var(--shadow-strong) !important;
+}
+
+.indexContainer,
+.loginContainer,
+.signupContainer,
+.contactContainer {
+    border-radius: 24px !important;
+}
+
+#finalAverage {
+    background: linear-gradient(95deg, #5be7ff 0%, #69b3ff 52%, #8a7cff 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.separator {
+    background: rgba(186, 214, 255, 0.24);
+}
+
+.subject-card,
+.stat-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(186, 214, 255, 0.2) !important;
+    border-radius: 16px !important;
+}
+
+.subject-card {
+    border-left: 3px solid var(--subject-color, #5be7ff) !important;
+}
+
+.sub-avg-val,
+.stat-card.up .stat-value,
+.stat-card.best .stat-value {
+    color: #7beeff !important;
+}
+
+.grade-badge,
+.add-grade-btn {
+    border-radius: 999px !important;
+}
+
+.grade-badge {
+    border-color: rgba(186, 214, 255, 0.24);
+}
+
+.add-grade-btn {
+    border: 1px dashed #5be7ff !important;
+    color: #5be7ff !important;
+}
+
+#addSubjectBtn,
+.loginButtonMain,
+.signupButtonMain,
+.contactButtonMain,
+.add-grade-confirm,
+.custom-confirm-btn.confirm,
+.pricing-cta,
+.cta-button,
+.btn-primary {
+    color: #03111b !important;
+    border-radius: 999px !important;
+    background: linear-gradient(95deg, #5be7ff 0%, #69b3ff 52%, #8a7cff 100%) !important;
+    box-shadow: 0 12px 28px rgba(91, 231, 255, 0.25);
+}
+
+.custom-confirm-btn.cancel,
+.delete-grade-btn {
+    border-radius: 999px !important;
+}
+
+.add-subject-section input,
+.input-group input,
+.contactFormMain textarea,
+.custom-prompt-input,
+.grade-btn {
+    border-radius: 12px !important;
+    border: 1px solid var(--container-border-color) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.add-subject-section input:focus,
+.input-group input:focus,
+.contactFormMain textarea:focus,
+.custom-prompt-input:focus {
+    border-color: #5be7ff !important;
+    box-shadow: 0 0 0 4px var(--ring-color) !important;
+}
+
+.error-tooltip,
+.messageErr,
+.grade-tooltip,
+#statTopSubjectWrapper .subject-full-tooltip {
+    background: rgba(8, 13, 24, 0.95) !important;
+    border-color: #5be7ff !important;
+    color: var(--text-color-primary) !important;
+}
+
+.error-tooltip::after,
+.messageErr::after,
+.grade-badge .grade-tooltip::after,
+#statTopSubjectWrapper .subject-full-tooltip::after {
+    border-top-color: #5be7ff !important;
+}
+
+.footerDiv {
+    background: rgba(8, 13, 24, 0.82) !important;
+    border-top: 1px solid var(--container-border-color) !important;
+}
+
+.aboutMain p {
+    color: var(--text-color-secondary);
+    line-height: 1.85;
+}
+
+.aboutMain strong {
+    color: #7beeff !important;
+}
+
+.modal-overlay,
+.custom-confirm-overlay {
+    background: rgba(4, 9, 18, 0.76) !important;
+}
+
+.user-menu {
+    background: rgba(7, 12, 22, 0.95);
+    border-radius: 16px !important;
+}
+
+@media (max-width: 991px) {
+    .custom-navbar {
+        border-radius: 18px;
+    }
+
+    .navbar-collapse.show {
+        background: rgba(7, 12, 22, 0.95) !important;
+        border-color: var(--container-border-color) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerDiv {
+        top: 8px;
+        padding: 0 10px;
+    }
+
+    .indexMain,
+    .aboutMain,
+    .loginMain,
+    .signupMain,
+    .contactMain {
+        padding-top: 108px !important;
+    }
+}
