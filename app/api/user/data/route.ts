@@ -1,0 +1,41 @@
+import { NextResponse } from "next/server";
+import { connectDB } from "@/lib/db";
+import { User } from "@/lib/models/User";
+import { jsonDatabaseError, jsonError, jsonServerError } from "@/lib/api-utils";
+import { getSessionUserId } from "@/lib/session";
+import { normalizeAndSerializeUser } from "@/lib/gradebook-server";
+
+export const runtime = "nodejs";
+
+export async function GET() {
+  const userId = await getSessionUserId();
+  if (!userId) {
+    return jsonError("Nisi prijavljen.", 401);
+  }
+
+  try {
+    await connectDB();
+  } catch {
+    return jsonDatabaseError();
+  }
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return jsonError("Nalog nije pronađen.", 404);
+    }
+
+    const normalized = normalizeAndSerializeUser(user);
+
+    if (normalized.changed) {
+      await user.save();
+    }
+
+    return NextResponse.json({
+      user: normalized.user,
+      subjects: normalized.subjects,
+    });
+  } catch {
+    return jsonServerError();
+  }
+}
