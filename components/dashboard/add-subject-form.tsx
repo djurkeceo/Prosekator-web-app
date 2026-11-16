@@ -51,11 +51,11 @@ export function AddSubjectForm({ existingNames, isAdding, onAdd }: AddSubjectFor
   return (
     <section className="card p-4 sm:p-5">
       <div className="flex items-center gap-2">
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-soft text-accent-strong">
+        <span className="flex h-10 w-10 items-center justify-center border-2 border-line bg-accent-soft text-fg shadow-[3px_3px_0_var(--shadow-color)]">
           <BookPlus className="h-4.5 w-4.5" />
         </span>
         <div>
-          <h2 className="text-sm font-extrabold">Dodaj predmet</h2>
+          <h2 className="text-sm font-bold">Dodaj predmet</h2>
           <p className="text-xs text-muted">Predmet se odmah pojavljuje u listi ispod.</p>
         </div>
       </div>

@@ -17,18 +17,12 @@ export function EmptyState({ existingNames, isAdding, onAdd }: EmptyStateProps) 
 
   return (
     <section className="card relative overflow-hidden p-6 text-center sm:p-8">
-      <div
-        className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full opacity-60 blur-3xl"
-        style={{ background: "var(--glow-1)" }}
-        aria-hidden="true"
-      />
-
       <div className="relative mx-auto max-w-md">
-        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-accent-soft text-accent-strong">
+        <span className="mx-auto flex h-16 w-16 items-center justify-center border-[3px] border-line bg-accent-soft text-fg shadow-[5px_5px_0_var(--shadow-color)]">
           <BookOpenCheck className="h-7 w-7" />
         </span>
 
-        <h2 className="mt-4 text-xl font-extrabold tracking-tight sm:text-2xl">
+        <h2 className="mt-4 text-xl font-bold tracking-tight sm:text-2xl">
           Počni tako što ćeš dodati prvi predmet
         </h2>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-muted">
@@ -47,7 +41,7 @@ export function EmptyState({ existingNames, isAdding, onAdd }: EmptyStateProps) 
                   type="button"
                   onClick={() => void onAdd(name)}
                   disabled={isAdding || exists}
-                  className="chip min-h-9 px-3 transition hover:border-accent/50 hover:text-fg disabled:opacity-45"
+                  className="chip min-h-9 px-3 transition hover:border-line hover:text-fg disabled:opacity-45"
                 >
                   {isAdding ? <Spinner className="h-3 w-3" /> : <Plus className="h-3.5 w-3.5" />}
                   {name}
@@ -64,8 +58,8 @@ export function EmptyState({ existingNames, isAdding, onAdd }: EmptyStateProps) 
             { step: "2", text: "Unosi ocene čim ih dobiješ." },
             { step: "3", text: "Prati prosek i napredak." },
           ].map((item) => (
-            <div key={item.step} className="rounded-2xl border border-line bg-surface-2 p-3">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent-soft text-[11px] font-extrabold text-accent-strong">
+            <div key={item.step} className="border-2 border-line bg-surface-2 p-3">
+              <span className="flex h-6 w-6 items-center justify-center border-2 border-line bg-accent-soft text-[11px] font-bold text-fg">
                 {item.step}
               </span>
               <p className="mt-2 text-[11px] font-medium leading-5 text-muted">{item.text}</p>

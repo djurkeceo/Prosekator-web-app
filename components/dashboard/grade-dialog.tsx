@@ -116,14 +116,15 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
                       if (error) setError("");
                     }}
                     className={cn(
-                      "flex h-16 flex-col items-center justify-center rounded-2xl border-2 transition hover:-translate-y-0.5",
-                      selected ? "shadow-soft" : "border-line bg-surface-2"
+                      "flex h-16 flex-col items-center justify-center border-2 border-line transition hover:-translate-y-0.5",
+                      selected
+                        ? "shadow-[3px_3px_0_var(--shadow-color)]"
+                        : "bg-surface-2 hover:bg-surface-3"
                     )}
                     style={
                       selected
                         ? {
-                            backgroundColor: `color-mix(in srgb, ${color} 18%, transparent)`,
-                            borderColor: color,
+                            backgroundColor: `color-mix(in srgb, ${color} 30%, var(--surface))`,
                           }
                         : undefined
                     }
@@ -170,10 +171,10 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
                   type="button"
                   onClick={() => setDescription(quick)}
                   className={cn(
-                    "rounded-full border px-2.5 py-1 text-[10px] font-semibold transition",
+                    "border-2 px-2.5 py-1 text-[10px] font-bold transition",
                     description === quick
-                      ? "border-accent bg-accent-soft text-accent-strong"
-                      : "border-line bg-surface-2 text-muted hover:border-line-strong hover:text-fg"
+                      ? "border-line bg-accent-soft text-fg shadow-[2px_2px_0_var(--shadow-color)]"
+                      : "border-line bg-surface text-muted hover:bg-surface-3 hover:text-fg"
                   )}
                 >
                   {quick}

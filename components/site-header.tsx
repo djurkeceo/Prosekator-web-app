@@ -84,12 +84,12 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
-        <div className="mx-auto max-w-7xl">
-          <div className="relative flex items-center justify-between gap-2 rounded-full border border-line bg-[var(--header-bg)] px-2.5 py-2 shadow-soft backdrop-blur-xl sm:px-3.5">
+      <header className="sticky top-0 z-50 border-b-[3px] border-line bg-[var(--header-bg)]">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 lg:px-8">
+          <div className="relative flex h-16 items-center justify-between gap-2">
             <BrandMark />
 
-            <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex" aria-label="Glavna navigacija">
+            <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 lg:flex" aria-label="Glavna navigacija">
               {navLinks.map((link) => {
                 const active = pathname === link.href;
                 return (
@@ -97,10 +97,10 @@ export function SiteHeader() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "rounded-full px-3.5 py-2 text-sm font-semibold transition",
+                      "border-2 px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition",
                       active
-                        ? "bg-accent-soft text-accent-strong"
-                        : "text-muted hover:bg-surface-2 hover:text-fg"
+                        ? "border-line bg-accent-soft text-fg shadow-[3px_3px_0_var(--shadow-color)]"
+                        : "border-transparent text-muted hover:border-line hover:text-fg"
                     )}
                   >
                     {link.label}
@@ -117,11 +117,11 @@ export function SiteHeader() {
                   <button
                     type="button"
                     onClick={() => setUserMenuOpen((open) => !open)}
-                    className="flex min-h-11 items-center gap-2 rounded-full border border-line bg-surface-2 py-1 pl-1 pr-2.5 text-sm font-bold text-fg transition hover:border-line-strong hover:bg-surface-3 sm:pr-3"
+                    className="flex min-h-11 items-center gap-2 border-[3px] border-line bg-surface py-1 pl-1 pr-2.5 text-sm font-bold text-fg shadow-[3px_3px_0_var(--shadow-color)] transition hover:-translate-y-0.5 sm:pr-3"
                     aria-expanded={userMenuOpen}
                     aria-haspopup="menu"
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-[11px] font-extrabold text-accent-fg">
+                    <span className="flex h-8 w-8 items-center justify-center border-2 border-line bg-accent text-[11px] font-black text-accent-fg">
                       {getInitials(user.name)}
                     </span>
                     <span className="hidden max-w-32 truncate sm:block">{user.name}</span>
@@ -135,8 +135,8 @@ export function SiteHeader() {
                       className="card animate-fade-up absolute right-0 top-[calc(100%+10px)] z-50 w-64 p-2"
                       role="menu"
                     >
-                      <div className="rounded-xl bg-surface-2 px-3 py-2.5">
-                        <p className="truncate text-sm font-extrabold">{user.name}</p>
+                      <div className="border-2 border-line bg-surface-2 px-3 py-2.5">
+                        <p className="truncate text-sm font-bold">{user.name}</p>
                         <p className="truncate text-xs text-muted">{user.email}</p>
                       </div>
                       <button
@@ -145,7 +145,7 @@ export function SiteHeader() {
                           setUserMenuOpen(false);
                           setAccountOpen(true);
                         }}
-                        className="mt-1.5 flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-muted transition hover:bg-surface-2 hover:text-fg"
+                        className="mt-1.5 flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-sm font-semibold text-muted transition hover:bg-surface-2 hover:text-fg"
                         role="menuitem"
                       >
                         <Settings2 className="h-4 w-4" />
@@ -155,7 +155,7 @@ export function SiteHeader() {
                         type="button"
                         onClick={handleLogout}
                         disabled={loggingOut}
-                        className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-danger transition hover:bg-danger-soft disabled:opacity-60"
+                        className="flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-sm font-semibold text-danger transition hover:bg-danger-soft disabled:opacity-60"
                         role="menuitem"
                       >
                         <LogOut className="h-4 w-4" />
@@ -180,7 +180,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => setMobileOpen((open) => !open)}
-                className="icon-btn md:hidden"
+                className="icon-btn lg:hidden"
                 aria-label={mobileOpen ? "Zatvori meni" : "Otvori meni"}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-navigation"
@@ -193,7 +193,7 @@ export function SiteHeader() {
           {mobileOpen ? (
             <div
               id="mobile-navigation"
-              className="card animate-fade-up mt-2 p-3 md:hidden"
+              className="card animate-fade-up mb-3 mt-2 p-3 lg:hidden"
             >
               <nav className="grid gap-1" aria-label="Mobilna navigacija">
                 {navLinks.map((link) => {
@@ -204,10 +204,10 @@ export function SiteHeader() {
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "flex min-h-12 items-center justify-between rounded-xl px-3.5 text-sm font-bold transition",
+                        "flex min-h-12 items-center justify-between border-2 px-3.5 text-xs font-bold uppercase tracking-[0.08em] transition",
                         active
-                          ? "bg-accent-soft text-accent-strong"
-                          : "text-muted hover:bg-surface-2 hover:text-fg"
+                          ? "border-line bg-accent-soft text-fg shadow-[3px_3px_0_var(--shadow-color)]"
+                          : "border-transparent text-muted hover:border-line hover:text-fg"
                       )}
                     >
                       {link.label}
@@ -221,8 +221,8 @@ export function SiteHeader() {
 
               {user ? (
                 <div className="grid gap-2">
-                  <div className="flex items-center gap-3 rounded-xl bg-surface-2 p-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-xs font-extrabold text-accent-fg">
+                  <div className="flex items-center gap-3 border-2 border-line bg-surface-2 p-3">
+                    <span className="flex h-9 w-9 items-center justify-center border-2 border-line bg-accent text-xs font-black text-accent-fg">
                       {getInitials(user.name)}
                     </span>
                     <div className="min-w-0">

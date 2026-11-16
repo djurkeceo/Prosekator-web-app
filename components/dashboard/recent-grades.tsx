@@ -17,17 +17,17 @@ export function RecentGrades({ subjects, onEditGrade }: RecentGradesProps) {
   return (
     <section className="card p-5">
       <div className="flex items-center gap-2">
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-surface-3 text-info">
+        <span className="flex h-10 w-10 items-center justify-center border-2 border-line bg-accent-soft text-fg shadow-[3px_3px_0_var(--shadow-color)]">
           <Clock3 className="h-4 w-4" />
         </span>
         <div>
-          <h2 className="text-sm font-extrabold">Poslednje ocene</h2>
+          <h2 className="text-sm font-bold">Poslednje ocene</h2>
           <p className="text-xs text-muted">Najnovije unete ocene.</p>
         </div>
       </div>
 
       {recent.length === 0 ? (
-        <p className="mt-4 rounded-2xl border border-dashed border-line p-4 text-center text-xs leading-5 text-muted">
+        <p className="mt-4 border-2 border-dashed border-line p-4 text-center text-xs leading-5 text-muted">
           Kada dodaš ocenu, najnovije će se pojaviti ovde.
         </p>
       ) : (
@@ -41,14 +41,13 @@ export function RecentGrades({ subjects, onEditGrade }: RecentGradesProps) {
                 key={`${subject.id}-${grade.id}`}
                 type="button"
                 onClick={() => onEditGrade(subject, grade, gradeIndex)}
-                className="flex w-full items-center gap-3 rounded-xl px-2 py-2 text-left transition hover:bg-surface-2"
+                className="flex w-full items-center gap-3 px-2 py-2 text-left transition hover:bg-accent-soft"
               >
                 <span
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border text-sm font-extrabold"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center border-2 border-line text-sm font-bold"
                   style={{
-                    backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`,
-                    borderColor: `color-mix(in srgb, ${color} 38%, transparent)`,
-                    color: `color-mix(in srgb, ${color} 70%, var(--fg))`,
+                    backgroundColor: `color-mix(in srgb, ${color} 22%, var(--surface))`,
+                    color: `color-mix(in srgb, ${color} 68%, var(--fg))`,
                   }}
                 >
                   {grade.value}

@@ -73,19 +73,19 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
 
   return (
     <section className="card p-5">
-      <div className="flex items-start gap-3">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-accent-strong">
+      <div className="flex items-center gap-2">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-line bg-accent-soft text-fg shadow-[3px_3px_0_var(--shadow-color)]">
           <Target className="h-5 w-5" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-sm font-extrabold">Simulator cilja</h2>
+          <h2 className="text-sm font-bold">Simulator cilja</h2>
           <p className="mt-0.5 text-xs leading-5 text-muted">
             Izaberi željeni prosek i vidi šta ti treba do kraja.
           </p>
         </div>
       </div>
 
-      <div className="mt-4 rounded-2xl border border-line bg-surface-2 p-4">
+      <div className="mt-4 border-2 border-line bg-surface-2 p-4">
         <div className="flex items-end justify-between gap-3">
           <div>
             <p className="eyebrow">Ciljni prosek</p>
@@ -100,10 +100,10 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
                 type="button"
                 onClick={() => setTarget(preset)}
                 className={cn(
-                  "rounded-full border px-2 py-1 text-[10px] font-bold transition",
+                  "border-2 px-2 py-1 text-[10px] font-bold transition",
                   Math.abs(target - preset) < 0.001
-                    ? "border-accent bg-accent-soft text-accent-strong"
-                    : "border-line bg-surface-2 text-muted hover:border-line-strong hover:text-fg"
+                    ? "border-line bg-accent-soft text-fg shadow-[2px_2px_0_var(--shadow-color)]"
+                    : "border-line bg-surface text-muted hover:bg-surface-3 hover:text-fg"
                 )}
               >
                 {formatAverage(preset)}
@@ -130,7 +130,7 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
       </div>
 
       {plan.ungradedSubjects === 0 && plan.gradedSubjects > 0 ? (
-        <div className="mt-3 flex items-center justify-between gap-3 rounded-2xl border border-line bg-surface-2 p-3">
+        <div className="mt-3 flex items-center justify-between gap-3 border-2 border-line bg-surface-2 p-3">
           <div>
             <p className="text-xs font-bold">Dodatnih predmeta</p>
             <p className="text-[10px] text-muted">Simuliraj buduće predmete</p>
@@ -139,7 +139,7 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
             <button
               type="button"
               onClick={() => setExtraSubjects((value) => Math.max(1, value - 1))}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition hover:bg-surface-3 hover:text-fg"
+              className="flex h-8 w-8 items-center justify-center border-2 border-line bg-surface text-fg shadow-[2px_2px_0_var(--shadow-color)] transition hover:bg-accent-soft"
               aria-label="Manje dodatnih predmeta"
             >
               <Minus className="h-3.5 w-3.5" />
@@ -148,7 +148,7 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
             <button
               type="button"
               onClick={() => setExtraSubjects((value) => Math.min(10, value + 1))}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition hover:bg-surface-3 hover:text-fg"
+              className="flex h-8 w-8 items-center justify-center border-2 border-line bg-surface text-fg shadow-[2px_2px_0_var(--shadow-color)] transition hover:bg-accent-soft"
               aria-label="Više dodatnih predmeta"
             >
               <Plus className="h-3.5 w-3.5" />
@@ -156,7 +156,7 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
           </div>
         </div>
       ) : plan.ungradedSubjects > 0 ? (
-        <div className="mt-3 rounded-2xl border border-line bg-surface-2 p-3">
+        <div className="mt-3 border-2 border-line bg-surface-2 p-3">
           <p className="text-xs font-bold">
             {plan.ungradedSubjects} {plan.ungradedSubjects === 1 ? "predmet bez ocena" : "predmeta bez ocena"}
           </p>
@@ -164,7 +164,7 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
         </div>
       ) : null}
 
-      <div className="mt-3 rounded-2xl border border-line bg-surface-2 p-4">
+      <div className="mt-3 border-2 border-line bg-surface-2 p-4">
         <div className="flex items-end justify-between gap-3">
           <div className="min-w-0">
             <p className="eyebrow">{result.title}</p>
@@ -190,7 +190,7 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
         <summary className="cursor-pointer list-none text-[11px] font-semibold text-muted transition hover:text-fg">
           Kako se računa?
         </summary>
-        <p className="mt-2 rounded-xl border border-line bg-surface-2 p-3 text-[11px] leading-5 text-muted">
+        <p className="mt-2 border-2 border-line bg-surface-2 p-3 text-[11px] leading-5 text-muted">
           Ukupan prosek je prosek zaključnih ocena svih predmeta sa ocenama, gde je zaključna
           ocena prosek predmeta zaokružen na ceo broj. Predmeti bez ocena ne ulaze u trenutni
           prosek, ali ulaze u simulaciju cilja.

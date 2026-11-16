@@ -66,7 +66,7 @@ export function SubjectEditDialog({ open, subject, onClose, onSave }: SubjectEdi
       size="sm"
       closeOnBackdrop={!loading}
       icon={
-        <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-soft text-accent-strong">
+        <span className="flex h-11 w-11 items-center justify-center border-2 border-line bg-accent-soft text-fg">
           <Palette className="h-5 w-5" />
         </span>
       }
@@ -106,8 +106,10 @@ export function SubjectEditDialog({ open, subject, onClose, onSave }: SubjectEdi
                   type="button"
                   onClick={() => setColor(paletteColor)}
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full border-2 transition hover:scale-110",
-                    selected ? "border-fg" : "border-transparent"
+                    "flex h-8 w-8 items-center justify-center border-2 transition hover:scale-105",
+                    selected
+                      ? "border-fg shadow-[2px_2px_0_var(--shadow-color)]"
+                      : "border-line/40"
                   )}
                   style={{ backgroundColor: paletteColor }}
                   aria-label={`Izaberi boju ${paletteColor}`}
@@ -120,7 +122,7 @@ export function SubjectEditDialog({ open, subject, onClose, onSave }: SubjectEdi
           </div>
         </div>
 
-        <div className="flex items-center gap-3 rounded-2xl border border-line bg-surface-2 p-3">
+        <div className="flex items-center gap-3 border-2 border-line bg-surface-2 p-3">
           <span className="h-3 w-3 rounded-full" style={{ backgroundColor: color }} />
           <p className="truncate text-sm font-bold">{name.trim() || subject.name}</p>
           <span className="ml-auto text-xs text-muted">pregled</span>

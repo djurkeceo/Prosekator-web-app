@@ -106,7 +106,7 @@ export function Modal({
       )}
     >
       <div
-        className="animate-fade-in absolute inset-0 bg-[rgba(3,6,12,0.74)] backdrop-blur-sm"
+        className="animate-fade-in absolute inset-0 bg-[rgba(11,11,11,0.62)]"
         onClick={closeOnBackdrop ? onClose : undefined}
         aria-hidden="true"
       />
@@ -129,7 +129,7 @@ export function Modal({
         <div className="flex items-start gap-3">
           {icon ? <div className="mt-0.5 shrink-0">{icon}</div> : null}
           <div className="min-w-0 flex-1">
-            <h2 id={titleId} className="text-xl font-extrabold tracking-tight text-fg sm:text-2xl">
+            <h2 id={titleId} className="text-xl font-bold tracking-tight text-fg sm:text-2xl">
               {title}
             </h2>
             {description ? (

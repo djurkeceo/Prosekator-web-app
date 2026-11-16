@@ -6,13 +6,13 @@ import { Spinner } from "@/components/ui/spinner";
 
 export function GuestBanner() {
   return (
-    <section className="card animate-fade-up flex flex-col gap-4 border-accent/30 bg-accent-soft/60 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+    <section className="card animate-fade-up flex flex-col gap-4 bg-accent-soft p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
       <div className="flex items-start gap-3">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-accent text-accent-fg">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-line bg-accent text-accent-fg">
           <UserPlus className="h-5 w-5" />
         </span>
         <div className="min-w-0">
-          <p className="text-sm font-extrabold">Trenutno si u gost režimu</p>
+          <p className="text-sm font-bold">Trenutno si u gost režimu</p>
           <p className="mt-0.5 text-xs leading-5 text-muted">
             Podaci se čuvaju samo na ovom uređaju. Napravi nalog da ih sačuvaš u oblaku i
             nastaviš na bilo kom telefonu ili računaru.
@@ -21,7 +21,7 @@ export function GuestBanner() {
       </div>
 
       <div className="flex shrink-0 gap-2">
-        <Link href="/login" className="btn btn-secondary flex-1 sm:flex-none">
+        <Link href="/login" className="btn btn-secondary flex-1 bg-surface sm:flex-none">
           <LogIn className="h-4 w-4" />
           Prijavi se
         </Link>
@@ -42,13 +42,13 @@ type GuestDataBannerProps = {
 
 export function GuestDataBanner({ isImporting, onImport, onDiscard }: GuestDataBannerProps) {
   return (
-    <section className="card animate-fade-up flex flex-col gap-4 border-info/30 bg-[color-mix(in_srgb,var(--info)_8%,transparent)] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+    <section className="card animate-fade-up flex flex-col gap-4 bg-[color-mix(in_srgb,var(--info)_8%,var(--surface))] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
       <div className="flex items-start gap-3">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--info)_18%,transparent)] text-info">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-line bg-[color-mix(in_srgb,var(--info)_18%,var(--surface))] text-info">
           <CloudUpload className="h-5 w-5" />
         </span>
         <div className="min-w-0">
-          <p className="text-sm font-extrabold">Našli smo lokalne podatke iz gost režima</p>
+          <p className="text-sm font-bold">Našli smo lokalne podatke iz gost režima</p>
           <p className="mt-0.5 text-xs leading-5 text-muted">
             Prebaci predmete i ocene na svoj nalog da budu sačuvani u oblaku. Postojeći podaci na
             nalogu neće biti obrisani.

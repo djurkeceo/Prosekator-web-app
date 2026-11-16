@@ -20,25 +20,14 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const current = document.documentElement.dataset.theme;
-    const initial: Theme = current === "light" ? "light" : "dark";
+    const initial: Theme = current === "dark" ? "dark" : "light";
     setThemeState(initial);
     setMounted(true);
-
-    const media = window.matchMedia("(prefers-color-scheme: light)");
-    const handleSystemChange = (event: MediaQueryListEvent) => {
-      if (localStorage.getItem(STORAGE_KEYS.theme)) return;
-      const next: Theme = event.matches ? "light" : "dark";
-      setThemeState(next);
-      applyTheme(next);
-    };
-
-    media.addEventListener("change", handleSystemChange);
-    return () => media.removeEventListener("change", handleSystemChange);
   }, []);
 
   const setTheme = useCallback((next: Theme) => {

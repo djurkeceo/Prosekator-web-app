@@ -54,11 +54,11 @@ export function SubjectCard({
 
   return (
     <article
-      className="card animate-fade-up relative overflow-visible p-4 pl-5"
+      className="card animate-fade-up relative overflow-visible p-4 pl-5 transition-transform hover:-translate-y-0.5"
       style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}
     >
       <span
-        className="absolute bottom-4 left-0 top-4 w-1 rounded-full"
+        className="absolute bottom-4 left-0 top-4 w-1.5"
         style={{ backgroundColor: subject.color }}
         aria-hidden="true"
       />
@@ -80,7 +80,7 @@ export function SubjectCard({
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-muted transition hover:bg-surface-3 hover:text-fg"
+            className="flex h-9 w-9 items-center justify-center border-2 border-line bg-surface text-fg shadow-[2px_2px_0_var(--shadow-color)] transition hover:bg-accent-soft"
             aria-label={`Opcije za ${subject.name}`}
             aria-expanded={menuOpen}
             aria-haspopup="menu"
@@ -96,7 +96,7 @@ export function SubjectCard({
                   setMenuOpen(false);
                   onEditSubject(subject);
                 }}
-                className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-xs font-semibold text-muted transition hover:bg-surface-2 hover:text-fg"
+                className="flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-semibold text-muted transition hover:bg-accent-soft hover:text-fg"
                 role="menuitem"
               >
                 <Pencil className="h-3.5 w-3.5" />
@@ -108,7 +108,7 @@ export function SubjectCard({
                   setMenuOpen(false);
                   onDelete(subject);
                 }}
-                className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-xs font-semibold text-danger transition hover:bg-danger-soft"
+                className="flex w-full items-center gap-2 rounded-none px-3 py-2 text-left text-xs font-semibold text-danger transition hover:bg-danger-soft"
                 role="menuitem"
               >
                 <Trash2 className="h-3.5 w-3.5" />
@@ -131,17 +131,16 @@ export function SubjectCard({
                   key={grade.id}
                   type="button"
                   onClick={() => onEditGrade(subject, grade, gradeIndex)}
-                  className="group relative flex h-9 min-w-9 items-center justify-center rounded-xl border px-2 text-sm font-extrabold transition hover:-translate-y-0.5"
+                  className="group relative flex h-9 min-w-9 items-center justify-center border-2 border-line px-2 text-sm font-bold transition hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--shadow-color)]"
                   style={{
-                    backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`,
-                    borderColor: `color-mix(in srgb, ${color} 40%, transparent)`,
+                    backgroundColor: `color-mix(in srgb, ${color} 22%, var(--surface))`,
                     color: `color-mix(in srgb, ${color} 68%, var(--fg))`,
                   }}
                   aria-label={`Ocena ${grade.value} — ${grade.description || GRADE_LABELS[grade.value]}. Klikni za izmenu.`}
                   title={grade.description || GRADE_LABELS[grade.value]}
                 >
                   {grade.value}
-                  <span className="tooltip-surface pointer-events-none absolute bottom-full left-1/2 z-40 mb-2 hidden w-max max-w-48 -translate-x-1/2 rounded-lg px-2.5 py-1.5 text-center text-[10px] font-semibold leading-4 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100 sm:block">
+                  <span className="tooltip-surface pointer-events-none absolute bottom-full left-1/2 z-40 mb-2 hidden w-max max-w-48 -translate-x-1/2 rounded-none px-2.5 py-1.5 text-center text-[10px] font-semibold leading-4 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100 sm:block">
                     {grade.description || GRADE_LABELS[grade.value]}
                     <span className="mt-0.5 block text-[9px] font-medium text-muted">
                       {formatDate(grade.createdAt)}
@@ -155,27 +154,26 @@ export function SubjectCard({
           <button
             type="button"
             onClick={() => onAddGrade(subject)}
-            className="flex h-9 min-w-9 items-center justify-center rounded-xl border border-dashed border-accent/60 px-2 text-accent-strong transition hover:bg-accent-soft"
+            className="flex h-9 min-w-9 items-center justify-center border-2 border-dashed border-line bg-surface px-2 text-fg transition hover:border-solid hover:bg-accent-soft"
             aria-label={`Dodaj ocenu za ${subject.name}`}
           >
             <Plus className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="flex shrink-0 flex-col items-end">
-          <span className="text-[9px] font-bold uppercase tracking-widest text-muted">Prosek</span>
+        <div className="flex shrink-0 flex-col items-end border-2 border-line bg-accent-soft px-2.5 py-1.5 text-fg">
+          <span className="text-[9px] font-bold uppercase tracking-[0.14em]">Prosek</span>
           <span
             className={cn(
-              "text-xl font-extrabold tracking-tight",
+              "text-xl font-bold leading-none tracking-tight",
               average === null && "text-muted"
             )}
-            style={average !== null ? { color: `color-mix(in srgb, ${subject.color} 72%, var(--fg))` } : undefined}
           >
             {average === null ? "—" : formatAverage(average)}
           </span>
           {finalGrade !== null ? (
-            <span className="mt-0.5 text-[10px] font-semibold text-muted">
-              Zaključna: <span className="font-extrabold text-fg">{finalGrade}</span>
+            <span className="mt-1 text-[10px] font-semibold">
+              Zaključna: <span className="font-bold">{finalGrade}</span>
             </span>
           ) : null}
         </div>

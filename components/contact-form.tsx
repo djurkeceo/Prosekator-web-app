@@ -120,7 +120,7 @@ export function ContactForm() {
 
       {error ? (
         <p
-          className="flex items-start gap-2 rounded-xl border border-danger/30 bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
+          className="flex items-start gap-2 border-2 border-line bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
           role="alert"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
@@ -129,7 +129,7 @@ export function ContactForm() {
       ) : null}
 
       {sent && !error ? (
-        <p className="flex items-start gap-2 rounded-xl border border-accent/30 bg-accent-soft px-3 py-2.5 text-xs font-semibold leading-5 text-fg">
+        <p className="flex items-start gap-2 border-2 border-line bg-accent-soft px-3 py-2.5 text-xs font-semibold leading-5 text-fg">
           <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-strong" />
           Ako se email aplikacija nije otvorila, pošalji poruku direktno na{" "}
           <a href={`mailto:${CONTACT_EMAIL}`} className="link">

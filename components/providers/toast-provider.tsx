@@ -25,9 +25,9 @@ type ToastContextValue = {
 const ToastContext = createContext<ToastContextValue | null>(null);
 
 const variantStyles: Record<ToastVariant, string> = {
-  success: "border-accent/30 bg-accent-soft text-fg",
-  error: "border-danger/30 bg-danger-soft text-fg",
-  info: "border-line-strong bg-surface-solid text-fg",
+  success: "border-line bg-accent-soft text-fg",
+  error: "border-line bg-danger-soft text-fg",
+  info: "border-line bg-surface-solid text-fg",
 };
 
 const icons = {
@@ -79,7 +79,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             <div
               key={item.id}
               className={cn(
-                "animate-toast-in pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-2xl border p-3.5 shadow-strong backdrop-blur-xl",
+                "animate-toast-in pointer-events-auto flex w-full max-w-sm items-start gap-3 border-2 p-3.5 shadow-strong",
                 variantStyles[item.variant]
               )}
               role="status"
@@ -101,7 +101,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               <button
                 type="button"
                 onClick={() => dismiss(item.id)}
-                className="rounded-full p-1 text-muted transition hover:bg-surface-2 hover:text-fg"
+                className="p-1 text-muted transition hover:bg-surface-2 hover:text-fg"
                 aria-label="Zatvori obaveštenje"
               >
                 <X className="h-4 w-4" />

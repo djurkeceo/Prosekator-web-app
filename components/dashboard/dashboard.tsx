@@ -77,14 +77,14 @@ export function Dashboard() {
   };
 
   return (
-    <main id="main-content" className="flex-1 px-3 pb-10 pt-4 sm:px-4 sm:pt-6 lg:px-8">
+    <main id="main-content" className="flex-1 px-3 pb-12 pt-5 sm:px-4 sm:pt-7 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div className="min-w-0">
             <p className="eyebrow">
               {user ? `Zdravo${firstName ? `, ${firstName}` : ""}` : "Gost režim"}
             </p>
-            <h1 className="mt-1 text-2xl font-extrabold tracking-tight sm:text-3xl">
+            <h1 className="mt-1 inline-block border-b-4 border-accent-soft pb-0.5 text-3xl font-bold uppercase tracking-tight sm:text-4xl">
               Tvoj prosek
             </h1>
           </div>
@@ -123,10 +123,10 @@ export function Dashboard() {
           <DashboardSkeleton />
         ) : gradebook.status === "error" ? (
           <section className="card p-6 text-center sm:p-8">
-            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-danger-soft text-danger">
+            <span className="mx-auto flex h-14 w-14 items-center justify-center border-[3px] border-line bg-danger-soft text-danger shadow-[4px_4px_0_var(--shadow-color)]">
               <AlertTriangle className="h-6 w-6" />
             </span>
-            <h2 className="mt-4 text-xl font-extrabold">Podaci nisu učitani</h2>
+            <h2 className="mt-4 text-xl font-bold">Podaci nisu učitani</h2>
             <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-muted">
               {gradebook.error || "Došlo je do greške pri učitavanju podataka."}
             </p>

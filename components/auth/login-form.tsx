@@ -100,7 +100,7 @@ export function LoginForm() {
 
       {error ? (
         <p
-          className="flex items-start gap-2 rounded-xl border border-danger/30 bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
+          className="flex items-start gap-2 border-2 border-line bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
           role="alert"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />

@@ -143,7 +143,7 @@ export function SignupForm() {
               <span
                 key={segment}
                 className={cn(
-                  "h-1.5 flex-1 rounded-full transition",
+                  "h-1.5 flex-1 transition",
                   score > segment
                     ? score >= 3
                       ? "bg-accent"
@@ -184,8 +184,8 @@ export function SignupForm() {
               >
                 <span
                   className={cn(
-                    "flex h-4 w-4 items-center justify-center rounded-full border",
-                    passed ? "border-accent bg-accent-soft" : "border-line"
+                    "flex h-4 w-4 items-center justify-center border-2",
+                    passed ? "border-line bg-accent-soft" : "border-line"
                   )}
                 >
                   {passed ? <Check className="h-2.5 w-2.5" /> : null}
@@ -219,7 +219,7 @@ export function SignupForm() {
 
       {error ? (
         <p
-          className="flex items-start gap-2 rounded-xl border border-danger/30 bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
+          className="flex items-start gap-2 border-2 border-line bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
           role="alert"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />

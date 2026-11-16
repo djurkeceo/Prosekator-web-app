@@ -21,7 +21,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         <button
           type="button"
           onClick={() => setVisible((current) => !current)}
-          className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-xl text-muted transition hover:bg-surface-3 hover:text-fg"
+          className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-none text-muted transition hover:bg-surface-3 hover:text-fg"
           aria-label={visible ? "Sakrij lozinku" : "Prikaži lozinku"}
           aria-pressed={visible}
           tabIndex={-1}

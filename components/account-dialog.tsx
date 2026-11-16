@@ -149,7 +149,7 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
         description="Upravljaj imenom, lozinkom i nalogom na jednom mestu."
         size="lg"
         icon={
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-soft text-accent-strong">
+          <span className="flex h-11 w-11 items-center justify-center border-2 border-line bg-accent-soft text-fg">
             <UserRound className="h-5 w-5" />
           </span>
         }
@@ -161,13 +161,13 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
               <h3 className="text-sm font-extrabold">Profil</h3>
             </div>
 
-            <div className="rounded-2xl border border-line bg-surface-2 p-4">
+            <div className="border-2 border-line bg-surface-2 p-4">
               <div className="mb-4 flex items-center justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted">Email</p>
                   <p className="truncate text-sm font-semibold text-fg">{user.email}</p>
                 </div>
-                <span className="badge bg-accent-soft text-accent-strong">Aktivan</span>
+                <span className="badge bg-accent-soft text-fg">Aktivan</span>
               </div>
 
               <form onSubmit={handleProfileSubmit} className="space-y-3">
@@ -254,8 +254,8 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
                     >
                       <span
                         className={cn(
-                          "flex h-4 w-4 items-center justify-center rounded-full border",
-                          passed ? "border-accent bg-accent-soft" : "border-line"
+                          "flex h-4 w-4 items-center justify-center border-2",
+                          passed ? "border-line bg-accent-soft" : "border-line"
                         )}
                       >
                         {passed ? <Check className="h-2.5 w-2.5" /> : null}
@@ -267,7 +267,7 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
               </div>
 
               {passwordError ? (
-                <p className="rounded-xl border border-danger/30 bg-danger-soft px-3 py-2 text-xs font-semibold text-danger" role="alert">
+                <p className="border-2 border-line bg-danger-soft px-3 py-2 text-xs font-semibold text-danger" role="alert">
                   {passwordError}
                 </p>
               ) : null}
@@ -286,7 +286,7 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
               <ShieldAlert className="h-4 w-4" />
               <h3 className="text-sm font-extrabold">Opasna zona</h3>
             </div>
-            <div className="flex flex-col gap-3 rounded-2xl border border-danger/25 bg-danger-soft p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 border-2 border-line bg-danger-soft p-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-bold text-fg">Brisanje naloga</p>
                 <p className="mt-0.5 text-xs leading-5 text-muted">

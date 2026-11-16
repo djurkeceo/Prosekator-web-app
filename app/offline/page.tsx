@@ -11,10 +11,10 @@ export default function OfflinePage() {
   return (
     <main id="main-content" className="flex flex-1 items-center justify-center px-4 py-16">
       <div className="card w-full max-w-md p-8 text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-accent-soft text-accent-strong">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center border-[3px] border-line bg-accent-soft text-fg shadow-[5px_5px_0_var(--shadow-color)]">
           <WifiOff className="h-7 w-7" />
         </div>
-        <h1 className="mt-5 text-2xl font-extrabold">Trenutno si offline</h1>
+        <h1 className="mt-5 text-2xl font-bold">Trenutno si offline</h1>
         <p className="mt-2 text-sm leading-6 text-muted">
           Prosekator radi i bez interneta kada je već učitan. Gost režim i poslednji podaci
           ostaju sačuvani na ovom uređaju.

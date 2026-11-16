@@ -41,8 +41,8 @@ export function ConfirmDialog({
       icon={
         <span
           className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-2xl",
-            variant === "danger" ? "bg-danger-soft text-danger" : "bg-accent-soft text-accent-strong"
+            "flex h-11 w-11 items-center justify-center border-2 border-line",
+            variant === "danger" ? "bg-danger-soft text-danger" : "bg-accent-soft text-fg"
           )}
         >
           <Icon className="h-5 w-5" />
@@ -65,7 +65,7 @@ export function ConfirmDialog({
         </div>
       }
     >
-      <div className="rounded-2xl border border-line bg-surface-2 p-3 text-xs leading-5 text-muted">
+      <div className="border-2 border-line bg-surface-2 p-3 text-xs leading-5 text-muted">
         Ova akcija se ne može automatski poništiti.
       </div>
     </Modal>
