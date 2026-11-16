@@ -200,7 +200,8 @@ export default function AboutPage() {
               </div>
 
               <p className="mt-4 text-[11px] leading-5 text-muted">
-                Ukupan prosek je prosek proseka predmeta sa ocenama. Predmeti bez ocena ne ulaze u
+                Ukupan prosek je prosek zaključnih ocena predmeta sa ocenama, gde je zaključna
+                ocena prosek predmeta zaokružen na ceo broj. Predmeti bez ocena ne ulaze u
                 trenutni prosek.
               </p>
             </div>

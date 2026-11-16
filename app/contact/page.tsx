@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "Kako se računa ukupan prosek?",
     answer:
-      "Ukupan prosek je prosek proseka svih predmeta koji imaju bar jednu ocenu. Predmeti bez ocena ne ulaze u trenutni prosek, ali ulaze u simulator cilja.",
+      "Ukupan prosek je prosek zaključnih ocena svih predmeta koji imaju bar jednu ocenu. Zaključna ocena je prosek predmeta zaokružen na ceo broj (npr. 3,50 → 4, 3,40 → 3). Predmeti bez ocena ne ulaze u trenutni prosek, ali ulaze u simulator cilja.",
   },
   {
     question: "Kako da obrišem nalog?",

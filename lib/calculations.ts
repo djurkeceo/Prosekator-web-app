@@ -22,14 +22,21 @@ export function getSubjectAverage(subject: Subject): number | null {
   return total / subject.grades.length;
 }
 
+export function getSubjectFinalGrade(subject: Subject): number | null {
+  const average = getSubjectAverage(subject);
+  if (average === null) return null;
+
+  return Math.round(average);
+}
+
 export function getOverallAverage(subjects: Subject[]): number {
-  const averages = subjects
-    .map((subject) => getSubjectAverage(subject))
-    .filter((average): average is number => average !== null);
+  const finalGrades = subjects
+    .map((subject) => getSubjectFinalGrade(subject))
+    .filter((grade): grade is number => grade !== null);
 
-  if (!averages.length) return 0;
+  if (!finalGrades.length) return 0;
 
-  return averages.reduce((sum, average) => sum + average, 0) / averages.length;
+  return finalGrades.reduce((sum, grade) => sum + grade, 0) / finalGrades.length;
 }
 
 export function getAllGrades(subjects: Subject[]): Array<{ grade: Grade; subject: Subject }> {

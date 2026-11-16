@@ -27,8 +27,10 @@ export function InfoCard() {
             2
           </span>
           <p>
-            Ukupan prosek je <span className="font-bold text-fg">prosek proseka</span> svih
-            predmeta koji imaju bar jednu ocenu. Predmeti bez ocena ne obaraju prosek.
+            Zaključna ocena predmeta je prosek predmeta zaokružen na ceo broj (3,50 → 4, 3,40 →
+            3). Ukupan prosek je{" "}
+            <span className="font-bold text-fg">prosek zaključnih ocena</span> svih predmeta koji
+            imaju bar jednu ocenu. Predmeti bez ocena ne obaraju prosek.
           </p>
         </div>
         <div className="flex gap-2.5 rounded-xl border border-line bg-surface-2 p-3">

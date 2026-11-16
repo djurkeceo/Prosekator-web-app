@@ -18,7 +18,7 @@
 - **PWA / offline** — instalacija na početni ekran i rad sa poslednjim sačuvanim podacima.
 - **Bezbednost** — HttpOnly JWT kolačić, heširane lozinke, ograničenje broja pokušaja prijave.
 
-Ukupan prosek se računa kao **prosek proseka predmeta koji imaju bar jednu ocenu**. Predmeti bez ocena ne ulaze u trenutni prosek, ali ulaze u simulator cilja.
+Ukupan prosek se računa kao **prosek zaključnih ocena predmeta koji imaju bar jednu ocenu**. Zaključna ocena predmeta je prosek predmeta zaokružen na ceo broj (npr. 3,50 → 4, 3,40 → 3). Predmeti bez ocena ne ulaze u trenutni prosek, ali ulaze u simulator cilja.
 
 ---
 

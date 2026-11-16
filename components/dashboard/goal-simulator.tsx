@@ -191,8 +191,9 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
           Kako se računa?
         </summary>
         <p className="mt-2 rounded-xl border border-line bg-surface-2 p-3 text-[11px] leading-5 text-muted">
-          Ukupan prosek je prosek proseka svih predmeta sa ocenama. Predmeti bez ocena ne ulaze
-          u trenutni prosek, ali ulaze u simulaciju cilja.
+          Ukupan prosek je prosek zaključnih ocena svih predmeta sa ocenama, gde je zaključna
+          ocena prosek predmeta zaokružen na ceo broj. Predmeti bez ocena ne ulaze u trenutni
+          prosek, ali ulaze u simulaciju cilja.
         </p>
       </details>
     </section>

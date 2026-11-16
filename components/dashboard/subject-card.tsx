@@ -4,7 +4,7 @@ import { MoreVertical, Pencil, Plus, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Spinner } from "@/components/ui/spinner";
 import { GRADE_COLORS, GRADE_LABELS } from "@/lib/constants";
-import { formatAverage, getSubjectAverage } from "@/lib/calculations";
+import { formatAverage, getSubjectAverage, getSubjectFinalGrade } from "@/lib/calculations";
 import type { Grade, Subject } from "@/lib/types";
 import { cn, formatDate } from "@/lib/utils";
 
@@ -30,6 +30,7 @@ export function SubjectCard({
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const average = getSubjectAverage(subject);
+  const finalGrade = getSubjectFinalGrade(subject);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -172,6 +173,11 @@ export function SubjectCard({
           >
             {average === null ? "—" : formatAverage(average)}
           </span>
+          {finalGrade !== null ? (
+            <span className="mt-0.5 text-[10px] font-semibold text-muted">
+              Zaključna: <span className="font-extrabold text-fg">{finalGrade}</span>
+            </span>
+          ) : null}
         </div>
       </div>
     </article>
