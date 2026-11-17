@@ -143,10 +143,10 @@ export function SignupForm() {
               <span
                 key={segment}
                 className={cn(
-                  "h-1.5 flex-1 transition",
+                  "h-1 flex-1 rounded-[1px] transition-colors",
                   score > segment
                     ? score >= 3
-                      ? "bg-accent"
+                      ? "bg-green"
                       : score === 2
                         ? "bg-warn"
                         : "bg-danger"
@@ -158,16 +158,16 @@ export function SignupForm() {
           <div className="mt-1.5 flex items-center justify-between gap-3">
             <span
               className={cn(
-                "text-[10px] font-bold uppercase tracking-wider",
+                "font-mono text-[9px]",
                 !password && "text-muted",
-                password && score >= 3 && "text-accent-strong",
+                password && score >= 3 && "text-green",
                 password && score === 2 && "text-warn",
                 password && score < 2 && "text-danger"
               )}
             >
-              {password ? strengthLabels[score] : "Jačina lozinke"}
+              {password ? strengthLabels[score] : "jačina lozinke"}
             </span>
-            <span className="text-[10px] text-muted">{password.length}/8</span>
+            <span className="font-mono text-[9px] text-muted">{password.length}/8</span>
           </div>
         </div>
 
@@ -178,14 +178,14 @@ export function SignupForm() {
               <span
                 key={requirement.id}
                 className={cn(
-                  "inline-flex items-center gap-1.5 text-[11px] font-semibold",
-                  passed ? "text-accent-strong" : "text-muted"
+                  "inline-flex items-center gap-1.5 text-[10px]",
+                  passed ? "text-green" : "text-muted"
                 )}
               >
                 <span
                   className={cn(
-                    "flex h-4 w-4 items-center justify-center border-2",
-                    passed ? "border-line bg-accent-soft" : "border-line"
+                    "flex h-3.5 w-3.5 items-center justify-center rounded-[2px] border",
+                    passed ? "border-line bg-accent-soft text-yellow-fg" : "border-line"
                   )}
                 >
                   {passed ? <Check className="h-2.5 w-2.5" /> : null}
@@ -213,42 +213,42 @@ export function SignupForm() {
           aria-invalid={Boolean(confirmPassword && password !== confirmPassword)}
         />
         {confirmPassword && password !== confirmPassword ? (
-          <p className="mt-1.5 text-[11px] font-semibold text-danger">Lozinke se ne poklapaju.</p>
+          <p className="mt-1.5 text-[10px] text-danger">Lozinke se ne poklapaju.</p>
         ) : null}
       </div>
 
       {error ? (
         <p
-          className="flex items-start gap-2 border-2 border-line bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
+          className="flex items-start gap-2 border border-[color-mix(in_srgb,var(--danger)_30%,transparent)] bg-danger-soft px-3 py-2.5 text-[10.5px] leading-5 text-danger"
           role="alert"
         >
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           {error}
         </p>
       ) : null}
 
       <button type="submit" className="btn btn-primary w-full" disabled={loading}>
-        {loading ? <Spinner /> : <UserPlus className="h-4 w-4" />}
+        {loading ? <Spinner /> : <UserPlus className="h-3.5 w-3.5" />}
         {loading ? "Pravim nalog…" : "Napravi nalog"}
       </button>
 
-      <p className="text-center text-[11px] leading-5 text-muted">
+      <p className="text-center text-[10px] leading-5 text-muted">
         Podaci se čuvaju bezbedno i koriste se isključivo za tvoj prosek. Nalog možeš obrisati u
         svakom trenutku.
       </p>
 
       <div className="hairline" />
 
-      <p className="text-center text-sm text-muted">
+      <p className="text-center text-[11px] text-muted">
         Već imaš nalog?{" "}
         <Link href="/login" className="link">
           Prijavi se
         </Link>
       </p>
 
-      <p className="flex items-center justify-center gap-1.5 text-[11px] font-semibold text-muted">
-        <Sparkles className="h-3.5 w-3.5 text-accent-strong" />
-        Gost režim i dalje radi bez naloga
+      <p className="flex items-center justify-center gap-1.5 font-mono text-[9.5px] text-muted">
+        <Sparkles className="h-3 w-3 text-accent-strong" />
+        gost režim i dalje radi bez naloga
       </p>
     </form>
   );

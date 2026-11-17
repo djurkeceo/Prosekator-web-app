@@ -6,7 +6,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { GRADE_COLORS, GRADE_LABELS } from "@/lib/constants";
 import { formatAverage, getSubjectAverage, getSubjectFinalGrade } from "@/lib/calculations";
 import type { Grade, Subject } from "@/lib/types";
-import { cn, formatDate } from "@/lib/utils";
+import { cn, formatDate, gradeCountLabel } from "@/lib/utils";
 
 type SubjectCardProps = {
   subject: Subject;
@@ -54,25 +54,25 @@ export function SubjectCard({
 
   return (
     <article
-      className="card animate-fade-up relative overflow-visible p-4 pl-5 transition-transform hover:-translate-y-0.5"
+      className="card animate-fade-up relative overflow-visible p-4 transition-colors hover:border-line-strong"
       style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}
     >
-      <span
-        className="absolute bottom-4 left-0 top-4 w-1.5"
-        style={{ backgroundColor: subject.color }}
-        aria-hidden="true"
-      />
-
       <div className="flex items-start justify-between gap-2">
-        <div className="flex min-w-0 items-center gap-2">
+        <div className="flex min-w-0 items-start gap-2.5">
           <span
-            className="h-2.5 w-2.5 shrink-0 rounded-full"
+            className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-[1px]"
             style={{ backgroundColor: subject.color }}
             aria-hidden="true"
           />
-          <h3 className="truncate text-[0.95rem] font-extrabold sm:text-base" title={subject.name}>
-            {subject.name}
-          </h3>
+          <div className="min-w-0">
+            <h3 className="truncate font-mono text-[15px] font-medium tracking-[-0.02em]" title={subject.name}>
+              {subject.name}
+            </h3>
+            <p className="mt-1 font-mono text-[9px] text-muted">
+              {gradeCountLabel(subject.grades.length)}
+              {finalGrade !== null ? ` · zaključna ${finalGrade}` : " · bez zaključne"}
+            </p>
+          </div>
         </div>
 
         <div ref={menuRef} className="relative flex shrink-0 items-center gap-1">
@@ -80,7 +80,7 @@ export function SubjectCard({
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-9 w-9 items-center justify-center border-2 border-line bg-surface text-fg shadow-[2px_2px_0_var(--shadow-color)] transition hover:bg-accent-soft"
+            className="icon-btn h-8 w-8"
             aria-label={`Opcije za ${subject.name}`}
             aria-expanded={menuOpen}
             aria-haspopup="menu"
@@ -89,14 +89,17 @@ export function SubjectCard({
           </button>
 
           {menuOpen ? (
-            <div className="card animate-fade-up absolute right-0 top-[calc(100%+6px)] z-30 w-44 p-1.5" role="menu">
+            <div
+              className="animate-fade-up absolute right-0 top-[calc(100%+6px)] z-30 w-44 overflow-hidden rounded-[8px] border border-line bg-surface p-1 shadow-strong"
+              role="menu"
+            >
               <button
                 type="button"
                 onClick={() => {
                   setMenuOpen(false);
                   onEditSubject(subject);
                 }}
-                className="flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-semibold text-muted transition hover:bg-accent-soft hover:text-fg"
+                className="flex w-full items-center gap-2 rounded-[4px] px-2.5 py-2 text-left text-[11px] text-muted transition hover:bg-surface-2 hover:text-fg"
                 role="menuitem"
               >
                 <Pencil className="h-3.5 w-3.5" />
@@ -108,7 +111,7 @@ export function SubjectCard({
                   setMenuOpen(false);
                   onDelete(subject);
                 }}
-                className="flex w-full items-center gap-2 rounded-none px-3 py-2 text-left text-xs font-semibold text-danger transition hover:bg-danger-soft"
+                className="flex w-full items-center gap-2 rounded-[4px] px-2.5 py-2 text-left text-[11px] text-danger transition hover:bg-danger-soft"
                 role="menuitem"
               >
                 <Trash2 className="h-3.5 w-3.5" />
@@ -119,30 +122,31 @@ export function SubjectCard({
         </div>
       </div>
 
-      <div className="mt-3 flex items-end justify-between gap-3">
+      <div className="mt-4 flex items-end justify-between gap-3">
         <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
           {subject.grades.length === 0 ? (
-            <span className="text-xs text-muted">Još nema ocena.</span>
+            <span className="font-mono text-[10px] text-muted">još nema ocena</span>
           ) : (
             subject.grades.map((grade, gradeIndex) => {
-              const color = GRADE_COLORS[grade.value] || "#B4D63D";
+              const color = GRADE_COLORS[grade.value] || "#2B2BFF";
               return (
                 <button
                   key={grade.id}
                   type="button"
                   onClick={() => onEditGrade(subject, grade, gradeIndex)}
-                  className="group relative flex h-9 min-w-9 items-center justify-center border-2 border-line px-2 text-sm font-bold transition hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--shadow-color)]"
+                  className="group/grade relative flex h-8 min-w-8 items-center justify-center rounded-[2px] border px-1.5 font-mono text-[11px] font-medium transition hover:border-fg"
                   style={{
-                    backgroundColor: `color-mix(in srgb, ${color} 22%, var(--surface))`,
-                    color: `color-mix(in srgb, ${color} 68%, var(--fg))`,
+                    backgroundColor: `color-mix(in srgb, ${color} 8%, var(--surface))`,
+                    borderColor: `color-mix(in srgb, ${color} 26%, var(--line))`,
+                    color: `color-mix(in srgb, ${color} 76%, var(--fg))`,
                   }}
                   aria-label={`Ocena ${grade.value} — ${grade.description || GRADE_LABELS[grade.value]}. Klikni za izmenu.`}
                   title={grade.description || GRADE_LABELS[grade.value]}
                 >
                   {grade.value}
-                  <span className="tooltip-surface pointer-events-none absolute bottom-full left-1/2 z-40 mb-2 hidden w-max max-w-48 -translate-x-1/2 rounded-none px-2.5 py-1.5 text-center text-[10px] font-semibold leading-4 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100 sm:block">
+                  <span className="tooltip-surface pointer-events-none absolute bottom-full left-1/2 z-40 mb-2 hidden w-max max-w-48 -translate-x-1/2 px-2 py-1.5 text-center text-[9px] leading-4 opacity-0 transition group-hover/grade:opacity-100 group-focus-visible/grade:opacity-100 sm:block">
                     {grade.description || GRADE_LABELS[grade.value]}
-                    <span className="mt-0.5 block text-[9px] font-medium text-muted">
+                    <span className="mt-0.5 block text-[8px] text-muted">
                       {formatDate(grade.createdAt)}
                     </span>
                   </span>
@@ -154,26 +158,26 @@ export function SubjectCard({
           <button
             type="button"
             onClick={() => onAddGrade(subject)}
-            className="flex h-9 min-w-9 items-center justify-center border-2 border-dashed border-line bg-surface px-2 text-fg transition hover:border-solid hover:bg-accent-soft"
+            className="flex h-8 min-w-8 items-center justify-center rounded-[2px] border border-dashed border-line bg-surface px-1.5 text-fg transition hover:border-solid hover:border-fg hover:bg-surface-2"
             aria-label={`Dodaj ocenu za ${subject.name}`}
           >
-            <Plus className="h-4 w-4" />
+            <Plus className="h-3.5 w-3.5" />
           </button>
         </div>
 
-        <div className="flex shrink-0 flex-col items-end border-2 border-line bg-accent-soft px-2.5 py-1.5 text-fg">
-          <span className="text-[9px] font-bold uppercase tracking-[0.14em]">Prosek</span>
+        <div className="flex shrink-0 flex-col items-end border-l border-line pl-3">
+          <span className="font-mono text-[8.5px] text-muted">prosek</span>
           <span
             className={cn(
-              "text-xl font-bold leading-none tracking-tight",
-              average === null && "text-muted"
+              "mt-1 font-mono text-lg leading-none tracking-[-0.03em]",
+              average === null ? "text-muted" : "text-fg"
             )}
           >
             {average === null ? "—" : formatAverage(average)}
           </span>
           {finalGrade !== null ? (
-            <span className="mt-1 text-[10px] font-semibold">
-              Zaključna: <span className="font-bold">{finalGrade}</span>
+            <span className="mt-1 font-mono text-[9px] text-muted">
+              zaključna <span className="text-fg">{finalGrade}</span>
             </span>
           ) : null}
         </div>

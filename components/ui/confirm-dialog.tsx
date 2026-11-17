@@ -41,11 +41,11 @@ export function ConfirmDialog({
       icon={
         <span
           className={cn(
-            "flex h-11 w-11 items-center justify-center border-2 border-line",
-            variant === "danger" ? "bg-danger-soft text-danger" : "bg-accent-soft text-fg"
+            "flex h-10 w-10 items-center justify-center rounded-[4px] border border-line",
+            variant === "danger" ? "bg-danger-soft text-danger" : "bg-accent-soft text-yellow-fg"
           )}
         >
-          <Icon className="h-5 w-5" />
+          <Icon className="h-4 w-4" />
         </span>
       }
       footer={
@@ -59,13 +59,13 @@ export function ConfirmDialog({
             className={cn("btn", variant === "danger" ? "btn-danger" : "btn-primary")}
             disabled={loading}
           >
-            {loading ? <Spinner /> : <Icon className="h-4 w-4" />}
+            {loading ? <Spinner /> : <Icon className="h-3.5 w-3.5" />}
             {confirmLabel}
           </button>
         </div>
       }
     >
-      <div className="border-2 border-line bg-surface-2 p-3 text-xs leading-5 text-muted">
+      <div className="border border-line bg-surface-2 p-3 font-mono text-[9.5px] leading-5 text-muted">
         Ova akcija se ne može automatski poništiti.
       </div>
     </Modal>

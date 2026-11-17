@@ -66,8 +66,8 @@ export function SubjectEditDialog({ open, subject, onClose, onSave }: SubjectEdi
       size="sm"
       closeOnBackdrop={!loading}
       icon={
-        <span className="flex h-11 w-11 items-center justify-center border-2 border-line bg-accent-soft text-fg">
-          <Palette className="h-5 w-5" />
+        <span className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-line bg-accent-soft text-yellow-fg">
+          <Palette className="h-4 w-4" />
         </span>
       }
     >
@@ -89,7 +89,7 @@ export function SubjectEditDialog({ open, subject, onClose, onSave }: SubjectEdi
             aria-invalid={Boolean(error)}
           />
           {error ? (
-            <p className="mt-1.5 text-xs font-semibold text-danger" role="alert">
+            <p className="mt-1.5 text-[11px] text-danger" role="alert">
               {error}
             </p>
           ) : null}
@@ -106,26 +106,28 @@ export function SubjectEditDialog({ open, subject, onClose, onSave }: SubjectEdi
                   type="button"
                   onClick={() => setColor(paletteColor)}
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center border-2 transition hover:scale-105",
-                    selected
-                      ? "border-fg shadow-[2px_2px_0_var(--shadow-color)]"
-                      : "border-line/40"
+                    "flex h-7 w-7 items-center justify-center rounded-[2px] border transition hover:scale-105",
+                    selected ? "border-fg ring-1 ring-fg" : "border-line/40"
                   )}
                   style={{ backgroundColor: paletteColor }}
                   aria-label={`Izaberi boju ${paletteColor}`}
                   aria-pressed={selected}
                 >
-                  {selected ? <Check className="h-3.5 w-3.5 text-[#08120a]" /> : null}
+                  {selected ? (
+                    <span className="flex h-3.5 w-3.5 items-center justify-center rounded-[1px] bg-surface text-fg shadow-soft">
+                      <Check className="h-2.5 w-2.5" />
+                    </span>
+                  ) : null}
                 </button>
               );
             })}
           </div>
         </div>
 
-        <div className="flex items-center gap-3 border-2 border-line bg-surface-2 p-3">
-          <span className="h-3 w-3 rounded-full" style={{ backgroundColor: color }} />
-          <p className="truncate text-sm font-bold">{name.trim() || subject.name}</p>
-          <span className="ml-auto text-xs text-muted">pregled</span>
+        <div className="flex items-center gap-3 border border-line bg-surface-2 p-3">
+          <span className="h-2 w-2 rounded-[1px]" style={{ backgroundColor: color }} />
+          <p className="truncate font-mono text-[12px]">{name.trim() || subject.name}</p>
+          <span className="ml-auto font-mono text-[9px] text-muted">pregled</span>
         </div>
 
         <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
@@ -133,7 +135,7 @@ export function SubjectEditDialog({ open, subject, onClose, onSave }: SubjectEdi
             Otkaži
           </button>
           <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? <Spinner /> : <Check className="h-4 w-4" />}
+            {loading ? <Spinner /> : <Check className="h-3.5 w-3.5" />}
             Sačuvaj izmene
           </button>
         </div>

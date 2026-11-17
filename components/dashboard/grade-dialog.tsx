@@ -95,7 +95,7 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
         open={open}
         onClose={saving ? () => undefined : onClose}
         title={isEditing ? "Izmeni ocenu" : "Dodaj ocenu"}
-        description={`${subject.name}${subjectAverage !== null ? ` • trenutni prosek ${formatAverage(subjectAverage)}` : ""}`}
+        description={`${subject.name}${subjectAverage !== null ? ` · trenutni prosek ${formatAverage(subjectAverage)}` : ""}`}
         size="sm"
         closeOnBackdrop={!saving}
       >
@@ -116,28 +116,24 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
                       if (error) setError("");
                     }}
                     className={cn(
-                      "flex h-16 flex-col items-center justify-center border-2 border-line transition hover:-translate-y-0.5",
+                      "relative flex h-16 flex-col items-center justify-center rounded-[3px] border transition",
                       selected
-                        ? "shadow-[3px_3px_0_var(--shadow-color)]"
-                        : "bg-surface-2 hover:bg-surface-3"
+                        ? "border-info bg-[var(--blue-wash)]"
+                        : "border-line bg-surface-2 hover:border-line-strong hover:bg-surface-3"
                     )}
-                    style={
-                      selected
-                        ? {
-                            backgroundColor: `color-mix(in srgb, ${color} 30%, var(--surface))`,
-                          }
-                        : undefined
-                    }
                     aria-pressed={selected}
                     aria-label={`Ocena ${value} — ${GRADE_LABELS[value]}`}
                   >
+                    {selected ? (
+                      <Check className="absolute right-1.5 top-1.5 h-3 w-3 text-info" />
+                    ) : null}
                     <span
-                      className="text-xl font-extrabold"
-                      style={{ color: selected ? `color-mix(in srgb, ${color} 70%, var(--fg))` : "var(--fg)" }}
+                      className="font-mono text-xl leading-none"
+                      style={{ color: selected ? color : "var(--fg)" }}
                     >
                       {value}
                     </span>
-                    <span className="text-[8px] font-bold uppercase tracking-wider text-muted">
+                    <span className="mt-1.5 font-mono text-[8px] text-muted">
                       {GRADE_LABELS[value]}
                     </span>
                   </button>
@@ -145,7 +141,7 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
               })}
             </div>
             {error ? (
-              <p className="mt-2 text-xs font-semibold text-danger" role="alert">
+              <p className="mt-2 text-[11px] text-danger" role="alert">
                 {error}
               </p>
             ) : null}
@@ -153,7 +149,7 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
 
           <div>
             <label htmlFor="grade-description" className="label">
-              Opis <span className="font-normal text-muted">(opciono)</span>
+              Opis <span className="text-muted">(opciono)</span>
             </label>
             <input
               id="grade-description"
@@ -171,10 +167,10 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
                   type="button"
                   onClick={() => setDescription(quick)}
                   className={cn(
-                    "border-2 px-2.5 py-1 text-[10px] font-bold transition",
+                    "rounded-[2px] border px-2 py-1 font-mono text-[9px] transition",
                     description === quick
-                      ? "border-line bg-accent-soft text-fg shadow-[2px_2px_0_var(--shadow-color)]"
-                      : "border-line bg-surface text-muted hover:bg-surface-3 hover:text-fg"
+                      ? "border-fg bg-fg text-canvas"
+                      : "border-line bg-surface text-muted hover:border-fg hover:text-fg"
                   )}
                 >
                   {quick}
@@ -185,7 +181,7 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
 
           <div className="flex flex-col gap-2">
             <button type="submit" className="btn btn-primary w-full" disabled={saving}>
-              {saving ? <Spinner /> : <Check className="h-4 w-4" />}
+              {saving ? <Spinner /> : <Check className="h-3.5 w-3.5" />}
               {isEditing ? "Sačuvaj izmene" : "Dodaj ocenu"}
             </button>
 
@@ -196,7 +192,7 @@ export function GradeDialog({ open, subject, editingGrade, onClose, onSave }: Gr
                 className="btn btn-ghost w-full text-danger hover:bg-danger-soft hover:text-danger"
                 disabled={saving}
               >
-                <Trash2 className="h-4 w-4" />
+                <Trash2 className="h-3.5 w-3.5" />
                 Obriši ocenu
               </button>
             ) : null}

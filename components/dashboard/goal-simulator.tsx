@@ -72,38 +72,31 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
   })();
 
   return (
-    <section className="card p-5">
-      <div className="flex items-center gap-2">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-line bg-accent-soft text-fg shadow-[3px_3px_0_var(--shadow-color)]">
-          <Target className="h-5 w-5" />
-        </span>
-        <div className="min-w-0">
-          <h2 className="text-sm font-bold">Simulator cilja</h2>
-          <p className="mt-0.5 text-xs leading-5 text-muted">
-            Izaberi željeni prosek i vidi šta ti treba do kraja.
-          </p>
-        </div>
+    <section className="fig">
+      <div className="fig-bar">
+        <span className="fig-label">fig. 02 — simulator cilja</span>
+        <span className="font-mono text-[10px]">target</span>
       </div>
 
-      <div className="mt-4 border-2 border-line bg-surface-2 p-4">
+      <div className="p-4">
         <div className="flex items-end justify-between gap-3">
-          <div>
-            <p className="eyebrow">Ciljni prosek</p>
-            <p className="gradient-text text-3xl font-extrabold tracking-tight">
+          <div className="min-w-0">
+            <p className="eyebrow">ciljni prosek</p>
+            <p className="mt-1.5 font-mono text-3xl leading-none tracking-[-0.04em] text-fg">
               {formatAverage(target)}
             </p>
           </div>
-          <div className="flex gap-1.5">
+          <div className="flex shrink-0 gap-1.5">
             {[4, 4.5, 5].map((preset) => (
               <button
                 key={preset}
                 type="button"
                 onClick={() => setTarget(preset)}
                 className={cn(
-                  "border-2 px-2 py-1 text-[10px] font-bold transition",
+                  "rounded-[2px] border px-2 py-1 font-mono text-[9.5px] transition",
                   Math.abs(target - preset) < 0.001
-                    ? "border-line bg-accent-soft text-fg shadow-[2px_2px_0_var(--shadow-color)]"
-                    : "border-line bg-surface text-muted hover:bg-surface-3 hover:text-fg"
+                    ? "border-fg bg-fg text-canvas"
+                    : "border-line bg-surface text-muted hover:border-fg hover:text-fg"
                 )}
               >
                 {formatAverage(preset)}
@@ -119,83 +112,82 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
           step={0.05}
           value={target}
           onChange={(event) => setTarget(Number(event.target.value))}
-          className="mt-3 w-full cursor-pointer"
-          style={{ accentColor: "var(--accent)" }}
+          className="mt-4 w-full"
           aria-label="Ciljni prosek"
         />
-        <div className="flex justify-between text-[10px] font-semibold text-muted">
+        <div className="flex justify-between font-mono text-[9px] text-muted">
           <span>1,00</span>
           <span>5,00</span>
         </div>
-      </div>
 
-      {plan.ungradedSubjects === 0 && plan.gradedSubjects > 0 ? (
-        <div className="mt-3 flex items-center justify-between gap-3 border-2 border-line bg-surface-2 p-3">
-          <div>
-            <p className="text-xs font-bold">Dodatnih predmeta</p>
-            <p className="text-[10px] text-muted">Simuliraj buduće predmete</p>
+        {plan.ungradedSubjects === 0 && plan.gradedSubjects > 0 ? (
+          <div className="mt-4 flex items-center justify-between gap-3 border border-line bg-surface p-3">
+            <div>
+              <p className="eyebrow">dodatnih predmeta</p>
+              <p className="mt-0.5 font-mono text-[9px] text-muted">simuliraj buduće predmete</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setExtraSubjects((value) => Math.max(1, value - 1))}
+                className="flex h-7 w-7 items-center justify-center rounded-[2px] border border-line bg-surface text-fg transition hover:border-fg hover:bg-surface-2"
+                aria-label="Manje dodatnih predmeta"
+              >
+                <Minus className="h-3 w-3" />
+              </button>
+              <span className="w-5 text-center font-mono text-[12px]">{extraSubjects}</span>
+              <button
+                type="button"
+                onClick={() => setExtraSubjects((value) => Math.min(10, value + 1))}
+                className="flex h-7 w-7 items-center justify-center rounded-[2px] border border-line bg-surface text-fg transition hover:border-fg hover:bg-surface-2"
+                aria-label="Više dodatnih predmeta"
+              >
+                <Plus className="h-3 w-3" />
+              </button>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setExtraSubjects((value) => Math.max(1, value - 1))}
-              className="flex h-8 w-8 items-center justify-center border-2 border-line bg-surface text-fg shadow-[2px_2px_0_var(--shadow-color)] transition hover:bg-accent-soft"
-              aria-label="Manje dodatnih predmeta"
-            >
-              <Minus className="h-3.5 w-3.5" />
-            </button>
-            <span className="w-6 text-center text-sm font-extrabold">{extraSubjects}</span>
-            <button
-              type="button"
-              onClick={() => setExtraSubjects((value) => Math.min(10, value + 1))}
-              className="flex h-8 w-8 items-center justify-center border-2 border-line bg-surface text-fg shadow-[2px_2px_0_var(--shadow-color)] transition hover:bg-accent-soft"
-              aria-label="Više dodatnih predmeta"
-            >
-              <Plus className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        </div>
-      ) : plan.ungradedSubjects > 0 ? (
-        <div className="mt-3 border-2 border-line bg-surface-2 p-3">
-          <p className="text-xs font-bold">
-            {plan.ungradedSubjects} {plan.ungradedSubjects === 1 ? "predmet bez ocena" : "predmeta bez ocena"}
-          </p>
-          <p className="text-[10px] text-muted">Automatski ulaze u proračun cilja.</p>
-        </div>
-      ) : null}
-
-      <div className="mt-3 border-2 border-line bg-surface-2 p-4">
-        <div className="flex items-end justify-between gap-3">
-          <div className="min-w-0">
-            <p className="eyebrow">{result.title}</p>
-            <p
-              className={cn(
-                "mt-1 text-3xl font-extrabold tracking-tight",
-                result.tone === "accent" && "gradient-text",
-                result.tone === "danger" && "text-danger",
-                result.tone === "muted" && "text-muted"
-              )}
-            >
-              {result.value}
+        ) : plan.ungradedSubjects > 0 ? (
+          <div className="mt-4 border border-line bg-surface p-3">
+            <p className="eyebrow">
+              {plan.ungradedSubjects} {plan.ungradedSubjects === 1 ? "predmet bez ocena" : "predmeta bez ocena"}
             </p>
+            <p className="mt-1 font-mono text-[9px] text-muted">automatski ulaze u proračun cilja</p>
           </div>
-          <span className="text-[10px] font-semibold text-muted">
-            trenutno {formatAverage(plan.currentAverage)}
-          </span>
-        </div>
-        <p className="mt-2 text-xs leading-5 text-muted">{result.text}</p>
-      </div>
+        ) : null}
 
-      <details className="group mt-3">
-        <summary className="cursor-pointer list-none text-[11px] font-semibold text-muted transition hover:text-fg">
-          Kako se računa?
-        </summary>
-        <p className="mt-2 border-2 border-line bg-surface-2 p-3 text-[11px] leading-5 text-muted">
-          Ukupan prosek je prosek zaključnih ocena svih predmeta sa ocenama, gde je zaključna
-          ocena prosek predmeta zaokružen na ceo broj. Predmeti bez ocena ne ulaze u trenutni
-          prosek, ali ulaze u simulaciju cilja.
-        </p>
-      </details>
+        <div className="mt-4 border border-line bg-surface p-4">
+          <p className="eyebrow">{result.title}</p>
+          <p
+            className={cn(
+              "mt-1.5 font-mono text-3xl leading-none tracking-[-0.04em]",
+              result.tone === "accent" && "text-accent-strong",
+              result.tone === "danger" && "text-danger",
+              result.tone === "muted" && "text-muted"
+            )}
+          >
+            {result.value}
+          </p>
+          <p className="mt-2.5 text-[11px] leading-5 text-muted">{result.text}</p>
+          <div className="mt-3 flex items-center justify-between border-t border-line pt-2 font-mono text-[9px] text-muted">
+            <span>trenutno {formatAverage(plan.currentAverage)}</span>
+            <span className="flex items-center gap-1">
+              <Target className="h-3 w-3 text-accent-strong" />
+              cilj {formatAverage(plan.target)}
+            </span>
+          </div>
+        </div>
+
+        <details className="group mt-3">
+          <summary className="cursor-pointer list-none font-mono text-[9.5px] text-muted transition hover:text-fg">
+            [ kako se računa? ]
+          </summary>
+          <p className="mt-2 border border-line bg-surface p-3 text-[10.5px] leading-5 text-muted">
+            Ukupan prosek je prosek zaključnih ocena svih predmeta sa ocenama, gde je zaključna
+            ocena prosek predmeta zaokružen na ceo broj. Predmeti bez ocena ne ulaze u trenutni
+            prosek, ali ulaze u simulaciju cilja.
+          </p>
+        </details>
+      </div>
     </section>
   );
 }

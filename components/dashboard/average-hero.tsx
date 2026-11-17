@@ -16,26 +16,12 @@ type AverageHeroProps = {
 };
 
 const gradeColors = {
-  1: "#FF5C5C",
-  2: "#FF8A3D",
-  3: "#F5C542",
-  4: "#4ED47A",
-  5: "#B4D63D",
+  1: "#D64545",
+  2: "#E08A3C",
+  3: "#C9A227",
+  4: "#1F9D6B",
+  5: "#2B2BFF",
 } as const;
-
-function AverageRing({ average, hasGrades }: { average: number; hasGrades: boolean }) {
-  return (
-    <div
-      className="flex h-28 w-28 shrink-0 flex-col items-center justify-center border-[3px] border-line bg-accent-soft text-fg shadow-[6px_6px_0_var(--shadow-color)] sm:h-32 sm:w-32"
-      aria-label={hasGrades ? `Prosek ${formatAverage(average)} od 5` : "Još nema ocena"}
-    >
-      <span className="text-3xl font-bold leading-none tracking-tight sm:text-4xl">
-        {hasGrades ? formatAverage(average) : "—"}
-      </span>
-      <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em]">od 5,00</span>
-    </div>
-  );
-}
 
 function TrendBadge({ stats }: { stats: GradebookStats }) {
   const { direction, label } = stats.trend;
@@ -44,65 +30,65 @@ function TrendBadge({ stats }: { stats: GradebookStats }) {
     <span
       className={cn(
         "badge",
-        direction === "up" && "bg-accent-soft text-fg",
-        direction === "down" && "bg-danger-soft text-danger",
+        direction === "up" && "badge-green",
+        direction === "down" && "badge-danger",
         (direction === "flat" || direction === "none") && "bg-surface-3 text-muted"
       )}
     >
       {direction === "up" ? (
-        <TrendingUp className="h-3.5 w-3.5" />
+        <TrendingUp className="h-3 w-3" />
       ) : direction === "down" ? (
-        <TrendingDown className="h-3.5 w-3.5" />
+        <TrendingDown className="h-3 w-3" />
       ) : (
-        <Minus className="h-3.5 w-3.5" />
+        <Minus className="h-3 w-3" />
       )}
       {label}
     </span>
   );
 }
 
-function Distribution({ distribution }: { distribution: GradebookStats["distribution"] }) {
+function DistributionChart({
+  distribution,
+}: {
+  distribution: GradebookStats["distribution"];
+}) {
   const total = Object.values(distribution).reduce((sum, count) => sum + count, 0);
+  const max = Math.max(1, ...Object.values(distribution));
 
   return (
-    <div className="mt-5">
-      <div className="mb-2 flex items-center justify-between gap-3">
-        <span className="eyebrow">Raspodela ocena</span>
-        <span className="text-xs font-semibold text-muted">{total} ukupno</span>
+    <div className="border border-line bg-surface p-4">
+      <div className="flex items-center justify-between gap-3">
+        <span className="eyebrow">raspodela ocena</span>
+        <span className="font-mono text-[10px] text-muted">{total} ukupno</span>
       </div>
 
-      <div className="flex h-4 gap-0 overflow-hidden border-2 border-line bg-surface-3" aria-hidden="true">
-        {total === 0 ? (
-          <div className="h-full w-full bg-line-strong" />
-        ) : (
-          ([1, 2, 3, 4, 5] as const).map((grade) => {
-            const count = distribution[grade];
-            if (!count) return null;
-            return (
-              <div
-                key={grade}
-                className="h-full transition-all duration-500"
-                style={{
-                  flexGrow: count,
-                  backgroundColor: gradeColors[grade],
-                }}
-                title={`Ocena ${grade}: ${count}`}
-              />
-            );
-          })
-        )}
+      <div className="mt-4 flex h-32 items-end gap-2" aria-hidden="true">
+        {([1, 2, 3, 4, 5] as const).map((grade) => {
+          const count = distribution[grade];
+          const height = total ? Math.max(4, Math.round((count / max) * 100)) : 4;
+          return (
+            <div key={grade} className="flex h-full min-w-0 flex-1 flex-col items-center gap-1.5">
+              <span className="font-mono text-[9px] leading-none text-muted">{count}</span>
+              <div className="flex w-full flex-1 items-end">
+                <div
+                  className="w-full transition-all duration-500"
+                  style={{
+                    height: `${height}%`,
+                    backgroundColor: gradeColors[grade],
+                    opacity: count ? 1 : 0.16,
+                  }}
+                  title={`Ocena ${grade}: ${count}`}
+                />
+              </div>
+              <span className="font-mono text-[9px] leading-none text-muted">{grade}</span>
+            </div>
+          );
+        })}
       </div>
 
-      <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1.5">
-        {([1, 2, 3, 4, 5] as const).map((grade) => (
-          <span key={grade} className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-muted">
-            <span
-              className="h-2 w-2 rounded-full"
-              style={{ backgroundColor: gradeColors[grade] }}
-            />
-            {grade} ({distribution[grade]})
-          </span>
-        ))}
+      <div className="mt-3 flex items-center justify-between border-t border-line pt-2 font-mono text-[9px] text-muted">
+        <span>min 1</span>
+        <span>max 5</span>
       </div>
     </div>
   );
@@ -111,83 +97,104 @@ function Distribution({ distribution }: { distribution: GradebookStats["distribu
 export function AverageHero({ stats, isGuest, isRefreshing }: AverageHeroProps) {
   const hasGrades = stats.totalGrades > 0;
 
+  const statItems = [
+    {
+      label: "najviša",
+      value: formatGrade(stats.bestGrade),
+      icon: TrendingUp,
+      tone: "text-green",
+    },
+    {
+      label: "najniža",
+      value: formatGrade(stats.worstGrade),
+      icon: TrendingDown,
+      tone: "text-danger",
+    },
+    {
+      label: "ocena",
+      value: String(stats.totalGrades),
+      icon: ClipboardList,
+      tone: "text-info",
+    },
+    {
+      label: "najbolji",
+      value: stats.bestSubjectName || "—",
+      icon: Trophy,
+      tone: "text-warn",
+    },
+  ];
+
   return (
-    <section className="card relative overflow-hidden p-5 sm:p-6 lg:p-7">
-      <div className="relative">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="min-w-0">
+    <section className="fig relative">
+      <div className="fig-bar">
+        <span className="fig-label whitespace-nowrap">fig. 01 — ukupan prosek</span>
+        <span className="flex shrink-0 items-center gap-2 whitespace-nowrap font-mono text-[10px]">
+          <span className="h-1.5 w-1.5 rounded-full bg-green" aria-hidden="true" />
+          {isGuest ? "lokalno" : "live"}
+          <span className="hidden text-line-strong sm:inline">/</span>
+          <span className="hidden sm:inline">5 × 5</span>
+        </span>
+      </div>
+
+      <div className="fig-well fig-grid">
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+          <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="eyebrow">Ukupan školski prosek</span>
-              <span className="badge bg-surface-3 text-muted">
-                {isGuest ? "Gost" : "Nalog"}
-              </span>
-              {isRefreshing ? (
-                <span className="badge bg-accent-soft text-fg">Sinhronizacija…</span>
-              ) : null}
+              <span className="eyebrow">prosečna ocena</span>
+              <span className="badge">{isGuest ? "gost" : "nalog"}</span>
+              {isRefreshing ? <span className="badge badge-blue">sinhronizacija…</span> : null}
             </div>
 
-            <div className="mt-3 flex items-end gap-2.5">
-              <span className="gradient-text text-6xl font-bold leading-[0.9] tracking-[-0.06em] sm:text-7xl lg:text-8xl">
+            <div className="mt-4 flex items-end gap-2.5">
+              <span
+                className={cn(
+                  "font-mono leading-[0.8] tracking-[-0.07em]",
+                  hasGrades
+                    ? "text-[4.75rem] text-fg sm:text-[6.25rem]"
+                    : "text-[2.75rem] text-line-strong sm:text-[3.5rem]"
+                )}
+              >
                 {hasGrades ? formatAverage(stats.overallAverage) : "—"}
               </span>
-              <span className="mb-2 text-sm font-bold text-muted">/ 5,00</span>
+              <span className="mb-2 font-mono text-xs text-muted sm:mb-3 sm:text-sm">/ 5,00</span>
             </div>
 
-            <p className="mt-2 text-sm text-muted">
+            <p className="mt-4 max-w-md text-[13px] leading-6 text-muted">
               {hasGrades
-                ? `${stats.gradedSubjects} ${stats.gradedSubjects === 1 ? "predmet" : "predmeta"} sa ocenama • ${gradeCountLabel(stats.totalGrades)}`
+                ? `${stats.gradedSubjects} ${stats.gradedSubjects === 1 ? "predmet" : "predmeta"} sa ocenama · ${gradeCountLabel(stats.totalGrades)}`
                 : "Još nema ocena — dodaj prvu i prosek se računa automatski."}
             </p>
 
-            <div className="mt-3">
+            <div className="mt-4 flex flex-wrap items-center gap-2">
               <TrendBadge stats={stats} />
+              <span className="badge">{stats.totalGrades} ocena</span>
+              <span className="badge">{stats.gradedSubjects} predmeta</span>
             </div>
           </div>
 
-          <AverageRing average={hasGrades ? stats.overallAverage : 0} hasGrades={hasGrades} />
+          <DistributionChart distribution={stats.distribution} />
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-          <div className="border-2 border-line bg-surface-2 p-3.5 shadow-[3px_3px_0_var(--shadow-color)]">
-            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted">
-              <TrendingUp className="h-3.5 w-3.5 text-accent-strong" />
-              Najviša
+          {statItems.map((item) => (
+            <div key={item.label} className="border border-line bg-surface p-3">
+              <div className="flex items-center gap-1.5 font-mono text-[9.5px] text-muted">
+                <item.icon className={cn("h-3 w-3", item.tone)} />
+                {item.label}
+              </div>
+              <p
+                className={cn(
+                  "mt-2 truncate font-mono text-xl leading-none tracking-[-0.04em]",
+                  item.value === "—" ? "text-muted" : "text-fg",
+                  item.label === "najbolji" && "text-[13px] leading-5 tracking-normal"
+                )}
+                title={item.label === "najbolji" ? stats.bestSubjectName || undefined : undefined}
+              >
+                {item.value}
+              </p>
             </div>
-            <p className="mt-1.5 text-2xl font-extrabold text-accent-strong">
-              {formatGrade(stats.bestGrade)}
-            </p>
-          </div>
-
-          <div className="border-2 border-line bg-surface-2 p-3.5 shadow-[3px_3px_0_var(--shadow-color)]">
-            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted">
-              <TrendingDown className="h-3.5 w-3.5 text-danger" />
-              Najniža
-            </div>
-            <p className="mt-1.5 text-2xl font-extrabold text-danger">
-              {formatGrade(stats.worstGrade)}
-            </p>
-          </div>
-
-          <div className="border-2 border-line bg-surface-2 p-3.5 shadow-[3px_3px_0_var(--shadow-color)]">
-            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted">
-              <ClipboardList className="h-3.5 w-3.5 text-info" />
-              Ocena
-            </div>
-            <p className="mt-1.5 text-2xl font-extrabold">{stats.totalGrades}</p>
-          </div>
-
-          <div className="min-w-0 border-2 border-line bg-surface-2 p-3.5 shadow-[3px_3px_0_var(--shadow-color)]">
-            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted">
-              <Trophy className="h-3.5 w-3.5 text-warn" />
-              Najbolji
-            </div>
-            <p className="mt-1.5 truncate text-sm font-extrabold" title={stats.bestSubjectName || undefined}>
-              {stats.bestSubjectName || "—"}
-            </p>
-          </div>
+          ))}
         </div>
-
-        <Distribution distribution={stats.distribution} />
       </div>
     </section>
   );

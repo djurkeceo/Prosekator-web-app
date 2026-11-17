@@ -94,8 +94,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fffdf5" },
-    { media: "(prefers-color-scheme: dark)", color: "#111310" },
+    { media: "(prefers-color-scheme: light)", color: "#fbf9fe" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0b12" },
   ],
 };
 
@@ -129,7 +129,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <script

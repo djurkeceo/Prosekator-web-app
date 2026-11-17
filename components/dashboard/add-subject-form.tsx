@@ -50,14 +50,17 @@ export function AddSubjectForm({ existingNames, isAdding, onAdd }: AddSubjectFor
 
   return (
     <section className="card p-4 sm:p-5">
-      <div className="flex items-center gap-2">
-        <span className="flex h-10 w-10 items-center justify-center border-2 border-line bg-accent-soft text-fg shadow-[3px_3px_0_var(--shadow-color)]">
-          <BookPlus className="h-4.5 w-4.5" />
-        </span>
-        <div>
-          <h2 className="text-sm font-bold">Dodaj predmet</h2>
-          <p className="text-xs text-muted">Predmet se odmah pojavljuje u listi ispod.</p>
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[2px] border border-[color-mix(in_srgb,var(--yellow)_55%,var(--line))] bg-accent-soft text-yellow-fg">
+            <BookPlus className="h-4 w-4" />
+          </span>
+          <div className="min-w-0">
+            <h2 className="font-mono text-[13px] font-medium">Dodaj predmet</h2>
+            <p className="mt-0.5 font-mono text-[9px] text-muted">[ novi unos ]</p>
+          </div>
         </div>
+        <span className="badge hidden sm:inline-flex">enter ↵</span>
       </div>
 
       <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-2 sm:flex-row">
@@ -87,12 +90,12 @@ export function AddSubjectForm({ existingNames, isAdding, onAdd }: AddSubjectFor
             ))}
           </datalist>
           {error ? (
-            <p id="subject-name-error" className="mt-1.5 text-xs font-semibold text-danger" role="alert">
+            <p id="subject-name-error" className="mt-1.5 text-[11px] text-danger" role="alert">
               {error}
             </p>
           ) : (
-            <p className="mt-1.5 hidden text-[11px] text-muted sm:block">
-              Pritisni Enter za brzo dodavanje.
+            <p className="mt-1.5 hidden font-mono text-[9px] text-muted sm:block">
+              pritisni enter za brzo dodavanje
             </p>
           )}
         </div>
@@ -102,7 +105,7 @@ export function AddSubjectForm({ existingNames, isAdding, onAdd }: AddSubjectFor
           disabled={isAdding}
           className={cn("btn btn-primary shrink-0 sm:self-start", isAdding && "opacity-80")}
         >
-          {isAdding ? <Spinner /> : <Plus className="h-4 w-4" />}
+          {isAdding ? <Spinner /> : <Plus className="h-3.5 w-3.5" />}
           {isAdding ? "Dodajem…" : "Dodaj predmet"}
         </button>
       </form>

@@ -61,11 +61,11 @@ export function LoginForm() {
           Email adresa
         </label>
         <div className="relative">
-          <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
+          <Mail className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted" />
           <input
             id="login-email"
             type="email"
-            className="input pl-10"
+            className="input pl-9"
             placeholder="ime@primer.com"
             value={email}
             onChange={(event) => {
@@ -100,20 +100,20 @@ export function LoginForm() {
 
       {error ? (
         <p
-          className="flex items-start gap-2 border-2 border-line bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
+          className="flex items-start gap-2 border border-[color-mix(in_srgb,var(--danger)_30%,transparent)] bg-danger-soft px-3 py-2.5 text-[10.5px] leading-5 text-danger"
           role="alert"
         >
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           {error}
         </p>
       ) : null}
 
       <button type="submit" className="btn btn-primary w-full" disabled={loading}>
-        {loading ? <Spinner /> : <LogIn className="h-4 w-4" />}
+        {loading ? <Spinner /> : <LogIn className="h-3.5 w-3.5" />}
         {loading ? "Prijavljujem…" : "Prijavi se"}
       </button>
 
-      <p className="pt-1 text-center text-sm text-muted">
+      <p className="pt-1 text-center text-[11px] text-muted">
         Nemaš nalog?{" "}
         <Link href="/signup" className="link">
           Napravi ga besplatno
@@ -124,10 +124,10 @@ export function LoginForm() {
 
       <Link
         href="/"
-        className="flex items-center justify-center gap-1.5 text-xs font-semibold text-muted transition hover:text-fg"
+        className="flex items-center justify-center gap-1.5 font-mono text-[9.5px] text-muted transition-colors hover:text-fg"
       >
-        Nastavi kao gost
-        <ArrowRight className="h-3.5 w-3.5" />
+        nastavi kao gost
+        <ArrowRight className="h-3 w-3" />
       </Link>
     </form>
   );

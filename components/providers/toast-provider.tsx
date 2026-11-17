@@ -24,10 +24,16 @@ type ToastContextValue = {
 
 const ToastContext = createContext<ToastContextValue | null>(null);
 
-const variantStyles: Record<ToastVariant, string> = {
-  success: "border-line bg-accent-soft text-fg",
-  error: "border-line bg-danger-soft text-fg",
-  info: "border-line bg-surface-solid text-fg",
+const accentStyles: Record<ToastVariant, string> = {
+  success: "bg-green",
+  error: "bg-danger",
+  info: "bg-info",
+};
+
+const iconStyles: Record<ToastVariant, string> = {
+  success: "text-green",
+  error: "text-danger",
+  info: "text-info",
 };
 
 const icons = {
@@ -78,33 +84,27 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
           return (
             <div
               key={item.id}
-              className={cn(
-                "animate-toast-in pointer-events-auto flex w-full max-w-sm items-start gap-3 border-2 p-3.5 shadow-strong",
-                variantStyles[item.variant]
-              )}
+              className="animate-toast-in pointer-events-auto relative flex w-full max-w-sm items-start gap-3 overflow-hidden rounded-[6px] border border-line bg-surface p-3.5 shadow-strong"
               role="status"
             >
-              <Icon
-                className={cn(
-                  "mt-0.5 h-5 w-5 shrink-0",
-                  item.variant === "success" && "text-accent",
-                  item.variant === "error" && "text-danger",
-                  item.variant === "info" && "text-info"
-                )}
+              <span
+                className={cn("absolute inset-y-0 left-0 w-0.5", accentStyles[item.variant])}
+                aria-hidden="true"
               />
+              <Icon className={cn("mt-0.5 h-4 w-4 shrink-0", iconStyles[item.variant])} />
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold leading-5">{item.title}</p>
+                <p className="text-[12px] font-medium leading-5">{item.title}</p>
                 {item.description ? (
-                  <p className="mt-0.5 text-xs leading-5 text-muted">{item.description}</p>
+                  <p className="mt-0.5 text-[10.5px] leading-5 text-muted">{item.description}</p>
                 ) : null}
               </div>
               <button
                 type="button"
                 onClick={() => dismiss(item.id)}
-                className="p-1 text-muted transition hover:bg-surface-2 hover:text-fg"
+                className="p-1 text-muted transition-colors hover:text-fg"
                 aria-label="Zatvori obaveštenje"
               >
-                <X className="h-4 w-4" />
+                <X className="h-3.5 w-3.5" />
               </button>
             </div>
           );

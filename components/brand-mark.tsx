@@ -17,7 +17,7 @@ export function BrandMark({
       className={cn("group inline-flex items-center gap-2.5", className)}
       aria-label="Prosekator — početna"
     >
-      <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden border-[3px] border-line bg-surface shadow-[3px_3px_0_var(--shadow-color)] transition-transform group-hover:-translate-y-0.5">
+      <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-[4px] ring-1 ring-line transition-transform group-hover:-translate-y-0.5">
         <Image
           src="/favicon.svg"
           alt=""
@@ -29,8 +29,11 @@ export function BrandMark({
         />
       </span>
       {!compact ? (
-        <span className="text-lg font-black uppercase tracking-tight text-fg transition group-hover:text-accent-strong sm:text-xl">
-          Prosekator
+        <span className="flex items-baseline gap-1.5">
+          <span className="font-mono text-[17px] font-medium lowercase tracking-[-0.04em] text-fg transition group-hover:text-accent-strong">
+            prosekator
+          </span>
+          <span className="hidden font-mono text-[9px] text-muted sm:inline">v2.0</span>
         </span>
       ) : null}
     </Link>

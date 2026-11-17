@@ -149,25 +149,25 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
         description="Upravljaj imenom, lozinkom i nalogom na jednom mestu."
         size="lg"
         icon={
-          <span className="flex h-11 w-11 items-center justify-center border-2 border-line bg-accent-soft text-fg">
-            <UserRound className="h-5 w-5" />
+          <span className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-line bg-accent-soft text-yellow-fg">
+            <UserRound className="h-4 w-4" />
           </span>
         }
       >
         <div className="space-y-7">
           <section>
             <div className="mb-3 flex items-center gap-2">
-              <UserRound className="h-4 w-4 text-accent-strong" />
-              <h3 className="text-sm font-extrabold">Profil</h3>
+              <UserRound className="h-3.5 w-3.5 text-accent-strong" />
+              <h3 className="font-mono text-[13px] font-medium">Profil</h3>
             </div>
 
-            <div className="border-2 border-line bg-surface-2 p-4">
+            <div className="border border-line bg-surface-2 p-4">
               <div className="mb-4 flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">Email</p>
-                  <p className="truncate text-sm font-semibold text-fg">{user.email}</p>
+                  <p className="font-mono text-[9px] text-muted">email</p>
+                  <p className="truncate text-[12px] font-medium text-fg">{user.email}</p>
                 </div>
-                <span className="badge bg-accent-soft text-fg">Aktivan</span>
+                <span className="badge badge-green">aktivan</span>
               </div>
 
               <form onSubmit={handleProfileSubmit} className="space-y-3">
@@ -184,7 +184,9 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
                     autoComplete="name"
                     aria-invalid={Boolean(nameError)}
                   />
-                  {nameError ? <p className="mt-1.5 text-xs font-semibold text-danger">{nameError}</p> : null}
+                  {nameError ? (
+                    <p className="mt-1.5 text-[11px] text-danger">{nameError}</p>
+                  ) : null}
                 </div>
                 <button type="submit" className="btn btn-primary w-full sm:w-auto" disabled={nameLoading}>
                   {nameLoading ? <Spinner /> : null}
@@ -198,8 +200,8 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
 
           <section>
             <div className="mb-3 flex items-center gap-2">
-              <KeyRound className="h-4 w-4 text-accent-strong" />
-              <h3 className="text-sm font-extrabold">Lozinka</h3>
+              <KeyRound className="h-3.5 w-3.5 text-accent-strong" />
+              <h3 className="font-mono text-[13px] font-medium">Lozinka</h3>
             </div>
 
             <form onSubmit={handlePasswordSubmit} className="space-y-3">
@@ -248,14 +250,14 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
                     <span
                       key={requirement.id}
                       className={cn(
-                        "inline-flex items-center gap-1.5 text-[11px] font-semibold",
-                        passed ? "text-accent-strong" : "text-muted"
+                        "inline-flex items-center gap-1.5 text-[10px]",
+                        passed ? "text-green" : "text-muted"
                       )}
                     >
                       <span
                         className={cn(
-                          "flex h-4 w-4 items-center justify-center border-2",
-                          passed ? "border-line bg-accent-soft" : "border-line"
+                          "flex h-3.5 w-3.5 items-center justify-center rounded-[2px] border",
+                          passed ? "border-line bg-accent-soft text-yellow-fg" : "border-line"
                         )}
                       >
                         {passed ? <Check className="h-2.5 w-2.5" /> : null}
@@ -267,7 +269,10 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
               </div>
 
               {passwordError ? (
-                <p className="border-2 border-line bg-danger-soft px-3 py-2 text-xs font-semibold text-danger" role="alert">
+                <p
+                  className="border border-[color-mix(in_srgb,var(--danger)_30%,transparent)] bg-danger-soft px-3 py-2 text-[10.5px] text-danger"
+                  role="alert"
+                >
                   {passwordError}
                 </p>
               ) : null}
@@ -283,13 +288,13 @@ export function AccountDialog({ open, onClose }: AccountDialogProps) {
 
           <section>
             <div className="mb-3 flex items-center gap-2 text-danger">
-              <ShieldAlert className="h-4 w-4" />
-              <h3 className="text-sm font-extrabold">Opasna zona</h3>
+              <ShieldAlert className="h-3.5 w-3.5" />
+              <h3 className="font-mono text-[13px] font-medium">Opasna zona</h3>
             </div>
-            <div className="flex flex-col gap-3 border-2 border-line bg-danger-soft p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 border border-[color-mix(in_srgb,var(--danger)_30%,transparent)] bg-danger-soft p-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm font-bold text-fg">Brisanje naloga</p>
-                <p className="mt-0.5 text-xs leading-5 text-muted">
+                <p className="text-[12px] font-medium text-fg">Brisanje naloga</p>
+                <p className="mt-1 text-[10.5px] leading-5 text-muted">
                   Trajno uklanja nalog, predmete i sve ocene iz baze.
                 </p>
               </div>

@@ -55,7 +55,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className="label">
             Ime i prezime
@@ -115,22 +115,22 @@ export function ContactForm() {
           rows={6}
           aria-invalid={Boolean(error)}
         />
-        <p className="mt-1.5 text-right text-[10px] text-muted">{message.length}/2000</p>
+        <p className="mt-1.5 text-right font-mono text-[9px] text-muted">{message.length}/2000</p>
       </div>
 
       {error ? (
         <p
-          className="flex items-start gap-2 border-2 border-line bg-danger-soft px-3 py-2.5 text-xs font-semibold leading-5 text-danger"
+          className="flex items-start gap-2 border border-[color-mix(in_srgb,var(--danger)_30%,transparent)] bg-danger-soft px-3 py-2.5 text-[10.5px] leading-5 text-danger"
           role="alert"
         >
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           {error}
         </p>
       ) : null}
 
       {sent && !error ? (
-        <p className="flex items-start gap-2 border-2 border-line bg-accent-soft px-3 py-2.5 text-xs font-semibold leading-5 text-fg">
-          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-strong" />
+        <p className="flex items-start gap-2 border border-[color-mix(in_srgb,var(--yellow)_55%,var(--line))] bg-[var(--yellow-wash)] px-3 py-2.5 text-[10.5px] leading-5 text-fg">
+          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-green" />
           Ako se email aplikacija nije otvorila, pošalji poruku direktno na{" "}
           <a href={`mailto:${CONTACT_EMAIL}`} className="link">
             {CONTACT_EMAIL}
@@ -140,12 +140,12 @@ export function ContactForm() {
       ) : null}
 
       <button type="submit" className="btn btn-primary w-full sm:w-auto">
-        <Send className="h-4 w-4" />
+        <Send className="h-3.5 w-3.5" />
         Pošalji poruku
       </button>
 
-      <p className="text-[11px] leading-5 text-muted">
-        Poruka se šalje iz tvoje email aplikacije. Ne čuvamo podatke iz ove forme na serveru.
+      <p className="font-mono text-[9px] leading-5 text-muted">
+        poruka se šalje iz tvoje email aplikacije · ne čuvamo podatke iz ove forme
       </p>
     </form>
   );

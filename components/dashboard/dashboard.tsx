@@ -77,30 +77,33 @@ export function Dashboard() {
   };
 
   return (
-    <main id="main-content" className="flex-1 px-3 pb-12 pt-5 sm:px-4 sm:pt-7 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+    <main id="main-content" className="flex-1 px-4 pb-16 pt-8 sm:px-6 lg:px-12 lg:pt-10">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="min-w-0">
-            <p className="eyebrow">
-              {user ? `Zdravo${firstName ? `, ${firstName}` : ""}` : "Gost režim"}
+            <p className="fig-label">
+              {user ? `zdravo${firstName ? `, ${firstName}` : ""} · nalog` : "gost režim · lokalno"}
             </p>
-            <h1 className="mt-1 inline-block border-b-4 border-accent-soft pb-0.5 text-3xl font-bold uppercase tracking-tight sm:text-4xl">
-              Tvoj prosek
+            <h1 className="mt-3 font-mono text-4xl leading-[0.95] tracking-[-0.05em] text-fg sm:text-5xl lg:text-6xl">
+              Tvoj prosek<span className="text-info">.</span>
             </h1>
+            <p className="mt-3 max-w-xl text-[13px] leading-6 text-muted sm:text-sm">
+              Ocene, statistika i simulator cilja — sve na jednom mestu, bez digitrona.
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             {!gradebook.online ? (
-              <span className="badge bg-[color-mix(in_srgb,var(--warn)_16%,transparent)] text-warn">
-                <WifiOff className="h-3.5 w-3.5" />
-                Offline
+              <span className="badge badge-yellow">
+                <WifiOff className="h-3 w-3" />
+                offline
               </span>
             ) : null}
 
             {gradebook.lastSavedAt ? (
-              <span className="hidden items-center gap-1.5 text-[11px] font-semibold text-muted sm:flex">
-                <CloudCheck className="h-3.5 w-3.5 text-accent-strong" />
-                Sačuvano {formatTime(gradebook.lastSavedAt)}
+              <span className="hidden items-center gap-1.5 font-mono text-[9.5px] text-muted sm:flex">
+                <CloudCheck className="h-3 w-3 text-green" />
+                sačuvano {formatTime(gradebook.lastSavedAt)}
               </span>
             ) : null}
 
@@ -108,13 +111,13 @@ export function Dashboard() {
               type="button"
               onClick={gradebook.reload}
               disabled={gradebook.status === "loading" || gradebook.isRefreshing}
-              className="btn btn-secondary min-h-10 px-3"
+              className="btn btn-secondary min-h-9 px-3"
               aria-label="Osveži podatke"
             >
               <RefreshCw
-                className={`h-4 w-4 ${gradebook.isRefreshing ? "animate-spin" : ""}`}
+                className={`h-3.5 w-3.5 ${gradebook.isRefreshing ? "animate-spin" : ""}`}
               />
-              <span className="hidden sm:inline">Osveži</span>
+              <span>Osveži</span>
             </button>
           </div>
         </div>
@@ -123,11 +126,11 @@ export function Dashboard() {
           <DashboardSkeleton />
         ) : gradebook.status === "error" ? (
           <section className="card p-6 text-center sm:p-8">
-            <span className="mx-auto flex h-14 w-14 items-center justify-center border-[3px] border-line bg-danger-soft text-danger shadow-[4px_4px_0_var(--shadow-color)]">
-              <AlertTriangle className="h-6 w-6" />
+            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-[4px] border border-line bg-danger-soft text-danger">
+              <AlertTriangle className="h-5 w-5" />
             </span>
-            <h2 className="mt-4 text-xl font-bold">Podaci nisu učitani</h2>
-            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-muted">
+            <h2 className="mt-4 font-mono text-xl tracking-tight">Podaci nisu učitani.</h2>
+            <p className="mx-auto mt-2 max-w-md text-[12px] leading-6 text-muted">
               {gradebook.error || "Došlo je do greške pri učitavanju podataka."}
             </p>
             <button
@@ -135,7 +138,7 @@ export function Dashboard() {
               onClick={gradebook.reload}
               className="btn btn-primary mx-auto mt-5"
             >
-              <RefreshCw className="h-4 w-4" />
+              <RefreshCw className="h-3.5 w-3.5" />
               Pokušaj ponovo
             </button>
           </section>
@@ -177,15 +180,13 @@ export function Dashboard() {
                       <div className="mb-2.5 flex items-center justify-between gap-3 px-1">
                         <h2
                           id="subjects-heading"
-                          className="flex items-center gap-2 text-sm font-extrabold"
+                          className="flex items-center gap-2 font-mono text-[13px] font-medium"
                         >
-                          <BookOpen className="h-4 w-4 text-accent-strong" />
+                          <BookOpen className="h-3.5 w-3.5 text-accent-strong" />
                           Predmeti
-                          <span className="badge bg-surface-3 text-muted">
-                            {gradebook.subjects.length}
-                          </span>
+                          <span className="badge">{gradebook.subjects.length}</span>
                         </h2>
-                        <span className="text-[11px] font-semibold text-muted">
+                        <span className="font-mono text-[9.5px] text-muted">
                           {stats.gradedSubjects} sa ocenama
                         </span>
                       </div>
