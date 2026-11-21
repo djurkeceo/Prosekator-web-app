@@ -101,7 +101,7 @@ export function Modal({
   return createPortal(
     <div
       className={cn(
-        "fixed inset-0 z-[110] flex justify-center p-3 sm:p-6",
+        "safe-modal-overlay fixed inset-0 z-[110] flex justify-center p-3 sm:p-6",
         mobileSheet ? "items-end sm:items-center" : "items-center"
       )}
     >

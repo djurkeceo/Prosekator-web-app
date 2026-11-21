@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: APP_NAME,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
   },
   formatDetection: {
     telephone: false,
