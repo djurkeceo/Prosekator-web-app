@@ -75,9 +75,9 @@ const exampleSubjects = [
 
 export default function AboutPage() {
   return (
-    <main id="main-content" className="flex-1 px-4 py-10 sm:px-6 lg:px-12 lg:py-16">
+    <main id="main-content" className="premium-page-enter flex-1 px-4 py-10 sm:px-6 lg:px-12 lg:py-16">
       <div className="mx-auto max-w-[1280px] space-y-16">
-        <section className="hero-fade relative overflow-hidden">
+        <section className="premium-section-enter hero-fade relative overflow-hidden">
           <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
               <p className="fig-label">o aplikaciji</p>
@@ -171,7 +171,7 @@ export default function AboutPage() {
             {features.map((feature, index) => (
               <article
                 key={feature.title}
-                className="card p-5 transition-colors hover:border-line-strong"
+                className="premium-card card p-5"
               >
                 <div className="flex items-center justify-between gap-3">
                   <span className="flex h-9 w-9 items-center justify-center rounded-[4px] border border-line bg-accent-soft text-yellow-fg">
@@ -201,7 +201,7 @@ export default function AboutPage() {
 
             <div className="mt-6 space-y-2">
               {steps.map((step, index) => (
-                <div key={step.title} className="flex gap-3 border border-line bg-surface p-4">
+                <div key={step.title} className="premium-interactive flex gap-3 border border-line bg-surface p-4">
                   <span className="font-mono text-[9px] text-muted">
                     [{String(index + 1).padStart(2, "0")}]
                   </span>
@@ -267,7 +267,7 @@ export default function AboutPage() {
         </section>
 
         <section className="grid gap-3 lg:grid-cols-2">
-          <div className="card p-6">
+          <div className="premium-card card p-6">
             <p className="fig-label">privatnost</p>
             <span className="mt-4 flex h-9 w-9 items-center justify-center rounded-[4px] border border-line bg-accent-soft text-yellow-fg">
               <ShieldCheck className="h-4 w-4" />
@@ -281,7 +281,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="card p-6">
+          <div className="premium-card card p-6">
             <p className="fig-label">offline</p>
             <span className="mt-4 flex h-9 w-9 items-center justify-center rounded-[4px] border border-line bg-blue-wash text-info">
               <Download className="h-4 w-4" />

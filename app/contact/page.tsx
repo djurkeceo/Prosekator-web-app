@@ -35,9 +35,9 @@ const faqs = [
 
 export default function ContactPage() {
   return (
-    <main id="main-content" className="flex-1 px-4 py-10 sm:px-6 lg:px-12 lg:py-16">
+    <main id="main-content" className="premium-page-enter flex-1 px-4 py-10 sm:px-6 lg:px-12 lg:py-16">
       <div className="mx-auto max-w-[1280px] space-y-10">
-        <section className="hero-fade relative overflow-hidden">
+        <section className="premium-section-enter hero-fade relative overflow-hidden">
           <p className="fig-label">kontakt</p>
           <h1 className="mt-5 font-mono text-4xl leading-[1.02] tracking-[-0.05em] text-fg sm:text-5xl lg:text-6xl">
             Imaš pitanje
@@ -84,7 +84,7 @@ export default function ContactPage() {
               <div className="space-y-2 p-4">
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="flex items-center gap-3 border border-line bg-surface p-3 transition-colors hover:border-line-strong hover:bg-surface-2"
+                  className="premium-interactive flex items-center gap-3 border border-line bg-surface p-3 hover:border-line-strong hover:bg-surface-2"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] border border-line bg-accent-soft text-yellow-fg">
                     <Mail className="h-3.5 w-3.5" />
@@ -99,7 +99,7 @@ export default function ContactPage() {
                   href={GITHUB_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 border border-line bg-surface p-3 transition-colors hover:border-line-strong hover:bg-surface-2"
+                  className="premium-interactive flex items-center gap-3 border border-line bg-surface p-3 hover:border-line-strong hover:bg-surface-2"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] border border-line bg-blue-wash text-info">
                     <Github className="h-3.5 w-3.5" />

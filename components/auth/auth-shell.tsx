@@ -31,9 +31,9 @@ export function AuthShell({
   children: React.ReactNode;
 }) {
   return (
-    <main id="main-content" className="flex-1 px-4 py-10 sm:px-6 lg:px-12 lg:py-16">
+    <main id="main-content" className="premium-page-enter flex-1 px-4 py-10 sm:px-6 lg:px-12 lg:py-16">
       <div className="mx-auto grid w-full max-w-6xl gap-4 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
-        <aside className="relative hidden overflow-hidden rounded-[8px] border border-[color-mix(in_srgb,var(--yellow)_55%,var(--line))] bg-[var(--yellow-wash)] p-8 lg:flex lg:flex-col">
+        <aside className="premium-section-enter relative hidden overflow-hidden rounded-[8px] border border-[color-mix(in_srgb,var(--yellow)_55%,var(--line))] bg-[var(--yellow-wash)] p-8 lg:flex lg:flex-col">
           <div className="fig-grid absolute inset-0 opacity-70" aria-hidden="true" />
           <div className="relative">
             <span className="badge border-[color-mix(in_srgb,var(--yellow)_55%,var(--line))] bg-surface text-fg">
@@ -76,7 +76,7 @@ export function AuthShell({
           </div>
         </aside>
 
-        <section className="card flex flex-col p-6 sm:p-8">
+        <section className="premium-card card flex flex-col p-6 sm:p-8" style={{ animationDelay: "80ms" }}>
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 font-mono text-[9.5px] text-muted transition-colors hover:text-fg"

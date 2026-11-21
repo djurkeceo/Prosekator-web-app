@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function OfflinePage() {
   return (
-    <main id="main-content" className="flex flex-1 items-center justify-center px-4 py-16 sm:py-20">
-      <div className="fig w-full max-w-lg">
+    <main id="main-content" className="premium-page-enter flex flex-1 items-center justify-center px-4 py-16 sm:py-20">
+      <div className="premium-enter-soft fig w-full max-w-lg">
         <div className="fig-bar">
           <span className="fig-label">fig. 00 — offline</span>
           <span className="font-mono text-[10px]">no signal</span>
