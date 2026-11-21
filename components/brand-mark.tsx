@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function BrandMark({
@@ -11,11 +15,47 @@ export function BrandMark({
   className?: string;
   compact?: boolean;
 }) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const pendingHomeScroll = useRef(false);
+
+  useEffect(() => {
+    if (!pendingHomeScroll.current || pathname !== href) return;
+
+    pendingHomeScroll.current = false;
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }, [href, pathname]);
+
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (pathname === href) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    pendingHomeScroll.current = true;
+    router.push(href);
+  };
+
   return (
     <Link
       href={href}
       className={cn("group inline-flex items-center gap-2.5", className)}
       aria-label="Prosekator — početna"
+      onClick={handleClick}
     >
       <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-[4px] ring-1 ring-line transition-all duration-200 group-hover:-translate-y-0.5 group-hover:rotate-2 group-hover:shadow-soft">
         <Image
