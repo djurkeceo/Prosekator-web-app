@@ -79,7 +79,7 @@ export function Dashboard() {
   return (
     <main id="main-content" className="flex-1 px-4 pb-16 pt-8 sm:px-6 lg:px-12 lg:pt-10">
       <div className="mx-auto max-w-[1280px]">
-        <div className="mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="premium-enter mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="min-w-0">
             <p className="fig-label">
               {user ? `zdravo${firstName ? `, ${firstName}` : ""} · nalog` : "gost režim · lokalno"}

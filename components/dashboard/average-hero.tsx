@@ -71,11 +71,12 @@ function DistributionChart({
               <span className="font-mono text-[9px] leading-none text-muted">{count}</span>
               <div className="flex w-full flex-1 items-end">
                 <div
-                  className="w-full transition-all duration-500"
+                  className="chart-bar w-full transition-all duration-500"
                   style={{
                     height: `${height}%`,
                     backgroundColor: gradeColors[grade],
                     opacity: count ? 1 : 0.16,
+                    animationDelay: `${grade * 70}ms`,
                   }}
                   title={`Ocena ${grade}: ${count}`}
                 />
@@ -125,7 +126,7 @@ export function AverageHero({ stats, isGuest, isRefreshing }: AverageHeroProps) 
   ];
 
   return (
-    <section className="fig relative">
+    <section className="premium-enter-soft fig relative" style={{ animationDelay: "80ms" }}>
       <div className="fig-bar">
         <span className="fig-label whitespace-nowrap">fig. 01 — ukupan prosek</span>
         <span className="flex shrink-0 items-center gap-2 whitespace-nowrap font-mono text-[10px]">

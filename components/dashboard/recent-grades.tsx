@@ -14,7 +14,7 @@ export function RecentGrades({ subjects, onEditGrade }: RecentGradesProps) {
   const recent = getRecentGrades(subjects, 5);
 
   return (
-    <section className="fig">
+    <section className="premium-card fig">
       <div className="fig-bar">
         <span className="fig-label">fig. 03 — poslednje ocene</span>
         <span className="font-mono text-[10px]">{recent.length} × 5</span>
@@ -37,7 +37,7 @@ export function RecentGrades({ subjects, onEditGrade }: RecentGradesProps) {
                 key={`${subject.id}-${grade.id}`}
                 type="button"
                 onClick={() => onEditGrade(subject, grade, gradeIndex)}
-                className="flex w-full items-center gap-3 rounded-[2px] px-1.5 py-2.5 text-left transition-colors hover:bg-surface-2"
+                className="flex w-full items-center gap-3 rounded-[2px] px-1.5 py-2.5 text-left transition-all duration-150 hover:translate-x-1 hover:bg-surface-2 active:scale-[0.99]"
               >
                 <span
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[2px] border font-mono text-[10px]"

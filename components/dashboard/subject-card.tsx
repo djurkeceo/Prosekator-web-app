@@ -54,7 +54,7 @@ export function SubjectCard({
 
   return (
     <article
-      className="card animate-fade-up relative overflow-visible p-4 transition-colors hover:border-line-strong"
+      className="premium-card card animate-fade-up relative overflow-visible p-4"
       style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}
     >
       <div className="flex items-start justify-between gap-2">
@@ -134,7 +134,7 @@ export function SubjectCard({
                   key={grade.id}
                   type="button"
                   onClick={() => onEditGrade(subject, grade, gradeIndex)}
-                  className="group/grade relative flex h-8 min-w-8 items-center justify-center rounded-[2px] border px-1.5 font-mono text-[11px] font-medium transition hover:border-fg"
+                  className="group/grade relative flex h-8 min-w-8 items-center justify-center rounded-[2px] border px-1.5 font-mono text-[11px] font-medium transition-all duration-150 hover:-translate-y-0.5 hover:scale-105 hover:border-fg active:scale-95"
                   style={{
                     backgroundColor: `color-mix(in srgb, ${color} 8%, var(--surface))`,
                     borderColor: `color-mix(in srgb, ${color} 26%, var(--line))`,

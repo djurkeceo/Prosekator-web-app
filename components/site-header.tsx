@@ -84,7 +84,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="safe-top sticky top-0 z-50 border-b border-line bg-[var(--header-bg)]/95 backdrop-blur-md">
+      <header className="safe-top sticky top-0 z-50 border-b border-line bg-[var(--header-bg)]/95 backdrop-blur-xl supports-[backdrop-filter]:bg-[var(--header-bg)]/80">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-12">
           <div className="flex h-16 items-center justify-between gap-3">
             <div className="flex min-w-0 items-center gap-8">

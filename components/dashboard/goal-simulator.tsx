@@ -72,7 +72,7 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
   })();
 
   return (
-    <section className="fig">
+    <section className="premium-card fig">
       <div className="fig-bar">
         <span className="fig-label">fig. 02 — simulator cilja</span>
         <span className="font-mono text-[10px]">target</span>
@@ -158,8 +158,9 @@ export function GoalSimulator({ subjects }: { subjects: Subject[] }) {
         <div className="mt-4 border border-line bg-surface p-4">
           <p className="eyebrow">{result.title}</p>
           <p
+            key={result.value}
             className={cn(
-              "mt-1.5 font-mono text-3xl leading-none tracking-[-0.04em]",
+              "premium-result mt-1.5 font-mono text-3xl leading-none tracking-[-0.04em]",
               result.tone === "accent" && "text-accent-strong",
               result.tone === "danger" && "text-danger",
               result.tone === "muted" && "text-muted"

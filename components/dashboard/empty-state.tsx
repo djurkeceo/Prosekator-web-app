@@ -24,7 +24,7 @@ export function EmptyState({ existingNames, isAdding, onAdd }: EmptyStateProps) 
 
       <div className="fig-well fig-grid p-6 text-center sm:p-10">
         <div className="relative mx-auto max-w-lg">
-          <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-[4px] border border-line bg-surface text-fg">
+          <span className="animate-float mx-auto flex h-14 w-14 items-center justify-center rounded-[4px] border border-line bg-surface text-fg">
             <BookOpenCheck className="h-6 w-6" />
           </span>
 
